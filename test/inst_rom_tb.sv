@@ -6,16 +6,16 @@ module inst_rom_tb();
   logic [15:0] q;
 
   instruction_rom	dut (
-    .clock(clk),
     .address(address),
+    .clock(clk),
     .q(q)
 	);
 
   initial begin
     clk = 0;
-    address = 16'h0000;  
+    address = 9'h000;  
 
-    #30; address = 16'h0001;
+    #30; address = 9'h001;
     #50;
 
     $stop;

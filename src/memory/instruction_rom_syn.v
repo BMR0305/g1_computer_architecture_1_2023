@@ -34,7 +34,7 @@
 //https://fpgasoftware.intel.com/eula.
 
 
-//altsyncram ADDRESS_ACLR_A="NONE" CLOCK_ENABLE_INPUT_A="BYPASS" CLOCK_ENABLE_OUTPUT_A="BYPASS" DEVICE_FAMILY="Cyclone V" ENABLE_RUNTIME_MOD="NO" INIT_FILE="../memory_init/instructions.hex" NUMWORDS_A=512 OPERATION_MODE="ROM" OUTDATA_ACLR_A="NONE" OUTDATA_REG_A="CLOCK0" WIDTH_A=16 WIDTH_BYTEENA_A=1 WIDTHAD_A=9 address_a clock0 q_a
+//altsyncram ADDRESS_ACLR_A="NONE" CLOCK_ENABLE_INPUT_A="BYPASS" CLOCK_ENABLE_OUTPUT_A="BYPASS" DEVICE_FAMILY="Cyclone V" ENABLE_RUNTIME_MOD="NO" INIT_FILE="../memory_init/instructions.mif" NUMWORDS_A=512 OPERATION_MODE="ROM" OUTDATA_ACLR_A="NONE" OUTDATA_REG_A="CLOCK0" WIDTH_A=16 WIDTH_BYTEENA_A=1 WIDTHAD_A=9 address_a clock0 q_a
 //VERSION_BEGIN 21.1 cbx_altera_syncram_nd_impl 2022:06:23:22:02:32:SJ cbx_altsyncram 2022:06:23:22:02:32:SJ cbx_cycloneii 2022:06:23:22:02:32:SJ cbx_lpm_add_sub 2022:06:23:22:02:32:SJ cbx_lpm_compare 2022:06:23:22:02:32:SJ cbx_lpm_decode 2022:06:23:22:02:32:SJ cbx_lpm_mux 2022:06:23:22:02:32:SJ cbx_mgl 2022:06:23:22:26:17:SJ cbx_nadder 2022:06:23:22:02:32:SJ cbx_stratix 2022:06:23:22:02:32:SJ cbx_stratixii 2022:06:23:22:02:32:SJ cbx_stratixiii 2022:06:23:22:02:32:SJ cbx_stratixv 2022:06:23:22:02:32:SJ cbx_util_mgl 2022:06:23:22:02:32:SJ  VERSION_END
 // synthesis VERILOG_INPUT_VERSION VERILOG_2001
 // altera message_off 10463
@@ -124,7 +124,7 @@ module  instruction_rom_altsyncram
 		ram_block1a_0.clk0_input_clock_enable = "none",
 		ram_block1a_0.clk0_output_clock_enable = "none",
 		ram_block1a_0.connectivity_checking = "OFF",
-		ram_block1a_0.init_file = "../memory_init/instructions.hex",
+		ram_block1a_0.init_file = "../memory_init/instructions.mif",
 		ram_block1a_0.init_file_layout = "port_a",
 		ram_block1a_0.logical_ram_name = "ALTSYNCRAM",
 		ram_block1a_0.mem_init0 = 512'h00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002,
@@ -186,7 +186,7 @@ module  instruction_rom_altsyncram
 		ram_block1a_1.clk0_input_clock_enable = "none",
 		ram_block1a_1.clk0_output_clock_enable = "none",
 		ram_block1a_1.connectivity_checking = "OFF",
-		ram_block1a_1.init_file = "../memory_init/instructions.hex",
+		ram_block1a_1.init_file = "../memory_init/instructions.mif",
 		ram_block1a_1.init_file_layout = "port_a",
 		ram_block1a_1.logical_ram_name = "ALTSYNCRAM",
 		ram_block1a_1.mem_init0 = 512'h00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002,
@@ -248,7 +248,7 @@ module  instruction_rom_altsyncram
 		ram_block1a_2.clk0_input_clock_enable = "none",
 		ram_block1a_2.clk0_output_clock_enable = "none",
 		ram_block1a_2.connectivity_checking = "OFF",
-		ram_block1a_2.init_file = "../memory_init/instructions.hex",
+		ram_block1a_2.init_file = "../memory_init/instructions.mif",
 		ram_block1a_2.init_file_layout = "port_a",
 		ram_block1a_2.logical_ram_name = "ALTSYNCRAM",
 		ram_block1a_2.mem_init0 = 512'h00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002,
@@ -310,7 +310,7 @@ module  instruction_rom_altsyncram
 		ram_block1a_3.clk0_input_clock_enable = "none",
 		ram_block1a_3.clk0_output_clock_enable = "none",
 		ram_block1a_3.connectivity_checking = "OFF",
-		ram_block1a_3.init_file = "../memory_init/instructions.hex",
+		ram_block1a_3.init_file = "../memory_init/instructions.mif",
 		ram_block1a_3.init_file_layout = "port_a",
 		ram_block1a_3.logical_ram_name = "ALTSYNCRAM",
 		ram_block1a_3.mem_init0 = 512'h00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002,
@@ -372,7 +372,7 @@ module  instruction_rom_altsyncram
 		ram_block1a_4.clk0_input_clock_enable = "none",
 		ram_block1a_4.clk0_output_clock_enable = "none",
 		ram_block1a_4.connectivity_checking = "OFF",
-		ram_block1a_4.init_file = "../memory_init/instructions.hex",
+		ram_block1a_4.init_file = "../memory_init/instructions.mif",
 		ram_block1a_4.init_file_layout = "port_a",
 		ram_block1a_4.logical_ram_name = "ALTSYNCRAM",
 		ram_block1a_4.mem_init0 = 512'h00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002,
@@ -434,7 +434,7 @@ module  instruction_rom_altsyncram
 		ram_block1a_5.clk0_input_clock_enable = "none",
 		ram_block1a_5.clk0_output_clock_enable = "none",
 		ram_block1a_5.connectivity_checking = "OFF",
-		ram_block1a_5.init_file = "../memory_init/instructions.hex",
+		ram_block1a_5.init_file = "../memory_init/instructions.mif",
 		ram_block1a_5.init_file_layout = "port_a",
 		ram_block1a_5.logical_ram_name = "ALTSYNCRAM",
 		ram_block1a_5.mem_init0 = 512'h00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002,
@@ -496,7 +496,7 @@ module  instruction_rom_altsyncram
 		ram_block1a_6.clk0_input_clock_enable = "none",
 		ram_block1a_6.clk0_output_clock_enable = "none",
 		ram_block1a_6.connectivity_checking = "OFF",
-		ram_block1a_6.init_file = "../memory_init/instructions.hex",
+		ram_block1a_6.init_file = "../memory_init/instructions.mif",
 		ram_block1a_6.init_file_layout = "port_a",
 		ram_block1a_6.logical_ram_name = "ALTSYNCRAM",
 		ram_block1a_6.mem_init0 = 512'h00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002,
@@ -558,7 +558,7 @@ module  instruction_rom_altsyncram
 		ram_block1a_7.clk0_input_clock_enable = "none",
 		ram_block1a_7.clk0_output_clock_enable = "none",
 		ram_block1a_7.connectivity_checking = "OFF",
-		ram_block1a_7.init_file = "../memory_init/instructions.hex",
+		ram_block1a_7.init_file = "../memory_init/instructions.mif",
 		ram_block1a_7.init_file_layout = "port_a",
 		ram_block1a_7.logical_ram_name = "ALTSYNCRAM",
 		ram_block1a_7.mem_init0 = 512'h00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002,
@@ -620,7 +620,7 @@ module  instruction_rom_altsyncram
 		ram_block1a_8.clk0_input_clock_enable = "none",
 		ram_block1a_8.clk0_output_clock_enable = "none",
 		ram_block1a_8.connectivity_checking = "OFF",
-		ram_block1a_8.init_file = "../memory_init/instructions.hex",
+		ram_block1a_8.init_file = "../memory_init/instructions.mif",
 		ram_block1a_8.init_file_layout = "port_a",
 		ram_block1a_8.logical_ram_name = "ALTSYNCRAM",
 		ram_block1a_8.mem_init0 = 512'h00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002,
@@ -682,7 +682,7 @@ module  instruction_rom_altsyncram
 		ram_block1a_9.clk0_input_clock_enable = "none",
 		ram_block1a_9.clk0_output_clock_enable = "none",
 		ram_block1a_9.connectivity_checking = "OFF",
-		ram_block1a_9.init_file = "../memory_init/instructions.hex",
+		ram_block1a_9.init_file = "../memory_init/instructions.mif",
 		ram_block1a_9.init_file_layout = "port_a",
 		ram_block1a_9.logical_ram_name = "ALTSYNCRAM",
 		ram_block1a_9.mem_init0 = 512'h00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002,
@@ -744,7 +744,7 @@ module  instruction_rom_altsyncram
 		ram_block1a_10.clk0_input_clock_enable = "none",
 		ram_block1a_10.clk0_output_clock_enable = "none",
 		ram_block1a_10.connectivity_checking = "OFF",
-		ram_block1a_10.init_file = "../memory_init/instructions.hex",
+		ram_block1a_10.init_file = "../memory_init/instructions.mif",
 		ram_block1a_10.init_file_layout = "port_a",
 		ram_block1a_10.logical_ram_name = "ALTSYNCRAM",
 		ram_block1a_10.mem_init0 = 512'h00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002,
@@ -806,7 +806,7 @@ module  instruction_rom_altsyncram
 		ram_block1a_11.clk0_input_clock_enable = "none",
 		ram_block1a_11.clk0_output_clock_enable = "none",
 		ram_block1a_11.connectivity_checking = "OFF",
-		ram_block1a_11.init_file = "../memory_init/instructions.hex",
+		ram_block1a_11.init_file = "../memory_init/instructions.mif",
 		ram_block1a_11.init_file_layout = "port_a",
 		ram_block1a_11.logical_ram_name = "ALTSYNCRAM",
 		ram_block1a_11.mem_init0 = 512'h00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002,
@@ -868,7 +868,7 @@ module  instruction_rom_altsyncram
 		ram_block1a_12.clk0_input_clock_enable = "none",
 		ram_block1a_12.clk0_output_clock_enable = "none",
 		ram_block1a_12.connectivity_checking = "OFF",
-		ram_block1a_12.init_file = "../memory_init/instructions.hex",
+		ram_block1a_12.init_file = "../memory_init/instructions.mif",
 		ram_block1a_12.init_file_layout = "port_a",
 		ram_block1a_12.logical_ram_name = "ALTSYNCRAM",
 		ram_block1a_12.mem_init0 = 512'h00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002,
@@ -930,7 +930,7 @@ module  instruction_rom_altsyncram
 		ram_block1a_13.clk0_input_clock_enable = "none",
 		ram_block1a_13.clk0_output_clock_enable = "none",
 		ram_block1a_13.connectivity_checking = "OFF",
-		ram_block1a_13.init_file = "../memory_init/instructions.hex",
+		ram_block1a_13.init_file = "../memory_init/instructions.mif",
 		ram_block1a_13.init_file_layout = "port_a",
 		ram_block1a_13.logical_ram_name = "ALTSYNCRAM",
 		ram_block1a_13.mem_init0 = 512'h00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002,
@@ -992,7 +992,7 @@ module  instruction_rom_altsyncram
 		ram_block1a_14.clk0_input_clock_enable = "none",
 		ram_block1a_14.clk0_output_clock_enable = "none",
 		ram_block1a_14.connectivity_checking = "OFF",
-		ram_block1a_14.init_file = "../memory_init/instructions.hex",
+		ram_block1a_14.init_file = "../memory_init/instructions.mif",
 		ram_block1a_14.init_file_layout = "port_a",
 		ram_block1a_14.logical_ram_name = "ALTSYNCRAM",
 		ram_block1a_14.mem_init0 = 512'h00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002,
@@ -1054,7 +1054,7 @@ module  instruction_rom_altsyncram
 		ram_block1a_15.clk0_input_clock_enable = "none",
 		ram_block1a_15.clk0_output_clock_enable = "none",
 		ram_block1a_15.connectivity_checking = "OFF",
-		ram_block1a_15.init_file = "../memory_init/instructions.hex",
+		ram_block1a_15.init_file = "../memory_init/instructions.mif",
 		ram_block1a_15.init_file_layout = "port_a",
 		ram_block1a_15.logical_ram_name = "ALTSYNCRAM",
 		ram_block1a_15.mem_init0 = 512'h00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002,
@@ -1127,7 +1127,7 @@ endmodule
 // Retrieval info: PRIVATE: JTAG_ENABLED NUMERIC "0"
 // Retrieval info: PRIVATE: JTAG_ID STRING "NONE"
 // Retrieval info: PRIVATE: MAXIMUM_DEPTH NUMERIC "0"
-// Retrieval info: PRIVATE: MIFfilename STRING "../memory_init/instructions.hex"
+// Retrieval info: PRIVATE: MIFfilename STRING "../memory_init/instructions.mif"
 // Retrieval info: PRIVATE: NUMWORDS_A NUMERIC "512"
 // Retrieval info: PRIVATE: RAM_BLOCK_TYPE NUMERIC "0"
 // Retrieval info: PRIVATE: RegAddr NUMERIC "1"
@@ -1142,7 +1142,7 @@ endmodule
 // Retrieval info: CONSTANT: ADDRESS_ACLR_A STRING "NONE"
 // Retrieval info: CONSTANT: CLOCK_ENABLE_INPUT_A STRING "BYPASS"
 // Retrieval info: CONSTANT: CLOCK_ENABLE_OUTPUT_A STRING "BYPASS"
-// Retrieval info: CONSTANT: INIT_FILE STRING "../memory_init/instructions.hex"
+// Retrieval info: CONSTANT: INIT_FILE STRING "../memory_init/instructions.mif"
 // Retrieval info: CONSTANT: INTENDED_DEVICE_FAMILY STRING "Cyclone V"
 // Retrieval info: CONSTANT: LPM_HINT STRING "ENABLE_RUNTIME_MOD=NO"
 // Retrieval info: CONSTANT: LPM_TYPE STRING "altsyncram"
