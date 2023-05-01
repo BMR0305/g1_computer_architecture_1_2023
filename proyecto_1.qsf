@@ -48,16 +48,31 @@ set_global_assignment -name MIN_CORE_JUNCTION_TEMP "-40"
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 100
 set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 256
 set_global_assignment -name EDA_SIMULATION_TOOL "Questa Intel FPGA (SystemVerilog)"
-set_global_assignment -name EDA_TIME_SCALE "1 ps" -section_id eda_simulation
+set_global_assignment -name EDA_TIME_SCALE "1 ns" -section_id eda_simulation
 set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "SYSTEMVERILOG HDL" -section_id eda_simulation
 set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_timing
 set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_symbol
 set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_signal_integrity
 set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_boundary_scan
-set_global_assignment -name SYSTEMVERILOG_FILE src/main.sv
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_global_assignment -name EDA_TEST_BENCH_ENABLE_STATUS NOT_USED -section_id eda_simulation
+set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH inst_rom_tb -section_id eda_simulation
+set_global_assignment -name EDA_TEST_BENCH_NAME inst_rom_tb -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id inst_rom_tb
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME inst_rom_tb -section_id inst_rom_tb
+set_global_assignment -name EDA_TEST_BENCH_FILE test/inst_rom_tb.sv -section_id inst_rom_tb
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name SYSTEMVERILOG_FILE src/main.sv
+set_global_assignment -name SYSTEMVERILOG_FILE src/memory_stage.sv
+set_global_assignment -name SYSTEMVERILOG_FILE src/D_FF.sv
+set_global_assignment -name QIP_FILE src/memory/instruction_rom.qip
+set_global_assignment -name QIP_FILE src/memory/data_ram.qip
+set_global_assignment -name SYSTEMVERILOG_FILE test/inst_rom_tb.sv
+set_global_assignment -name SYSTEMVERILOG_FILE test/data_ram_tb.sv
+set_global_assignment -name SYSTEMVERILOG_FILE test/memory_stage_tb.sv
+set_global_assignment -name MIF_FILE memory_init/instructions.mif
+set_global_assignment -name MIF_FILE memory_init/ram.mif
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
