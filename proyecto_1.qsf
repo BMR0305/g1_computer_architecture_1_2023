@@ -61,13 +61,14 @@ set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH inst_rom_tb -se
 set_global_assignment -name EDA_TEST_BENCH_NAME inst_rom_tb -section_id eda_simulation
 set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id inst_rom_tb
 set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME inst_rom_tb -section_id inst_rom_tb
-set_global_assignment -name SYSTEMVERILOG_FILE src/main.sv
-set_global_assignment -name QIP_FILE src/memory/instruction_rom.qip
-set_global_assignment -name SYSTEMVERILOG_FILE test/inst_rom_tb.sv
-set_global_assignment -name MIF_FILE memory_init/instructions.mif
-set_global_assignment -name HEX_FILE memory_init/instructions.hex
 set_global_assignment -name EDA_TEST_BENCH_FILE test/inst_rom_tb.sv -section_id inst_rom_tb
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+set_global_assignment -name SYSTEMVERILOG_FILE src/main.sv
+set_global_assignment -name QIP_FILE src/memory/instruction_rom.qip
+set_global_assignment -name QIP_FILE src/memory/data_ram.qip
+set_global_assignment -name SYSTEMVERILOG_FILE test/inst_rom_tb.sv
+set_global_assignment -name MIF_FILE memory_init/instructions.mif
+set_global_assignment -name MIF_FILE memory_init/ram.mif
