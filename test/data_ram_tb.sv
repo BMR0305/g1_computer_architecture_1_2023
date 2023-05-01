@@ -16,7 +16,7 @@ module data_ram_tb();
   logic [23:0] q_a;
   logic [23:0] q_b;
 
-  data_ram	dut (
+  data_ram dut (
     .clock_a(clk_a),
     .clock_b(clk_b),
     .wren_a(wren_a),
