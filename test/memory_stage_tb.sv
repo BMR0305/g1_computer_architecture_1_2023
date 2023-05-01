@@ -7,10 +7,10 @@ module memory_stage_tb();
   logic mem_to_reg;
   logic write_en;
 
-  logic [17:0] address_a;
+  logic [31:0] alu_result;
   logic [17:0] address_b;
 
-  logic [31:0] alu_result;
+  logic [31:0] write_data_a;
 
   logic [23:0] mem_data_b;
   logic [31:0] result;
@@ -21,7 +21,7 @@ module memory_stage_tb();
     .mem_to_reg(mem_to_reg),
     .mem_write_en(write_en),
     .alu_result(alu_result),
-    .address_a(address_a),
+    .write_data_a(write_data_a),
     .address_b(address_b),
     .mem_data_b(mem_data_b),
     .result(result)
@@ -35,31 +35,31 @@ module memory_stage_tb();
     write_en = 0;
     
     alu_result = 0;
-
-    address_a = 0;
     address_b = 0;
+    
+    write_data_a = 0;
 
     #30;
 
-    address_a = 1;
+    alu_result = 1;
     address_b = 2;
 
     #40;
 
     write_en = 1;
-    alu_result = 32'h55555551;
-    address_a = 3;
+    write_data_a = 32'h55555551;
+    alu_result = 3;
 
     #10;
     write_en = 0;
-    address_a = 0;
+    alu_result = 0;
     
     #30;
     address_b = 3;
 
     #10;
     mem_to_reg = 1;
-    address_a = 3;
+    alu_result = 3;
 
     #200;
     $stop;
