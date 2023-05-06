@@ -1,71 +1,71 @@
 `timescale 1ns/1ns
   
 module memory_stage_tb();
+  logic reset;
+
   logic clk_a;
   logic clk_b;
 
+  logic read_enable;
+  logic write_enable;
   logic mem_to_reg;
-  logic write_en;
 
-  logic [31:0] alu_result;
-  logic [17:0] address_b;
+  logic [23:0] alu_result;
+  logic [16:0] address_b;
 
-  logic [31:0] write_data_a;
+  logic [23:0] write_data_a;
 
-  logic [23:0] mem_data_b;
-  logic [31:0] result;
+  logic [23:0] result;
+  logic [23:0] read_data_b;
 
   memory_stage dut (
+    .reset(reset),
     .clk_a(clk_a),
     .clk_b(clk_b),
+    .read_enable(read_enable),
+    .write_enable(write_enable),
     .mem_to_reg(mem_to_reg),
-    .mem_write_en(write_en),
     .alu_result(alu_result),
-    .write_data_a(write_data_a),
     .address_b(address_b),
-    .mem_data_b(mem_data_b),
-    .result(result)
+    .write_data_a(write_data_a),
+    .result(result),
+    .read_data_b(read_data_b)
 	);
 
   initial begin
+    reset = 0;
+
+    read_enable = 1;
+    write_enable = 0;
+    mem_to_reg = 0;
+
+    alu_result = 0;
+    address_b = 0;
+
+    write_data_a = 0;
+
     clk_a = 0;
     clk_b = 0;
 
-    mem_to_reg = 0;
-    write_en = 0;
-    
-    alu_result = 0;
-    address_b = 0;
-    
-    write_data_a = 0;
+    #30;
+
+    alu_result = 24'h000001;
+    address_b = 17'h00002;
 
     #30;
 
-    alu_result = 1;
-    address_b = 2;
-
-    #40;
-
-    write_en = 1;
-    write_data_a = 32'h55555551;
-    alu_result = 3;
-
-    #10;
-    write_en = 0;
-    alu_result = 0;
-    
-    #30;
-    address_b = 3;
-
-    #10;
     mem_to_reg = 1;
-    alu_result = 3;
+    alu_result = 24'h000001;
+    address_b = 17'd90001;
+
+    #30;
+
+    alu_result = 24'd90000;
 
     #200;
     $stop;
   end
 
   always #10 clk_a = ~clk_a;
-  always #30 clk_b  = ~clk_b;
-
+  always #20 clk_b  = ~clk_b;
 endmodule

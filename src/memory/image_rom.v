@@ -1,10 +1,10 @@
-// megafunction wizard: %RAM: 2-PORT%VBB%
+// megafunction wizard: %ROM: 2-PORT%
 // GENERATION: STANDARD
 // VERSION: WM1.0
 // MODULE: altsyncram 
 
 // ============================================================
-// File Name: data_ram.v
+// File Name: image_rom.v
 // Megafunction Name(s):
 // 			altsyncram
 //
@@ -16,6 +16,7 @@
 //
 // 21.1.1 Build 850 06/23/2022 SJ Lite Edition
 // ************************************************************
+
 
 //Copyright (C) 2022  Intel Corporation. All rights reserved.
 //Your use of Intel Corporation's design tools, logic functions 
@@ -32,17 +33,15 @@
 //refer to the applicable agreement for further details, at
 //https://fpgasoftware.intel.com/eula.
 
-module data_ram (
+
+// synopsys translate_off
+`timescale 1 ps / 1 ps
+// synopsys translate_on
+module image_rom (
 	address_a,
 	address_b,
 	clock_a,
 	clock_b,
-	data_a,
-	data_b,
-	rden_a,
-	rden_b,
-	wren_a,
-	wren_b,
 	q_a,
 	q_b);
 
@@ -50,25 +49,77 @@ module data_ram (
 	input	[16:0]  address_b;
 	input	  clock_a;
 	input	  clock_b;
-	input	[23:0]  data_a;
-	input	[23:0]  data_b;
-	input	  rden_a;
-	input	  rden_b;
-	input	  wren_a;
-	input	  wren_b;
 	output	[23:0]  q_a;
 	output	[23:0]  q_b;
 `ifndef ALTERA_RESERVED_QIS
 // synopsys translate_off
 `endif
 	tri1	  clock_a;
-	tri1	  rden_a;
-	tri1	  rden_b;
-	tri0	  wren_a;
-	tri0	  wren_b;
 `ifndef ALTERA_RESERVED_QIS
 // synopsys translate_on
 `endif
+
+	wire [23:0] sub_wire0;
+	wire [23:0] sub_wire1;
+	wire [23:0] sub_wire2 = 24'h0;
+	wire  sub_wire3 = 1'h0;
+	wire [23:0] q_a = sub_wire0[23:0];
+	wire [23:0] q_b = sub_wire1[23:0];
+
+	altsyncram	altsyncram_component (
+				.address_a (address_a),
+				.address_b (address_b),
+				.clock0 (clock_a),
+				.clock1 (clock_b),
+				.data_a (sub_wire2),
+				.data_b (sub_wire2),
+				.wren_a (sub_wire3),
+				.wren_b (sub_wire3),
+				.q_a (sub_wire0),
+				.q_b (sub_wire1)
+				// synopsys translate_off
+				,
+				.aclr0 (),
+				.aclr1 (),
+				.addressstall_a (),
+				.addressstall_b (),
+				.byteena_a (),
+				.byteena_b (),
+				.clocken0 (),
+				.clocken1 (),
+				.clocken2 (),
+				.clocken3 (),
+				.eccstatus (),
+				.rden_a (),
+				.rden_b ()
+				// synopsys translate_on
+				);
+	defparam
+		altsyncram_component.address_reg_b = "CLOCK1",
+		altsyncram_component.clock_enable_input_a = "BYPASS",
+		altsyncram_component.clock_enable_input_b = "BYPASS",
+		altsyncram_component.clock_enable_output_a = "BYPASS",
+		altsyncram_component.clock_enable_output_b = "BYPASS",
+		altsyncram_component.indata_reg_b = "CLOCK1",
+		altsyncram_component.init_file = "../memory_init/image.mif",
+		altsyncram_component.intended_device_family = "Cyclone V",
+		altsyncram_component.lpm_type = "altsyncram",
+		altsyncram_component.numwords_a = 90000,
+		altsyncram_component.numwords_b = 90000,
+		altsyncram_component.operation_mode = "BIDIR_DUAL_PORT",
+		altsyncram_component.outdata_aclr_a = "NONE",
+		altsyncram_component.outdata_aclr_b = "NONE",
+		altsyncram_component.outdata_reg_a = "CLOCK0",
+		altsyncram_component.outdata_reg_b = "CLOCK1",
+		altsyncram_component.power_up_uninitialized = "FALSE",
+		altsyncram_component.widthad_a = 17,
+		altsyncram_component.widthad_b = 17,
+		altsyncram_component.width_a = 24,
+		altsyncram_component.width_b = 24,
+		altsyncram_component.width_byteena_a = 1,
+		altsyncram_component.width_byteena_b = 1,
+		altsyncram_component.wrcontrol_wraddress_reg_b = "CLOCK1";
+
 
 endmodule
 
@@ -81,7 +132,7 @@ endmodule
 // Retrieval info: PRIVATE: BYTEENA_ACLR_B NUMERIC "0"
 // Retrieval info: PRIVATE: BYTE_ENABLE_A NUMERIC "0"
 // Retrieval info: PRIVATE: BYTE_ENABLE_B NUMERIC "0"
-// Retrieval info: PRIVATE: BYTE_SIZE NUMERIC "8"
+// Retrieval info: PRIVATE: BYTE_SIZE NUMERIC "1"
 // Retrieval info: PRIVATE: BlankMemory NUMERIC "0"
 // Retrieval info: PRIVATE: CLOCK_ENABLE_INPUT_A NUMERIC "0"
 // Retrieval info: PRIVATE: CLOCK_ENABLE_INPUT_B NUMERIC "0"
@@ -113,12 +164,10 @@ endmodule
 // Retrieval info: PRIVATE: OUTDATA_REG_B NUMERIC "1"
 // Retrieval info: PRIVATE: RAM_BLOCK_TYPE NUMERIC "0"
 // Retrieval info: PRIVATE: READ_DURING_WRITE_MODE_MIXED_PORTS NUMERIC "2"
-// Retrieval info: PRIVATE: READ_DURING_WRITE_MODE_PORT_A NUMERIC "3"
-// Retrieval info: PRIVATE: READ_DURING_WRITE_MODE_PORT_B NUMERIC "3"
 // Retrieval info: PRIVATE: REGdata NUMERIC "1"
 // Retrieval info: PRIVATE: REGq NUMERIC "1"
 // Retrieval info: PRIVATE: REGrdaddress NUMERIC "0"
-// Retrieval info: PRIVATE: REGrren NUMERIC "1"
+// Retrieval info: PRIVATE: REGrren NUMERIC "0"
 // Retrieval info: PRIVATE: REGwraddress NUMERIC "1"
 // Retrieval info: PRIVATE: REGwren NUMERIC "1"
 // Retrieval info: PRIVATE: SYNTH_WRAPPER_GEN_POSTFIX STRING "1"
@@ -133,7 +182,7 @@ endmodule
 // Retrieval info: PRIVATE: WRADDR_REG_B NUMERIC "1"
 // Retrieval info: PRIVATE: WRCTRL_ACLR_B NUMERIC "0"
 // Retrieval info: PRIVATE: enable NUMERIC "0"
-// Retrieval info: PRIVATE: rden NUMERIC "1"
+// Retrieval info: PRIVATE: rden NUMERIC "0"
 // Retrieval info: LIBRARY: altera_mf altera_mf.altera_mf_components.all
 // Retrieval info: CONSTANT: ADDRESS_REG_B STRING "CLOCK1"
 // Retrieval info: CONSTANT: CLOCK_ENABLE_INPUT_A STRING "BYPASS"
@@ -152,8 +201,6 @@ endmodule
 // Retrieval info: CONSTANT: OUTDATA_REG_A STRING "CLOCK0"
 // Retrieval info: CONSTANT: OUTDATA_REG_B STRING "CLOCK1"
 // Retrieval info: CONSTANT: POWER_UP_UNINITIALIZED STRING "FALSE"
-// Retrieval info: CONSTANT: READ_DURING_WRITE_MODE_PORT_A STRING "NEW_DATA_NO_NBE_READ"
-// Retrieval info: CONSTANT: READ_DURING_WRITE_MODE_PORT_B STRING "NEW_DATA_NO_NBE_READ"
 // Retrieval info: CONSTANT: WIDTHAD_A NUMERIC "17"
 // Retrieval info: CONSTANT: WIDTHAD_B NUMERIC "17"
 // Retrieval info: CONSTANT: WIDTH_A NUMERIC "24"
@@ -165,31 +212,23 @@ endmodule
 // Retrieval info: USED_PORT: address_b 0 0 17 0 INPUT NODEFVAL "address_b[16..0]"
 // Retrieval info: USED_PORT: clock_a 0 0 0 0 INPUT VCC "clock_a"
 // Retrieval info: USED_PORT: clock_b 0 0 0 0 INPUT NODEFVAL "clock_b"
-// Retrieval info: USED_PORT: data_a 0 0 24 0 INPUT NODEFVAL "data_a[23..0]"
-// Retrieval info: USED_PORT: data_b 0 0 24 0 INPUT NODEFVAL "data_b[23..0]"
 // Retrieval info: USED_PORT: q_a 0 0 24 0 OUTPUT NODEFVAL "q_a[23..0]"
 // Retrieval info: USED_PORT: q_b 0 0 24 0 OUTPUT NODEFVAL "q_b[23..0]"
-// Retrieval info: USED_PORT: rden_a 0 0 0 0 INPUT VCC "rden_a"
-// Retrieval info: USED_PORT: rden_b 0 0 0 0 INPUT VCC "rden_b"
-// Retrieval info: USED_PORT: wren_a 0 0 0 0 INPUT GND "wren_a"
-// Retrieval info: USED_PORT: wren_b 0 0 0 0 INPUT GND "wren_b"
 // Retrieval info: CONNECT: @address_a 0 0 17 0 address_a 0 0 17 0
 // Retrieval info: CONNECT: @address_b 0 0 17 0 address_b 0 0 17 0
 // Retrieval info: CONNECT: @clock0 0 0 0 0 clock_a 0 0 0 0
 // Retrieval info: CONNECT: @clock1 0 0 0 0 clock_b 0 0 0 0
-// Retrieval info: CONNECT: @data_a 0 0 24 0 data_a 0 0 24 0
-// Retrieval info: CONNECT: @data_b 0 0 24 0 data_b 0 0 24 0
-// Retrieval info: CONNECT: @rden_a 0 0 0 0 rden_a 0 0 0 0
-// Retrieval info: CONNECT: @rden_b 0 0 0 0 rden_b 0 0 0 0
-// Retrieval info: CONNECT: @wren_a 0 0 0 0 wren_a 0 0 0 0
-// Retrieval info: CONNECT: @wren_b 0 0 0 0 wren_b 0 0 0 0
+// Retrieval info: CONNECT: @data_a 0 0 24 0 GND 0 0 24 0
+// Retrieval info: CONNECT: @data_b 0 0 24 0 GND 0 0 24 0
+// Retrieval info: CONNECT: @wren_a 0 0 0 0 GND 0 0 0 0
+// Retrieval info: CONNECT: @wren_b 0 0 0 0 GND 0 0 0 0
 // Retrieval info: CONNECT: q_a 0 0 24 0 @q_a 0 0 24 0
 // Retrieval info: CONNECT: q_b 0 0 24 0 @q_b 0 0 24 0
-// Retrieval info: GEN_FILE: TYPE_NORMAL data_ram.v TRUE
-// Retrieval info: GEN_FILE: TYPE_NORMAL data_ram.inc FALSE
-// Retrieval info: GEN_FILE: TYPE_NORMAL data_ram.cmp FALSE
-// Retrieval info: GEN_FILE: TYPE_NORMAL data_ram.bsf FALSE
-// Retrieval info: GEN_FILE: TYPE_NORMAL data_ram_inst.v FALSE
-// Retrieval info: GEN_FILE: TYPE_NORMAL data_ram_bb.v TRUE
-// Retrieval info: GEN_FILE: TYPE_NORMAL data_ram_syn.v TRUE
+// Retrieval info: GEN_FILE: TYPE_NORMAL image_rom.v TRUE
+// Retrieval info: GEN_FILE: TYPE_NORMAL image_rom.inc FALSE
+// Retrieval info: GEN_FILE: TYPE_NORMAL image_rom.cmp FALSE
+// Retrieval info: GEN_FILE: TYPE_NORMAL image_rom.bsf FALSE
+// Retrieval info: GEN_FILE: TYPE_NORMAL image_rom_inst.v FALSE
+// Retrieval info: GEN_FILE: TYPE_NORMAL image_rom_bb.v TRUE
+// Retrieval info: GEN_FILE: TYPE_NORMAL image_rom_syn.v TRUE
 // Retrieval info: LIB_FILE: altera_mf

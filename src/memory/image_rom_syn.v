@@ -1,10 +1,10 @@
-// megafunction wizard: %RAM: 2-PORT%
+// megafunction wizard: %ROM: 2-PORT%
 // GENERATION: STANDARD
 // VERSION: WM1.0
 // MODULE: altsyncram 
 
 // ============================================================
-// File Name: data_ram.v
+// File Name: image_rom.v
 // Megafunction Name(s):
 // 			altsyncram
 //
@@ -34,7 +34,7 @@
 //https://fpgasoftware.intel.com/eula.
 
 
-//altsyncram ADDRESS_REG_B="CLOCK1" CLOCK_ENABLE_INPUT_A="BYPASS" CLOCK_ENABLE_INPUT_B="BYPASS" CLOCK_ENABLE_OUTPUT_A="BYPASS" CLOCK_ENABLE_OUTPUT_B="BYPASS" DEVICE_FAMILY="Cyclone V" INDATA_REG_B="CLOCK1" INIT_FILE="./memory_init/image.mif" NUMWORDS_A=90000 NUMWORDS_B=90000 OPERATION_MODE="BIDIR_DUAL_PORT" OUTDATA_ACLR_A="NONE" OUTDATA_ACLR_B="NONE" OUTDATA_REG_A="CLOCK0" OUTDATA_REG_B="CLOCK1" POWER_UP_UNINITIALIZED="FALSE" read_during_write_mode_port_a="NEW_DATA_NO_NBE_READ" read_during_write_mode_port_b="NEW_DATA_NO_NBE_READ" WIDTH_A=24 WIDTH_B=24 WIDTH_BYTEENA_A=1 WIDTH_BYTEENA_B=1 WIDTHAD_A=17 WIDTHAD_B=17 WRCONTROL_WRADDRESS_REG_B="CLOCK1" address_a address_b clock0 clock1 data_a data_b q_a q_b rden_a rden_b wren_a wren_b
+//altsyncram ADDRESS_REG_B="CLOCK1" CLOCK_ENABLE_INPUT_A="BYPASS" CLOCK_ENABLE_INPUT_B="BYPASS" CLOCK_ENABLE_OUTPUT_A="BYPASS" CLOCK_ENABLE_OUTPUT_B="BYPASS" DEVICE_FAMILY="Cyclone V" INDATA_REG_B="CLOCK1" INIT_FILE="./memory_init/image.mif" NUMWORDS_A=90000 NUMWORDS_B=90000 OPERATION_MODE="BIDIR_DUAL_PORT" OUTDATA_ACLR_A="NONE" OUTDATA_ACLR_B="NONE" OUTDATA_REG_A="CLOCK0" OUTDATA_REG_B="CLOCK1" POWER_UP_UNINITIALIZED="FALSE" WIDTH_A=24 WIDTH_B=24 WIDTH_BYTEENA_A=1 WIDTH_BYTEENA_B=1 WIDTHAD_A=17 WIDTHAD_B=17 WRCONTROL_WRADDRESS_REG_B="CLOCK1" address_a address_b clock0 clock1 data_a data_b q_a q_b wren_a wren_b
 //VERSION_BEGIN 21.1 cbx_altera_syncram_nd_impl 2022:06:23:22:02:32:SJ cbx_altsyncram 2022:06:23:22:02:32:SJ cbx_cycloneii 2022:06:23:22:02:32:SJ cbx_lpm_add_sub 2022:06:23:22:02:32:SJ cbx_lpm_compare 2022:06:23:22:02:32:SJ cbx_lpm_decode 2022:06:23:22:02:32:SJ cbx_lpm_mux 2022:06:23:22:02:32:SJ cbx_mgl 2022:06:23:22:26:17:SJ cbx_nadder 2022:06:23:22:02:32:SJ cbx_stratix 2022:06:23:22:02:32:SJ cbx_stratixii 2022:06:23:22:02:32:SJ cbx_stratixiii 2022:06:23:22:02:32:SJ cbx_stratixv 2022:06:23:22:02:32:SJ cbx_util_mgl 2022:06:23:22:02:32:SJ  VERSION_END
 // synthesis VERILOG_INPUT_VERSION VERILOG_2001
 // altera message_off 10463
@@ -48,7 +48,7 @@
 //synopsys translate_off
 `timescale 1 ps / 1 ps
 //synopsys translate_on
-module  data_ram_decode
+module  image_rom_decode
 	( 
 	data,
 	enable,
@@ -69,52 +69,123 @@ module  data_ram_decode
 	wire  enable_wire;
 	wire  [10:0]  eq_node;
 	wire  [15:0]  eq_wire;
-	wire  [1:0]  w_anode3277w;
-	wire  [3:0]  w_anode3286w;
-	wire  [3:0]  w_anode3303w;
-	wire  [3:0]  w_anode3313w;
-	wire  [3:0]  w_anode3323w;
-	wire  [3:0]  w_anode3333w;
-	wire  [3:0]  w_anode3343w;
-	wire  [3:0]  w_anode3353w;
-	wire  [3:0]  w_anode3363w;
-	wire  [1:0]  w_anode3375w;
-	wire  [3:0]  w_anode3382w;
-	wire  [3:0]  w_anode3393w;
-	wire  [3:0]  w_anode3403w;
-	wire  [3:0]  w_anode3413w;
-	wire  [3:0]  w_anode3423w;
-	wire  [3:0]  w_anode3433w;
-	wire  [3:0]  w_anode3443w;
-	wire  [3:0]  w_anode3453w;
-	wire  [2:0]  w_data3275w;
+	wire  [1:0]  w_anode3275w;
+	wire  [3:0]  w_anode3284w;
+	wire  [3:0]  w_anode3301w;
+	wire  [3:0]  w_anode3311w;
+	wire  [3:0]  w_anode3321w;
+	wire  [3:0]  w_anode3331w;
+	wire  [3:0]  w_anode3341w;
+	wire  [3:0]  w_anode3351w;
+	wire  [3:0]  w_anode3361w;
+	wire  [1:0]  w_anode3373w;
+	wire  [3:0]  w_anode3380w;
+	wire  [3:0]  w_anode3391w;
+	wire  [3:0]  w_anode3401w;
+	wire  [3:0]  w_anode3411w;
+	wire  [3:0]  w_anode3421w;
+	wire  [3:0]  w_anode3431w;
+	wire  [3:0]  w_anode3441w;
+	wire  [3:0]  w_anode3451w;
+	wire  [2:0]  w_data3273w;
 
 	assign
 		data_wire = data,
 		enable_wire = enable,
 		eq = eq_node,
 		eq_node = eq_wire[10:0],
-		eq_wire = {{w_anode3453w[3], w_anode3443w[3], w_anode3433w[3], w_anode3423w[3], w_anode3413w[3], w_anode3403w[3], w_anode3393w[3], w_anode3382w[3]}, {w_anode3363w[3], w_anode3353w[3], w_anode3343w[3], w_anode3333w[3], w_anode3323w[3], w_anode3313w[3], w_anode3303w[3], w_anode3286w[3]}},
-		w_anode3277w = {(w_anode3277w[0] & (~ data_wire[3])), enable_wire},
-		w_anode3286w = {(w_anode3286w[2] & (~ w_data3275w[2])), (w_anode3286w[1] & (~ w_data3275w[1])), (w_anode3286w[0] & (~ w_data3275w[0])), w_anode3277w[1]},
-		w_anode3303w = {(w_anode3303w[2] & (~ w_data3275w[2])), (w_anode3303w[1] & (~ w_data3275w[1])), (w_anode3303w[0] & w_data3275w[0]), w_anode3277w[1]},
-		w_anode3313w = {(w_anode3313w[2] & (~ w_data3275w[2])), (w_anode3313w[1] & w_data3275w[1]), (w_anode3313w[0] & (~ w_data3275w[0])), w_anode3277w[1]},
-		w_anode3323w = {(w_anode3323w[2] & (~ w_data3275w[2])), (w_anode3323w[1] & w_data3275w[1]), (w_anode3323w[0] & w_data3275w[0]), w_anode3277w[1]},
-		w_anode3333w = {(w_anode3333w[2] & w_data3275w[2]), (w_anode3333w[1] & (~ w_data3275w[1])), (w_anode3333w[0] & (~ w_data3275w[0])), w_anode3277w[1]},
-		w_anode3343w = {(w_anode3343w[2] & w_data3275w[2]), (w_anode3343w[1] & (~ w_data3275w[1])), (w_anode3343w[0] & w_data3275w[0]), w_anode3277w[1]},
-		w_anode3353w = {(w_anode3353w[2] & w_data3275w[2]), (w_anode3353w[1] & w_data3275w[1]), (w_anode3353w[0] & (~ w_data3275w[0])), w_anode3277w[1]},
-		w_anode3363w = {(w_anode3363w[2] & w_data3275w[2]), (w_anode3363w[1] & w_data3275w[1]), (w_anode3363w[0] & w_data3275w[0]), w_anode3277w[1]},
-		w_anode3375w = {(w_anode3375w[0] & data_wire[3]), enable_wire},
-		w_anode3382w = {(w_anode3382w[2] & (~ w_data3275w[2])), (w_anode3382w[1] & (~ w_data3275w[1])), (w_anode3382w[0] & (~ w_data3275w[0])), w_anode3375w[1]},
-		w_anode3393w = {(w_anode3393w[2] & (~ w_data3275w[2])), (w_anode3393w[1] & (~ w_data3275w[1])), (w_anode3393w[0] & w_data3275w[0]), w_anode3375w[1]},
-		w_anode3403w = {(w_anode3403w[2] & (~ w_data3275w[2])), (w_anode3403w[1] & w_data3275w[1]), (w_anode3403w[0] & (~ w_data3275w[0])), w_anode3375w[1]},
-		w_anode3413w = {(w_anode3413w[2] & (~ w_data3275w[2])), (w_anode3413w[1] & w_data3275w[1]), (w_anode3413w[0] & w_data3275w[0]), w_anode3375w[1]},
-		w_anode3423w = {(w_anode3423w[2] & w_data3275w[2]), (w_anode3423w[1] & (~ w_data3275w[1])), (w_anode3423w[0] & (~ w_data3275w[0])), w_anode3375w[1]},
-		w_anode3433w = {(w_anode3433w[2] & w_data3275w[2]), (w_anode3433w[1] & (~ w_data3275w[1])), (w_anode3433w[0] & w_data3275w[0]), w_anode3375w[1]},
-		w_anode3443w = {(w_anode3443w[2] & w_data3275w[2]), (w_anode3443w[1] & w_data3275w[1]), (w_anode3443w[0] & (~ w_data3275w[0])), w_anode3375w[1]},
-		w_anode3453w = {(w_anode3453w[2] & w_data3275w[2]), (w_anode3453w[1] & w_data3275w[1]), (w_anode3453w[0] & w_data3275w[0]), w_anode3375w[1]},
-		w_data3275w = data_wire[2:0];
-endmodule //data_ram_decode
+		eq_wire = {{w_anode3451w[3], w_anode3441w[3], w_anode3431w[3], w_anode3421w[3], w_anode3411w[3], w_anode3401w[3], w_anode3391w[3], w_anode3380w[3]}, {w_anode3361w[3], w_anode3351w[3], w_anode3341w[3], w_anode3331w[3], w_anode3321w[3], w_anode3311w[3], w_anode3301w[3], w_anode3284w[3]}},
+		w_anode3275w = {(w_anode3275w[0] & (~ data_wire[3])), enable_wire},
+		w_anode3284w = {(w_anode3284w[2] & (~ w_data3273w[2])), (w_anode3284w[1] & (~ w_data3273w[1])), (w_anode3284w[0] & (~ w_data3273w[0])), w_anode3275w[1]},
+		w_anode3301w = {(w_anode3301w[2] & (~ w_data3273w[2])), (w_anode3301w[1] & (~ w_data3273w[1])), (w_anode3301w[0] & w_data3273w[0]), w_anode3275w[1]},
+		w_anode3311w = {(w_anode3311w[2] & (~ w_data3273w[2])), (w_anode3311w[1] & w_data3273w[1]), (w_anode3311w[0] & (~ w_data3273w[0])), w_anode3275w[1]},
+		w_anode3321w = {(w_anode3321w[2] & (~ w_data3273w[2])), (w_anode3321w[1] & w_data3273w[1]), (w_anode3321w[0] & w_data3273w[0]), w_anode3275w[1]},
+		w_anode3331w = {(w_anode3331w[2] & w_data3273w[2]), (w_anode3331w[1] & (~ w_data3273w[1])), (w_anode3331w[0] & (~ w_data3273w[0])), w_anode3275w[1]},
+		w_anode3341w = {(w_anode3341w[2] & w_data3273w[2]), (w_anode3341w[1] & (~ w_data3273w[1])), (w_anode3341w[0] & w_data3273w[0]), w_anode3275w[1]},
+		w_anode3351w = {(w_anode3351w[2] & w_data3273w[2]), (w_anode3351w[1] & w_data3273w[1]), (w_anode3351w[0] & (~ w_data3273w[0])), w_anode3275w[1]},
+		w_anode3361w = {(w_anode3361w[2] & w_data3273w[2]), (w_anode3361w[1] & w_data3273w[1]), (w_anode3361w[0] & w_data3273w[0]), w_anode3275w[1]},
+		w_anode3373w = {(w_anode3373w[0] & data_wire[3]), enable_wire},
+		w_anode3380w = {(w_anode3380w[2] & (~ w_data3273w[2])), (w_anode3380w[1] & (~ w_data3273w[1])), (w_anode3380w[0] & (~ w_data3273w[0])), w_anode3373w[1]},
+		w_anode3391w = {(w_anode3391w[2] & (~ w_data3273w[2])), (w_anode3391w[1] & (~ w_data3273w[1])), (w_anode3391w[0] & w_data3273w[0]), w_anode3373w[1]},
+		w_anode3401w = {(w_anode3401w[2] & (~ w_data3273w[2])), (w_anode3401w[1] & w_data3273w[1]), (w_anode3401w[0] & (~ w_data3273w[0])), w_anode3373w[1]},
+		w_anode3411w = {(w_anode3411w[2] & (~ w_data3273w[2])), (w_anode3411w[1] & w_data3273w[1]), (w_anode3411w[0] & w_data3273w[0]), w_anode3373w[1]},
+		w_anode3421w = {(w_anode3421w[2] & w_data3273w[2]), (w_anode3421w[1] & (~ w_data3273w[1])), (w_anode3421w[0] & (~ w_data3273w[0])), w_anode3373w[1]},
+		w_anode3431w = {(w_anode3431w[2] & w_data3273w[2]), (w_anode3431w[1] & (~ w_data3273w[1])), (w_anode3431w[0] & w_data3273w[0]), w_anode3373w[1]},
+		w_anode3441w = {(w_anode3441w[2] & w_data3273w[2]), (w_anode3441w[1] & w_data3273w[1]), (w_anode3441w[0] & (~ w_data3273w[0])), w_anode3373w[1]},
+		w_anode3451w = {(w_anode3451w[2] & w_data3273w[2]), (w_anode3451w[1] & w_data3273w[1]), (w_anode3451w[0] & w_data3273w[0]), w_anode3373w[1]},
+		w_data3273w = data_wire[2:0];
+endmodule //image_rom_decode
+
+
+//lpm_decode DEVICE_FAMILY="Cyclone V" LPM_DECODES=11 LPM_WIDTH=4 data eq
+//VERSION_BEGIN 21.1 cbx_cycloneii 2022:06:23:22:02:32:SJ cbx_lpm_add_sub 2022:06:23:22:02:32:SJ cbx_lpm_compare 2022:06:23:22:02:32:SJ cbx_lpm_decode 2022:06:23:22:02:32:SJ cbx_mgl 2022:06:23:22:26:17:SJ cbx_nadder 2022:06:23:22:02:32:SJ cbx_stratix 2022:06:23:22:02:32:SJ cbx_stratixii 2022:06:23:22:02:32:SJ  VERSION_END
+
+//synthesis_resources = lut 16 
+//synopsys translate_off
+`timescale 1 ps / 1 ps
+//synopsys translate_on
+module  image_rom_decode1
+	( 
+	data,
+	eq) /* synthesis synthesis_clearbox=1 */;
+	input   [3:0]  data;
+	output   [10:0]  eq;
+`ifndef ALTERA_RESERVED_QIS
+// synopsys translate_off
+`endif
+	tri0   [3:0]  data;
+`ifndef ALTERA_RESERVED_QIS
+// synopsys translate_on
+`endif
+
+	wire  [2:0]  data_wire;
+	wire  enable_wire1;
+	wire  enable_wire2;
+	wire  [10:0]  eq_node;
+	wire  [7:0]  eq_wire1;
+	wire  [7:0]  eq_wire2;
+	wire  [3:0]  w_anode3466w;
+	wire  [3:0]  w_anode3483w;
+	wire  [3:0]  w_anode3493w;
+	wire  [3:0]  w_anode3503w;
+	wire  [3:0]  w_anode3513w;
+	wire  [3:0]  w_anode3523w;
+	wire  [3:0]  w_anode3533w;
+	wire  [3:0]  w_anode3543w;
+	wire  [3:0]  w_anode3553w;
+	wire  [3:0]  w_anode3564w;
+	wire  [3:0]  w_anode3574w;
+	wire  [3:0]  w_anode3584w;
+	wire  [3:0]  w_anode3594w;
+	wire  [3:0]  w_anode3604w;
+	wire  [3:0]  w_anode3614w;
+	wire  [3:0]  w_anode3624w;
+
+	assign
+		data_wire = data[2:0],
+		enable_wire1 = (~ data[3]),
+		enable_wire2 = data[3],
+		eq = eq_node,
+		eq_node = {eq_wire2[2:0], eq_wire1},
+		eq_wire1 = {w_anode3543w[3], w_anode3533w[3], w_anode3523w[3], w_anode3513w[3], w_anode3503w[3], w_anode3493w[3], w_anode3483w[3], w_anode3466w[3]},
+		eq_wire2 = {w_anode3624w[3], w_anode3614w[3], w_anode3604w[3], w_anode3594w[3], w_anode3584w[3], w_anode3574w[3], w_anode3564w[3], w_anode3553w[3]},
+		w_anode3466w = {(w_anode3466w[2] & (~ data_wire[2])), (w_anode3466w[1] & (~ data_wire[1])), (w_anode3466w[0] & (~ data_wire[0])), enable_wire1},
+		w_anode3483w = {(w_anode3483w[2] & (~ data_wire[2])), (w_anode3483w[1] & (~ data_wire[1])), (w_anode3483w[0] & data_wire[0]), enable_wire1},
+		w_anode3493w = {(w_anode3493w[2] & (~ data_wire[2])), (w_anode3493w[1] & data_wire[1]), (w_anode3493w[0] & (~ data_wire[0])), enable_wire1},
+		w_anode3503w = {(w_anode3503w[2] & (~ data_wire[2])), (w_anode3503w[1] & data_wire[1]), (w_anode3503w[0] & data_wire[0]), enable_wire1},
+		w_anode3513w = {(w_anode3513w[2] & data_wire[2]), (w_anode3513w[1] & (~ data_wire[1])), (w_anode3513w[0] & (~ data_wire[0])), enable_wire1},
+		w_anode3523w = {(w_anode3523w[2] & data_wire[2]), (w_anode3523w[1] & (~ data_wire[1])), (w_anode3523w[0] & data_wire[0]), enable_wire1},
+		w_anode3533w = {(w_anode3533w[2] & data_wire[2]), (w_anode3533w[1] & data_wire[1]), (w_anode3533w[0] & (~ data_wire[0])), enable_wire1},
+		w_anode3543w = {(w_anode3543w[2] & data_wire[2]), (w_anode3543w[1] & data_wire[1]), (w_anode3543w[0] & data_wire[0]), enable_wire1},
+		w_anode3553w = {(w_anode3553w[2] & (~ data_wire[2])), (w_anode3553w[1] & (~ data_wire[1])), (w_anode3553w[0] & (~ data_wire[0])), enable_wire2},
+		w_anode3564w = {(w_anode3564w[2] & (~ data_wire[2])), (w_anode3564w[1] & (~ data_wire[1])), (w_anode3564w[0] & data_wire[0]), enable_wire2},
+		w_anode3574w = {(w_anode3574w[2] & (~ data_wire[2])), (w_anode3574w[1] & data_wire[1]), (w_anode3574w[0] & (~ data_wire[0])), enable_wire2},
+		w_anode3584w = {(w_anode3584w[2] & (~ data_wire[2])), (w_anode3584w[1] & data_wire[1]), (w_anode3584w[0] & data_wire[0]), enable_wire2},
+		w_anode3594w = {(w_anode3594w[2] & data_wire[2]), (w_anode3594w[1] & (~ data_wire[1])), (w_anode3594w[0] & (~ data_wire[0])), enable_wire2},
+		w_anode3604w = {(w_anode3604w[2] & data_wire[2]), (w_anode3604w[1] & (~ data_wire[1])), (w_anode3604w[0] & data_wire[0]), enable_wire2},
+		w_anode3614w = {(w_anode3614w[2] & data_wire[2]), (w_anode3614w[1] & data_wire[1]), (w_anode3614w[0] & (~ data_wire[0])), enable_wire2},
+		w_anode3624w = {(w_anode3624w[2] & data_wire[2]), (w_anode3624w[1] & data_wire[1]), (w_anode3624w[0] & data_wire[0]), enable_wire2};
+endmodule //image_rom_decode1
 
 
 //lpm_mux DEVICE_FAMILY="Cyclone V" LPM_SIZE=11 LPM_WIDTH=24 LPM_WIDTHS=4 data result sel
@@ -124,7 +195,7 @@ endmodule //data_ram_decode
 //synopsys translate_off
 `timescale 1 ps / 1 ps
 //synopsys translate_on
-module  data_ram_mux
+module  image_rom_mux
 	( 
 	data,
 	result,
@@ -874,14 +945,14 @@ module  data_ram_mux
 		result = result_wire_ext,
 		result_wire_ext = {wire_l4_w23_n0_mux_dataout, wire_l4_w22_n0_mux_dataout, wire_l4_w21_n0_mux_dataout, wire_l4_w20_n0_mux_dataout, wire_l4_w19_n0_mux_dataout, wire_l4_w18_n0_mux_dataout, wire_l4_w17_n0_mux_dataout, wire_l4_w16_n0_mux_dataout, wire_l4_w15_n0_mux_dataout, wire_l4_w14_n0_mux_dataout, wire_l4_w13_n0_mux_dataout, wire_l4_w12_n0_mux_dataout, wire_l4_w11_n0_mux_dataout, wire_l4_w10_n0_mux_dataout, wire_l4_w9_n0_mux_dataout, wire_l4_w8_n0_mux_dataout, wire_l4_w7_n0_mux_dataout, wire_l4_w6_n0_mux_dataout, wire_l4_w5_n0_mux_dataout, wire_l4_w4_n0_mux_dataout, wire_l4_w3_n0_mux_dataout, wire_l4_w2_n0_mux_dataout, wire_l4_w1_n0_mux_dataout, wire_l4_w0_n0_mux_dataout},
 		sel_wire = {sel[3], {4{1'b0}}, sel[2], {4{1'b0}}, sel[1], {4{1'b0}}, sel[0]};
-endmodule //data_ram_mux
+endmodule //image_rom_mux
 
-//synthesis_resources = lut 312 M10K 264 reg 16 
+//synthesis_resources = lut 308 M10K 264 reg 16 
 //synopsys translate_off
 `timescale 1 ps / 1 ps
 //synopsys translate_on
 (* ALTERA_ATTRIBUTE = {"OPTIMIZE_POWER_DURING_SYNTHESIS=NORMAL_COMPILATION"} *)
-module  data_ram_altsyncram
+module  image_rom_altsyncram
 	( 
 	address_a,
 	address_b,
@@ -891,8 +962,6 @@ module  data_ram_altsyncram
 	data_b,
 	q_a,
 	q_b,
-	rden_a,
-	rden_b,
 	wren_a,
 	wren_b) /* synthesis synthesis_clearbox=1 */;
 	input   [16:0]  address_a;
@@ -903,8 +972,6 @@ module  data_ram_altsyncram
 	input   [23:0]  data_b;
 	output   [23:0]  q_a;
 	output   [23:0]  q_b;
-	input   rden_a;
-	input   rden_b;
 	input   wren_a;
 	input   wren_b;
 `ifndef ALTERA_RESERVED_QIS
@@ -915,8 +982,6 @@ module  data_ram_altsyncram
 	tri1   clock1;
 	tri1   [23:0]  data_a;
 	tri1   [23:0]  data_b;
-	tri1   rden_a;
-	tri1   rden_b;
 	tri0   wren_a;
 	tri0   wren_b;
 `ifndef ALTERA_RESERVED_QIS
@@ -1465,9 +1530,8 @@ module  data_ram_altsyncram
 	wire  [16:0]  address_a_wire;
 	wire  [3:0]  address_b_sel;
 	wire  [16:0]  address_b_wire;
-	wire  [3:0]  w_addr_val_a9w;
-	wire  [3:0]  w_addr_val_b10w;
 	wire  [3:0]  w_addr_val_b4w;
+	wire  [3:0]  w_addr_val_b8w;
 	wire  [3:0]  wren_decode_addr_sel_a;
 	wire  [3:0]  wren_decode_addr_sel_b;
 
@@ -1476,13 +1540,13 @@ module  data_ram_altsyncram
 		address_reg_a = 0;
 	// synopsys translate_on
 	always @ ( posedge clock0)
-		if (rden_a == 1'b1)   address_reg_a <= address_a_sel;
+		  address_reg_a <= address_a_sel;
 	// synopsys translate_off
 	initial
 		address_reg_b = 0;
 	// synopsys translate_on
 	always @ ( posedge clock1)
-		if (rden_b == 1'b1)   address_reg_b <= address_b_sel;
+		  address_reg_b <= address_b_sel;
 	// synopsys translate_off
 	initial
 		out_address_reg_a = 0;
@@ -1495,27 +1559,25 @@ module  data_ram_altsyncram
 	// synopsys translate_on
 	always @ ( posedge clock1)
 		  out_address_reg_b <= address_reg_b;
-	data_ram_decode   decode2
+	image_rom_decode   decode2
 	( 
 	.data(address_a_wire[16:13]),
 	.enable(wren_a),
 	.eq(wire_decode2_eq));
-	data_ram_decode   decode3
+	image_rom_decode   decode3
 	( 
 	.data(w_addr_val_b4w),
 	.enable(wren_b),
 	.eq(wire_decode3_eq));
-	data_ram_decode   rden_decode_a
+	image_rom_decode1   rden_decode_a
 	( 
-	.data(w_addr_val_a9w),
-	.enable((wren_a | rden_a)),
+	.data(wren_decode_addr_sel_a),
 	.eq(wire_rden_decode_a_eq));
-	data_ram_decode   rden_decode_b
+	image_rom_decode1   rden_decode_b
 	( 
-	.data(w_addr_val_b10w),
-	.enable((wren_b | rden_b)),
+	.data(w_addr_val_b8w),
 	.eq(wire_rden_decode_b_eq));
-	data_ram_mux   mux4
+	image_rom_mux   mux4
 	( 
 	.data({wire_ram_block1a_263portadataout[0], wire_ram_block1a_262portadataout[0], wire_ram_block1a_261portadataout[0], wire_ram_block1a_260portadataout[0], wire_ram_block1a_259portadataout[0], wire_ram_block1a_258portadataout[0], wire_ram_block1a_257portadataout[0], wire_ram_block1a_256portadataout[0], wire_ram_block1a_255portadataout[0], wire_ram_block1a_254portadataout[0], wire_ram_block1a_253portadataout[0], wire_ram_block1a_252portadataout[0], wire_ram_block1a_251portadataout[0], wire_ram_block1a_250portadataout[0], wire_ram_block1a_249portadataout[0], wire_ram_block1a_248portadataout[0], wire_ram_block1a_247portadataout[0], wire_ram_block1a_246portadataout[0], wire_ram_block1a_245portadataout[0], wire_ram_block1a_244portadataout[0], wire_ram_block1a_243portadataout[0], wire_ram_block1a_242portadataout[0], wire_ram_block1a_241portadataout[0], wire_ram_block1a_240portadataout[0], wire_ram_block1a_239portadataout[0], wire_ram_block1a_238portadataout[0], wire_ram_block1a_237portadataout[0], wire_ram_block1a_236portadataout[0], wire_ram_block1a_235portadataout[0], wire_ram_block1a_234portadataout[0], wire_ram_block1a_233portadataout[0], wire_ram_block1a_232portadataout[0], wire_ram_block1a_231portadataout[0], wire_ram_block1a_230portadataout[0], wire_ram_block1a_229portadataout[0], wire_ram_block1a_228portadataout[0], wire_ram_block1a_227portadataout[0], wire_ram_block1a_226portadataout[0], wire_ram_block1a_225portadataout[0], wire_ram_block1a_224portadataout[0], wire_ram_block1a_223portadataout[0], wire_ram_block1a_222portadataout[0], wire_ram_block1a_221portadataout[0], wire_ram_block1a_220portadataout[0], wire_ram_block1a_219portadataout[0], wire_ram_block1a_218portadataout[0], wire_ram_block1a_217portadataout[0], wire_ram_block1a_216portadataout[0], wire_ram_block1a_215portadataout[0], wire_ram_block1a_214portadataout[0], wire_ram_block1a_213portadataout[0], wire_ram_block1a_212portadataout[0], wire_ram_block1a_211portadataout[0], wire_ram_block1a_210portadataout[0], wire_ram_block1a_209portadataout[0], wire_ram_block1a_208portadataout[0]
 , wire_ram_block1a_207portadataout[0], wire_ram_block1a_206portadataout[0], wire_ram_block1a_205portadataout[0], wire_ram_block1a_204portadataout[0], wire_ram_block1a_203portadataout[0], wire_ram_block1a_202portadataout[0], wire_ram_block1a_201portadataout[0], wire_ram_block1a_200portadataout[0], wire_ram_block1a_199portadataout[0], wire_ram_block1a_198portadataout[0], wire_ram_block1a_197portadataout[0], wire_ram_block1a_196portadataout[0], wire_ram_block1a_195portadataout[0], wire_ram_block1a_194portadataout[0], wire_ram_block1a_193portadataout[0], wire_ram_block1a_192portadataout[0], wire_ram_block1a_191portadataout[0], wire_ram_block1a_190portadataout[0], wire_ram_block1a_189portadataout[0], wire_ram_block1a_188portadataout[0], wire_ram_block1a_187portadataout[0], wire_ram_block1a_186portadataout[0], wire_ram_block1a_185portadataout[0], wire_ram_block1a_184portadataout[0], wire_ram_block1a_183portadataout[0], wire_ram_block1a_182portadataout[0], wire_ram_block1a_181portadataout[0], wire_ram_block1a_180portadataout[0], wire_ram_block1a_179portadataout[0], wire_ram_block1a_178portadataout[0], wire_ram_block1a_177portadataout[0], wire_ram_block1a_176portadataout[0], wire_ram_block1a_175portadataout[0], wire_ram_block1a_174portadataout[0], wire_ram_block1a_173portadataout[0], wire_ram_block1a_172portadataout[0], wire_ram_block1a_171portadataout[0], wire_ram_block1a_170portadataout[0], wire_ram_block1a_169portadataout[0], wire_ram_block1a_168portadataout[0], wire_ram_block1a_167portadataout[0], wire_ram_block1a_166portadataout[0], wire_ram_block1a_165portadataout[0], wire_ram_block1a_164portadataout[0], wire_ram_block1a_163portadataout[0], wire_ram_block1a_162portadataout[0], wire_ram_block1a_161portadataout[0], wire_ram_block1a_160portadataout[0], wire_ram_block1a_159portadataout[0], wire_ram_block1a_158portadataout[0], wire_ram_block1a_157portadataout[0], wire_ram_block1a_156portadataout[0], wire_ram_block1a_155portadataout[0], wire_ram_block1a_154portadataout[0], wire_ram_block1a_153portadataout[0], wire_ram_block1a_152portadataout[0]
@@ -1524,7 +1586,7 @@ module  data_ram_altsyncram
 , wire_ram_block1a_38portadataout[0], wire_ram_block1a_37portadataout[0], wire_ram_block1a_36portadataout[0], wire_ram_block1a_35portadataout[0], wire_ram_block1a_34portadataout[0], wire_ram_block1a_33portadataout[0], wire_ram_block1a_32portadataout[0], wire_ram_block1a_31portadataout[0], wire_ram_block1a_30portadataout[0], wire_ram_block1a_29portadataout[0], wire_ram_block1a_28portadataout[0], wire_ram_block1a_27portadataout[0], wire_ram_block1a_26portadataout[0], wire_ram_block1a_25portadataout[0], wire_ram_block1a_24portadataout[0], wire_ram_block1a_23portadataout[0], wire_ram_block1a_22portadataout[0], wire_ram_block1a_21portadataout[0], wire_ram_block1a_20portadataout[0], wire_ram_block1a_19portadataout[0], wire_ram_block1a_18portadataout[0], wire_ram_block1a_17portadataout[0], wire_ram_block1a_16portadataout[0], wire_ram_block1a_15portadataout[0], wire_ram_block1a_14portadataout[0], wire_ram_block1a_13portadataout[0], wire_ram_block1a_12portadataout[0], wire_ram_block1a_11portadataout[0], wire_ram_block1a_10portadataout[0], wire_ram_block1a_9portadataout[0], wire_ram_block1a_8portadataout[0], wire_ram_block1a_7portadataout[0], wire_ram_block1a_6portadataout[0], wire_ram_block1a_5portadataout[0], wire_ram_block1a_4portadataout[0], wire_ram_block1a_3portadataout[0], wire_ram_block1a_2portadataout[0], wire_ram_block1a_1portadataout[0], wire_ram_block1a_0portadataout[0]}),
 	.result(wire_mux4_result),
 	.sel(out_address_reg_a));
-	data_ram_mux   mux5
+	image_rom_mux   mux5
 	( 
 	.data({wire_ram_block1a_263portbdataout[0], wire_ram_block1a_262portbdataout[0], wire_ram_block1a_261portbdataout[0], wire_ram_block1a_260portbdataout[0], wire_ram_block1a_259portbdataout[0], wire_ram_block1a_258portbdataout[0], wire_ram_block1a_257portbdataout[0], wire_ram_block1a_256portbdataout[0], wire_ram_block1a_255portbdataout[0], wire_ram_block1a_254portbdataout[0], wire_ram_block1a_253portbdataout[0], wire_ram_block1a_252portbdataout[0], wire_ram_block1a_251portbdataout[0], wire_ram_block1a_250portbdataout[0], wire_ram_block1a_249portbdataout[0], wire_ram_block1a_248portbdataout[0], wire_ram_block1a_247portbdataout[0], wire_ram_block1a_246portbdataout[0], wire_ram_block1a_245portbdataout[0], wire_ram_block1a_244portbdataout[0], wire_ram_block1a_243portbdataout[0], wire_ram_block1a_242portbdataout[0], wire_ram_block1a_241portbdataout[0], wire_ram_block1a_240portbdataout[0], wire_ram_block1a_239portbdataout[0], wire_ram_block1a_238portbdataout[0], wire_ram_block1a_237portbdataout[0], wire_ram_block1a_236portbdataout[0], wire_ram_block1a_235portbdataout[0], wire_ram_block1a_234portbdataout[0], wire_ram_block1a_233portbdataout[0], wire_ram_block1a_232portbdataout[0], wire_ram_block1a_231portbdataout[0], wire_ram_block1a_230portbdataout[0], wire_ram_block1a_229portbdataout[0], wire_ram_block1a_228portbdataout[0], wire_ram_block1a_227portbdataout[0], wire_ram_block1a_226portbdataout[0], wire_ram_block1a_225portbdataout[0], wire_ram_block1a_224portbdataout[0], wire_ram_block1a_223portbdataout[0], wire_ram_block1a_222portbdataout[0], wire_ram_block1a_221portbdataout[0], wire_ram_block1a_220portbdataout[0], wire_ram_block1a_219portbdataout[0], wire_ram_block1a_218portbdataout[0], wire_ram_block1a_217portbdataout[0], wire_ram_block1a_216portbdataout[0], wire_ram_block1a_215portbdataout[0], wire_ram_block1a_214portbdataout[0], wire_ram_block1a_213portbdataout[0], wire_ram_block1a_212portbdataout[0], wire_ram_block1a_211portbdataout[0], wire_ram_block1a_210portbdataout[0], wire_ram_block1a_209portbdataout[0], wire_ram_block1a_208portbdataout[0]
 , wire_ram_block1a_207portbdataout[0], wire_ram_block1a_206portbdataout[0], wire_ram_block1a_205portbdataout[0], wire_ram_block1a_204portbdataout[0], wire_ram_block1a_203portbdataout[0], wire_ram_block1a_202portbdataout[0], wire_ram_block1a_201portbdataout[0], wire_ram_block1a_200portbdataout[0], wire_ram_block1a_199portbdataout[0], wire_ram_block1a_198portbdataout[0], wire_ram_block1a_197portbdataout[0], wire_ram_block1a_196portbdataout[0], wire_ram_block1a_195portbdataout[0], wire_ram_block1a_194portbdataout[0], wire_ram_block1a_193portbdataout[0], wire_ram_block1a_192portbdataout[0], wire_ram_block1a_191portbdataout[0], wire_ram_block1a_190portbdataout[0], wire_ram_block1a_189portbdataout[0], wire_ram_block1a_188portbdataout[0], wire_ram_block1a_187portbdataout[0], wire_ram_block1a_186portbdataout[0], wire_ram_block1a_185portbdataout[0], wire_ram_block1a_184portbdataout[0], wire_ram_block1a_183portbdataout[0], wire_ram_block1a_182portbdataout[0], wire_ram_block1a_181portbdataout[0], wire_ram_block1a_180portbdataout[0], wire_ram_block1a_179portbdataout[0], wire_ram_block1a_178portbdataout[0], wire_ram_block1a_177portbdataout[0], wire_ram_block1a_176portbdataout[0], wire_ram_block1a_175portbdataout[0], wire_ram_block1a_174portbdataout[0], wire_ram_block1a_173portbdataout[0], wire_ram_block1a_172portbdataout[0], wire_ram_block1a_171portbdataout[0], wire_ram_block1a_170portbdataout[0], wire_ram_block1a_169portbdataout[0], wire_ram_block1a_168portbdataout[0], wire_ram_block1a_167portbdataout[0], wire_ram_block1a_166portbdataout[0], wire_ram_block1a_165portbdataout[0], wire_ram_block1a_164portbdataout[0], wire_ram_block1a_163portbdataout[0], wire_ram_block1a_162portbdataout[0], wire_ram_block1a_161portbdataout[0], wire_ram_block1a_160portbdataout[0], wire_ram_block1a_159portbdataout[0], wire_ram_block1a_158portbdataout[0], wire_ram_block1a_157portbdataout[0], wire_ram_block1a_156portbdataout[0], wire_ram_block1a_155portbdataout[0], wire_ram_block1a_154portbdataout[0], wire_ram_block1a_153portbdataout[0], wire_ram_block1a_152portbdataout[0]
@@ -1544,12 +1606,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[0]}),
 	.portadataout(wire_ram_block1a_0portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[0]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[0]}),
 	.portbdataout(wire_ram_block1a_0portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[0])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -1628,12 +1690,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[1]}),
 	.portadataout(wire_ram_block1a_1portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[0]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[1]}),
 	.portbdataout(wire_ram_block1a_1portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[0])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -1712,12 +1774,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[2]}),
 	.portadataout(wire_ram_block1a_2portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[0]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[2]}),
 	.portbdataout(wire_ram_block1a_2portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[0])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -1796,12 +1858,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[3]}),
 	.portadataout(wire_ram_block1a_3portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[0]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[3]}),
 	.portbdataout(wire_ram_block1a_3portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[0])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -1880,12 +1942,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[4]}),
 	.portadataout(wire_ram_block1a_4portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[0]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[4]}),
 	.portbdataout(wire_ram_block1a_4portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[0])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -1964,12 +2026,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[5]}),
 	.portadataout(wire_ram_block1a_5portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[0]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[5]}),
 	.portbdataout(wire_ram_block1a_5portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[0])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -2048,12 +2110,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[6]}),
 	.portadataout(wire_ram_block1a_6portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[0]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[6]}),
 	.portbdataout(wire_ram_block1a_6portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[0])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -2132,12 +2194,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[7]}),
 	.portadataout(wire_ram_block1a_7portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[0]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[7]}),
 	.portbdataout(wire_ram_block1a_7portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[0])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -2216,12 +2278,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[8]}),
 	.portadataout(wire_ram_block1a_8portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[0]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[8]}),
 	.portbdataout(wire_ram_block1a_8portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[0])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -2300,12 +2362,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[9]}),
 	.portadataout(wire_ram_block1a_9portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[0]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[9]}),
 	.portbdataout(wire_ram_block1a_9portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[0])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -2384,12 +2446,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[10]}),
 	.portadataout(wire_ram_block1a_10portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[0]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[10]}),
 	.portbdataout(wire_ram_block1a_10portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[0])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -2468,12 +2530,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[11]}),
 	.portadataout(wire_ram_block1a_11portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[0]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[11]}),
 	.portbdataout(wire_ram_block1a_11portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[0])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -2552,12 +2614,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[12]}),
 	.portadataout(wire_ram_block1a_12portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[0]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[12]}),
 	.portbdataout(wire_ram_block1a_12portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[0])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -2636,12 +2698,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[13]}),
 	.portadataout(wire_ram_block1a_13portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[0]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[13]}),
 	.portbdataout(wire_ram_block1a_13portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[0])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -2720,12 +2782,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[14]}),
 	.portadataout(wire_ram_block1a_14portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[0]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[14]}),
 	.portbdataout(wire_ram_block1a_14portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[0])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -2804,12 +2866,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[15]}),
 	.portadataout(wire_ram_block1a_15portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[0]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[15]}),
 	.portbdataout(wire_ram_block1a_15portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[0])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -2888,12 +2950,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[16]}),
 	.portadataout(wire_ram_block1a_16portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[0]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[16]}),
 	.portbdataout(wire_ram_block1a_16portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[0])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -2972,12 +3034,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[17]}),
 	.portadataout(wire_ram_block1a_17portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[0]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[17]}),
 	.portbdataout(wire_ram_block1a_17portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[0])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -3056,12 +3118,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[18]}),
 	.portadataout(wire_ram_block1a_18portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[0]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[18]}),
 	.portbdataout(wire_ram_block1a_18portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[0])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -3140,12 +3202,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[19]}),
 	.portadataout(wire_ram_block1a_19portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[0]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[19]}),
 	.portbdataout(wire_ram_block1a_19portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[0])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -3224,12 +3286,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[20]}),
 	.portadataout(wire_ram_block1a_20portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[0]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[20]}),
 	.portbdataout(wire_ram_block1a_20portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[0])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -3308,12 +3370,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[21]}),
 	.portadataout(wire_ram_block1a_21portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[0]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[21]}),
 	.portbdataout(wire_ram_block1a_21portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[0])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -3392,12 +3454,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[22]}),
 	.portadataout(wire_ram_block1a_22portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[0]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[22]}),
 	.portbdataout(wire_ram_block1a_22portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[0])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -3476,12 +3538,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[23]}),
 	.portadataout(wire_ram_block1a_23portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[0]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[23]}),
 	.portbdataout(wire_ram_block1a_23portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[0])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -3560,12 +3622,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[0]}),
 	.portadataout(wire_ram_block1a_24portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[1]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[0]}),
 	.portbdataout(wire_ram_block1a_24portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[1])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -3644,12 +3706,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[1]}),
 	.portadataout(wire_ram_block1a_25portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[1]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[1]}),
 	.portbdataout(wire_ram_block1a_25portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[1])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -3728,12 +3790,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[2]}),
 	.portadataout(wire_ram_block1a_26portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[1]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[2]}),
 	.portbdataout(wire_ram_block1a_26portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[1])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -3812,12 +3874,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[3]}),
 	.portadataout(wire_ram_block1a_27portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[1]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[3]}),
 	.portbdataout(wire_ram_block1a_27portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[1])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -3896,12 +3958,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[4]}),
 	.portadataout(wire_ram_block1a_28portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[1]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[4]}),
 	.portbdataout(wire_ram_block1a_28portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[1])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -3980,12 +4042,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[5]}),
 	.portadataout(wire_ram_block1a_29portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[1]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[5]}),
 	.portbdataout(wire_ram_block1a_29portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[1])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -4064,12 +4126,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[6]}),
 	.portadataout(wire_ram_block1a_30portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[1]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[6]}),
 	.portbdataout(wire_ram_block1a_30portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[1])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -4148,12 +4210,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[7]}),
 	.portadataout(wire_ram_block1a_31portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[1]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[7]}),
 	.portbdataout(wire_ram_block1a_31portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[1])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -4232,12 +4294,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[8]}),
 	.portadataout(wire_ram_block1a_32portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[1]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[8]}),
 	.portbdataout(wire_ram_block1a_32portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[1])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -4316,12 +4378,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[9]}),
 	.portadataout(wire_ram_block1a_33portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[1]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[9]}),
 	.portbdataout(wire_ram_block1a_33portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[1])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -4400,12 +4462,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[10]}),
 	.portadataout(wire_ram_block1a_34portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[1]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[10]}),
 	.portbdataout(wire_ram_block1a_34portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[1])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -4484,12 +4546,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[11]}),
 	.portadataout(wire_ram_block1a_35portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[1]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[11]}),
 	.portbdataout(wire_ram_block1a_35portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[1])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -4568,12 +4630,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[12]}),
 	.portadataout(wire_ram_block1a_36portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[1]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[12]}),
 	.portbdataout(wire_ram_block1a_36portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[1])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -4652,12 +4714,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[13]}),
 	.portadataout(wire_ram_block1a_37portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[1]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[13]}),
 	.portbdataout(wire_ram_block1a_37portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[1])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -4736,12 +4798,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[14]}),
 	.portadataout(wire_ram_block1a_38portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[1]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[14]}),
 	.portbdataout(wire_ram_block1a_38portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[1])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -4820,12 +4882,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[15]}),
 	.portadataout(wire_ram_block1a_39portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[1]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[15]}),
 	.portbdataout(wire_ram_block1a_39portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[1])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -4904,12 +4966,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[16]}),
 	.portadataout(wire_ram_block1a_40portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[1]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[16]}),
 	.portbdataout(wire_ram_block1a_40portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[1])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -4988,12 +5050,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[17]}),
 	.portadataout(wire_ram_block1a_41portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[1]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[17]}),
 	.portbdataout(wire_ram_block1a_41portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[1])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -5072,12 +5134,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[18]}),
 	.portadataout(wire_ram_block1a_42portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[1]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[18]}),
 	.portbdataout(wire_ram_block1a_42portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[1])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -5156,12 +5218,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[19]}),
 	.portadataout(wire_ram_block1a_43portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[1]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[19]}),
 	.portbdataout(wire_ram_block1a_43portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[1])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -5240,12 +5302,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[20]}),
 	.portadataout(wire_ram_block1a_44portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[1]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[20]}),
 	.portbdataout(wire_ram_block1a_44portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[1])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -5324,12 +5386,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[21]}),
 	.portadataout(wire_ram_block1a_45portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[1]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[21]}),
 	.portbdataout(wire_ram_block1a_45portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[1])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -5408,12 +5470,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[22]}),
 	.portadataout(wire_ram_block1a_46portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[1]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[22]}),
 	.portbdataout(wire_ram_block1a_46portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[1])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -5492,12 +5554,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[23]}),
 	.portadataout(wire_ram_block1a_47portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[1]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[23]}),
 	.portbdataout(wire_ram_block1a_47portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[1])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -5576,12 +5638,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[0]}),
 	.portadataout(wire_ram_block1a_48portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[2]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[0]}),
 	.portbdataout(wire_ram_block1a_48portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[2])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -5660,12 +5722,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[1]}),
 	.portadataout(wire_ram_block1a_49portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[2]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[1]}),
 	.portbdataout(wire_ram_block1a_49portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[2])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -5744,12 +5806,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[2]}),
 	.portadataout(wire_ram_block1a_50portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[2]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[2]}),
 	.portbdataout(wire_ram_block1a_50portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[2])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -5828,12 +5890,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[3]}),
 	.portadataout(wire_ram_block1a_51portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[2]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[3]}),
 	.portbdataout(wire_ram_block1a_51portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[2])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -5912,12 +5974,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[4]}),
 	.portadataout(wire_ram_block1a_52portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[2]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[4]}),
 	.portbdataout(wire_ram_block1a_52portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[2])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -5996,12 +6058,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[5]}),
 	.portadataout(wire_ram_block1a_53portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[2]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[5]}),
 	.portbdataout(wire_ram_block1a_53portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[2])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -6080,12 +6142,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[6]}),
 	.portadataout(wire_ram_block1a_54portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[2]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[6]}),
 	.portbdataout(wire_ram_block1a_54portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[2])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -6164,12 +6226,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[7]}),
 	.portadataout(wire_ram_block1a_55portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[2]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[7]}),
 	.portbdataout(wire_ram_block1a_55portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[2])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -6248,12 +6310,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[8]}),
 	.portadataout(wire_ram_block1a_56portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[2]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[8]}),
 	.portbdataout(wire_ram_block1a_56portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[2])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -6332,12 +6394,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[9]}),
 	.portadataout(wire_ram_block1a_57portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[2]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[9]}),
 	.portbdataout(wire_ram_block1a_57portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[2])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -6416,12 +6478,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[10]}),
 	.portadataout(wire_ram_block1a_58portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[2]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[10]}),
 	.portbdataout(wire_ram_block1a_58portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[2])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -6500,12 +6562,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[11]}),
 	.portadataout(wire_ram_block1a_59portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[2]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[11]}),
 	.portbdataout(wire_ram_block1a_59portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[2])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -6584,12 +6646,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[12]}),
 	.portadataout(wire_ram_block1a_60portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[2]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[12]}),
 	.portbdataout(wire_ram_block1a_60portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[2])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -6668,12 +6730,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[13]}),
 	.portadataout(wire_ram_block1a_61portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[2]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[13]}),
 	.portbdataout(wire_ram_block1a_61portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[2])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -6752,12 +6814,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[14]}),
 	.portadataout(wire_ram_block1a_62portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[2]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[14]}),
 	.portbdataout(wire_ram_block1a_62portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[2])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -6836,12 +6898,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[15]}),
 	.portadataout(wire_ram_block1a_63portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[2]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[15]}),
 	.portbdataout(wire_ram_block1a_63portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[2])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -6920,12 +6982,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[16]}),
 	.portadataout(wire_ram_block1a_64portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[2]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[16]}),
 	.portbdataout(wire_ram_block1a_64portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[2])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -7004,12 +7066,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[17]}),
 	.portadataout(wire_ram_block1a_65portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[2]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[17]}),
 	.portbdataout(wire_ram_block1a_65portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[2])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -7088,12 +7150,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[18]}),
 	.portadataout(wire_ram_block1a_66portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[2]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[18]}),
 	.portbdataout(wire_ram_block1a_66portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[2])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -7172,12 +7234,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[19]}),
 	.portadataout(wire_ram_block1a_67portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[2]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[19]}),
 	.portbdataout(wire_ram_block1a_67portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[2])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -7256,12 +7318,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[20]}),
 	.portadataout(wire_ram_block1a_68portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[2]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[20]}),
 	.portbdataout(wire_ram_block1a_68portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[2])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -7340,12 +7402,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[21]}),
 	.portadataout(wire_ram_block1a_69portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[2]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[21]}),
 	.portbdataout(wire_ram_block1a_69portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[2])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -7424,12 +7486,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[22]}),
 	.portadataout(wire_ram_block1a_70portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[2]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[22]}),
 	.portbdataout(wire_ram_block1a_70portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[2])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -7508,12 +7570,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[23]}),
 	.portadataout(wire_ram_block1a_71portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[2]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[23]}),
 	.portbdataout(wire_ram_block1a_71portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[2])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -7592,12 +7654,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[0]}),
 	.portadataout(wire_ram_block1a_72portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[3]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[0]}),
 	.portbdataout(wire_ram_block1a_72portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[3])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -7676,12 +7738,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[1]}),
 	.portadataout(wire_ram_block1a_73portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[3]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[1]}),
 	.portbdataout(wire_ram_block1a_73portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[3])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -7760,12 +7822,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[2]}),
 	.portadataout(wire_ram_block1a_74portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[3]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[2]}),
 	.portbdataout(wire_ram_block1a_74portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[3])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -7844,12 +7906,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[3]}),
 	.portadataout(wire_ram_block1a_75portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[3]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[3]}),
 	.portbdataout(wire_ram_block1a_75portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[3])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -7928,12 +7990,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[4]}),
 	.portadataout(wire_ram_block1a_76portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[3]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[4]}),
 	.portbdataout(wire_ram_block1a_76portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[3])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -8012,12 +8074,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[5]}),
 	.portadataout(wire_ram_block1a_77portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[3]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[5]}),
 	.portbdataout(wire_ram_block1a_77portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[3])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -8096,12 +8158,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[6]}),
 	.portadataout(wire_ram_block1a_78portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[3]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[6]}),
 	.portbdataout(wire_ram_block1a_78portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[3])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -8180,12 +8242,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[7]}),
 	.portadataout(wire_ram_block1a_79portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[3]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[7]}),
 	.portbdataout(wire_ram_block1a_79portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[3])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -8264,12 +8326,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[8]}),
 	.portadataout(wire_ram_block1a_80portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[3]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[8]}),
 	.portbdataout(wire_ram_block1a_80portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[3])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -8348,12 +8410,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[9]}),
 	.portadataout(wire_ram_block1a_81portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[3]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[9]}),
 	.portbdataout(wire_ram_block1a_81portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[3])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -8432,12 +8494,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[10]}),
 	.portadataout(wire_ram_block1a_82portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[3]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[10]}),
 	.portbdataout(wire_ram_block1a_82portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[3])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -8516,12 +8578,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[11]}),
 	.portadataout(wire_ram_block1a_83portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[3]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[11]}),
 	.portbdataout(wire_ram_block1a_83portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[3])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -8600,12 +8662,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[12]}),
 	.portadataout(wire_ram_block1a_84portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[3]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[12]}),
 	.portbdataout(wire_ram_block1a_84portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[3])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -8684,12 +8746,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[13]}),
 	.portadataout(wire_ram_block1a_85portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[3]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[13]}),
 	.portbdataout(wire_ram_block1a_85portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[3])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -8768,12 +8830,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[14]}),
 	.portadataout(wire_ram_block1a_86portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[3]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[14]}),
 	.portbdataout(wire_ram_block1a_86portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[3])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -8852,12 +8914,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[15]}),
 	.portadataout(wire_ram_block1a_87portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[3]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[15]}),
 	.portbdataout(wire_ram_block1a_87portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[3])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -8936,12 +8998,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[16]}),
 	.portadataout(wire_ram_block1a_88portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[3]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[16]}),
 	.portbdataout(wire_ram_block1a_88portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[3])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -9020,12 +9082,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[17]}),
 	.portadataout(wire_ram_block1a_89portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[3]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[17]}),
 	.portbdataout(wire_ram_block1a_89portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[3])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -9104,12 +9166,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[18]}),
 	.portadataout(wire_ram_block1a_90portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[3]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[18]}),
 	.portbdataout(wire_ram_block1a_90portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[3])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -9188,12 +9250,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[19]}),
 	.portadataout(wire_ram_block1a_91portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[3]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[19]}),
 	.portbdataout(wire_ram_block1a_91portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[3])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -9272,12 +9334,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[20]}),
 	.portadataout(wire_ram_block1a_92portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[3]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[20]}),
 	.portbdataout(wire_ram_block1a_92portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[3])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -9356,12 +9418,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[21]}),
 	.portadataout(wire_ram_block1a_93portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[3]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[21]}),
 	.portbdataout(wire_ram_block1a_93portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[3])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -9440,12 +9502,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[22]}),
 	.portadataout(wire_ram_block1a_94portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[3]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[22]}),
 	.portbdataout(wire_ram_block1a_94portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[3])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -9524,12 +9586,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[23]}),
 	.portadataout(wire_ram_block1a_95portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[3]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[23]}),
 	.portbdataout(wire_ram_block1a_95portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[3])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -9608,12 +9670,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[0]}),
 	.portadataout(wire_ram_block1a_96portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[4]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[0]}),
 	.portbdataout(wire_ram_block1a_96portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[4])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -9692,12 +9754,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[1]}),
 	.portadataout(wire_ram_block1a_97portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[4]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[1]}),
 	.portbdataout(wire_ram_block1a_97portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[4])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -9776,12 +9838,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[2]}),
 	.portadataout(wire_ram_block1a_98portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[4]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[2]}),
 	.portbdataout(wire_ram_block1a_98portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[4])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -9860,12 +9922,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[3]}),
 	.portadataout(wire_ram_block1a_99portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[4]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[3]}),
 	.portbdataout(wire_ram_block1a_99portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[4])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -9944,12 +10006,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[4]}),
 	.portadataout(wire_ram_block1a_100portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[4]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[4]}),
 	.portbdataout(wire_ram_block1a_100portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[4])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -10028,12 +10090,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[5]}),
 	.portadataout(wire_ram_block1a_101portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[4]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[5]}),
 	.portbdataout(wire_ram_block1a_101portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[4])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -10112,12 +10174,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[6]}),
 	.portadataout(wire_ram_block1a_102portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[4]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[6]}),
 	.portbdataout(wire_ram_block1a_102portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[4])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -10196,12 +10258,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[7]}),
 	.portadataout(wire_ram_block1a_103portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[4]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[7]}),
 	.portbdataout(wire_ram_block1a_103portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[4])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -10280,12 +10342,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[8]}),
 	.portadataout(wire_ram_block1a_104portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[4]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[8]}),
 	.portbdataout(wire_ram_block1a_104portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[4])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -10364,12 +10426,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[9]}),
 	.portadataout(wire_ram_block1a_105portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[4]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[9]}),
 	.portbdataout(wire_ram_block1a_105portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[4])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -10448,12 +10510,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[10]}),
 	.portadataout(wire_ram_block1a_106portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[4]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[10]}),
 	.portbdataout(wire_ram_block1a_106portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[4])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -10532,12 +10594,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[11]}),
 	.portadataout(wire_ram_block1a_107portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[4]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[11]}),
 	.portbdataout(wire_ram_block1a_107portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[4])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -10616,12 +10678,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[12]}),
 	.portadataout(wire_ram_block1a_108portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[4]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[12]}),
 	.portbdataout(wire_ram_block1a_108portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[4])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -10700,12 +10762,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[13]}),
 	.portadataout(wire_ram_block1a_109portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[4]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[13]}),
 	.portbdataout(wire_ram_block1a_109portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[4])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -10784,12 +10846,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[14]}),
 	.portadataout(wire_ram_block1a_110portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[4]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[14]}),
 	.portbdataout(wire_ram_block1a_110portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[4])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -10868,12 +10930,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[15]}),
 	.portadataout(wire_ram_block1a_111portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[4]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[15]}),
 	.portbdataout(wire_ram_block1a_111portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[4])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -10952,12 +11014,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[16]}),
 	.portadataout(wire_ram_block1a_112portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[4]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[16]}),
 	.portbdataout(wire_ram_block1a_112portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[4])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -11036,12 +11098,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[17]}),
 	.portadataout(wire_ram_block1a_113portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[4]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[17]}),
 	.portbdataout(wire_ram_block1a_113portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[4])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -11120,12 +11182,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[18]}),
 	.portadataout(wire_ram_block1a_114portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[4]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[18]}),
 	.portbdataout(wire_ram_block1a_114portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[4])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -11204,12 +11266,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[19]}),
 	.portadataout(wire_ram_block1a_115portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[4]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[19]}),
 	.portbdataout(wire_ram_block1a_115portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[4])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -11288,12 +11350,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[20]}),
 	.portadataout(wire_ram_block1a_116portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[4]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[20]}),
 	.portbdataout(wire_ram_block1a_116portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[4])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -11372,12 +11434,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[21]}),
 	.portadataout(wire_ram_block1a_117portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[4]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[21]}),
 	.portbdataout(wire_ram_block1a_117portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[4])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -11456,12 +11518,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[22]}),
 	.portadataout(wire_ram_block1a_118portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[4]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[22]}),
 	.portbdataout(wire_ram_block1a_118portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[4])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -11540,12 +11602,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[23]}),
 	.portadataout(wire_ram_block1a_119portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[4]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[23]}),
 	.portbdataout(wire_ram_block1a_119portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[4])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -11624,12 +11686,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[0]}),
 	.portadataout(wire_ram_block1a_120portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[5]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[0]}),
 	.portbdataout(wire_ram_block1a_120portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[5])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -11708,12 +11770,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[1]}),
 	.portadataout(wire_ram_block1a_121portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[5]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[1]}),
 	.portbdataout(wire_ram_block1a_121portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[5])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -11792,12 +11854,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[2]}),
 	.portadataout(wire_ram_block1a_122portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[5]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[2]}),
 	.portbdataout(wire_ram_block1a_122portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[5])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -11876,12 +11938,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[3]}),
 	.portadataout(wire_ram_block1a_123portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[5]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[3]}),
 	.portbdataout(wire_ram_block1a_123portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[5])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -11960,12 +12022,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[4]}),
 	.portadataout(wire_ram_block1a_124portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[5]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[4]}),
 	.portbdataout(wire_ram_block1a_124portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[5])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -12044,12 +12106,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[5]}),
 	.portadataout(wire_ram_block1a_125portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[5]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[5]}),
 	.portbdataout(wire_ram_block1a_125portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[5])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -12128,12 +12190,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[6]}),
 	.portadataout(wire_ram_block1a_126portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[5]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[6]}),
 	.portbdataout(wire_ram_block1a_126portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[5])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -12212,12 +12274,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[7]}),
 	.portadataout(wire_ram_block1a_127portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[5]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[7]}),
 	.portbdataout(wire_ram_block1a_127portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[5])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -12296,12 +12358,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[8]}),
 	.portadataout(wire_ram_block1a_128portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[5]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[8]}),
 	.portbdataout(wire_ram_block1a_128portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[5])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -12380,12 +12442,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[9]}),
 	.portadataout(wire_ram_block1a_129portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[5]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[9]}),
 	.portbdataout(wire_ram_block1a_129portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[5])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -12464,12 +12526,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[10]}),
 	.portadataout(wire_ram_block1a_130portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[5]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[10]}),
 	.portbdataout(wire_ram_block1a_130portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[5])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -12548,12 +12610,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[11]}),
 	.portadataout(wire_ram_block1a_131portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[5]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[11]}),
 	.portbdataout(wire_ram_block1a_131portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[5])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -12632,12 +12694,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[12]}),
 	.portadataout(wire_ram_block1a_132portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[5]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[12]}),
 	.portbdataout(wire_ram_block1a_132portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[5])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -12716,12 +12778,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[13]}),
 	.portadataout(wire_ram_block1a_133portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[5]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[13]}),
 	.portbdataout(wire_ram_block1a_133portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[5])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -12800,12 +12862,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[14]}),
 	.portadataout(wire_ram_block1a_134portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[5]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[14]}),
 	.portbdataout(wire_ram_block1a_134portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[5])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -12884,12 +12946,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[15]}),
 	.portadataout(wire_ram_block1a_135portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[5]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[15]}),
 	.portbdataout(wire_ram_block1a_135portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[5])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -12968,12 +13030,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[16]}),
 	.portadataout(wire_ram_block1a_136portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[5]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[16]}),
 	.portbdataout(wire_ram_block1a_136portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[5])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -13052,12 +13114,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[17]}),
 	.portadataout(wire_ram_block1a_137portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[5]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[17]}),
 	.portbdataout(wire_ram_block1a_137portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[5])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -13136,12 +13198,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[18]}),
 	.portadataout(wire_ram_block1a_138portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[5]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[18]}),
 	.portbdataout(wire_ram_block1a_138portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[5])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -13220,12 +13282,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[19]}),
 	.portadataout(wire_ram_block1a_139portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[5]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[19]}),
 	.portbdataout(wire_ram_block1a_139portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[5])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -13304,12 +13366,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[20]}),
 	.portadataout(wire_ram_block1a_140portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[5]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[20]}),
 	.portbdataout(wire_ram_block1a_140portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[5])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -13388,12 +13450,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[21]}),
 	.portadataout(wire_ram_block1a_141portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[5]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[21]}),
 	.portbdataout(wire_ram_block1a_141portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[5])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -13472,12 +13534,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[22]}),
 	.portadataout(wire_ram_block1a_142portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[5]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[22]}),
 	.portbdataout(wire_ram_block1a_142portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[5])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -13556,12 +13618,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[23]}),
 	.portadataout(wire_ram_block1a_143portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[5]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[23]}),
 	.portbdataout(wire_ram_block1a_143portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[5])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -13640,12 +13702,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[0]}),
 	.portadataout(wire_ram_block1a_144portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[6]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[0]}),
 	.portbdataout(wire_ram_block1a_144portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[6])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -13724,12 +13786,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[1]}),
 	.portadataout(wire_ram_block1a_145portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[6]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[1]}),
 	.portbdataout(wire_ram_block1a_145portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[6])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -13808,12 +13870,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[2]}),
 	.portadataout(wire_ram_block1a_146portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[6]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[2]}),
 	.portbdataout(wire_ram_block1a_146portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[6])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -13892,12 +13954,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[3]}),
 	.portadataout(wire_ram_block1a_147portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[6]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[3]}),
 	.portbdataout(wire_ram_block1a_147portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[6])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -13976,12 +14038,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[4]}),
 	.portadataout(wire_ram_block1a_148portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[6]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[4]}),
 	.portbdataout(wire_ram_block1a_148portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[6])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -14060,12 +14122,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[5]}),
 	.portadataout(wire_ram_block1a_149portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[6]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[5]}),
 	.portbdataout(wire_ram_block1a_149portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[6])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -14144,12 +14206,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[6]}),
 	.portadataout(wire_ram_block1a_150portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[6]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[6]}),
 	.portbdataout(wire_ram_block1a_150portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[6])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -14228,12 +14290,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[7]}),
 	.portadataout(wire_ram_block1a_151portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[6]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[7]}),
 	.portbdataout(wire_ram_block1a_151portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[6])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -14312,12 +14374,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[8]}),
 	.portadataout(wire_ram_block1a_152portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[6]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[8]}),
 	.portbdataout(wire_ram_block1a_152portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[6])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -14396,12 +14458,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[9]}),
 	.portadataout(wire_ram_block1a_153portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[6]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[9]}),
 	.portbdataout(wire_ram_block1a_153portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[6])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -14480,12 +14542,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[10]}),
 	.portadataout(wire_ram_block1a_154portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[6]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[10]}),
 	.portbdataout(wire_ram_block1a_154portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[6])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -14564,12 +14626,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[11]}),
 	.portadataout(wire_ram_block1a_155portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[6]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[11]}),
 	.portbdataout(wire_ram_block1a_155portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[6])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -14648,12 +14710,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[12]}),
 	.portadataout(wire_ram_block1a_156portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[6]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[12]}),
 	.portbdataout(wire_ram_block1a_156portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[6])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -14732,12 +14794,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[13]}),
 	.portadataout(wire_ram_block1a_157portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[6]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[13]}),
 	.portbdataout(wire_ram_block1a_157portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[6])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -14816,12 +14878,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[14]}),
 	.portadataout(wire_ram_block1a_158portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[6]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[14]}),
 	.portbdataout(wire_ram_block1a_158portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[6])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -14900,12 +14962,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[15]}),
 	.portadataout(wire_ram_block1a_159portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[6]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[15]}),
 	.portbdataout(wire_ram_block1a_159portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[6])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -14984,12 +15046,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[16]}),
 	.portadataout(wire_ram_block1a_160portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[6]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[16]}),
 	.portbdataout(wire_ram_block1a_160portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[6])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -15068,12 +15130,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[17]}),
 	.portadataout(wire_ram_block1a_161portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[6]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[17]}),
 	.portbdataout(wire_ram_block1a_161portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[6])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -15152,12 +15214,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[18]}),
 	.portadataout(wire_ram_block1a_162portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[6]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[18]}),
 	.portbdataout(wire_ram_block1a_162portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[6])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -15236,12 +15298,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[19]}),
 	.portadataout(wire_ram_block1a_163portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[6]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[19]}),
 	.portbdataout(wire_ram_block1a_163portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[6])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -15320,12 +15382,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[20]}),
 	.portadataout(wire_ram_block1a_164portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[6]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[20]}),
 	.portbdataout(wire_ram_block1a_164portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[6])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -15404,12 +15466,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[21]}),
 	.portadataout(wire_ram_block1a_165portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[6]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[21]}),
 	.portbdataout(wire_ram_block1a_165portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[6])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -15488,12 +15550,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[22]}),
 	.portadataout(wire_ram_block1a_166portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[6]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[22]}),
 	.portbdataout(wire_ram_block1a_166portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[6])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -15572,12 +15634,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[23]}),
 	.portadataout(wire_ram_block1a_167portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[6]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[23]}),
 	.portbdataout(wire_ram_block1a_167portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[6])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -15656,12 +15718,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[0]}),
 	.portadataout(wire_ram_block1a_168portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[7]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[0]}),
 	.portbdataout(wire_ram_block1a_168portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[7])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -15740,12 +15802,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[1]}),
 	.portadataout(wire_ram_block1a_169portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[7]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[1]}),
 	.portbdataout(wire_ram_block1a_169portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[7])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -15824,12 +15886,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[2]}),
 	.portadataout(wire_ram_block1a_170portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[7]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[2]}),
 	.portbdataout(wire_ram_block1a_170portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[7])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -15908,12 +15970,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[3]}),
 	.portadataout(wire_ram_block1a_171portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[7]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[3]}),
 	.portbdataout(wire_ram_block1a_171portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[7])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -15992,12 +16054,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[4]}),
 	.portadataout(wire_ram_block1a_172portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[7]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[4]}),
 	.portbdataout(wire_ram_block1a_172portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[7])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -16076,12 +16138,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[5]}),
 	.portadataout(wire_ram_block1a_173portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[7]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[5]}),
 	.portbdataout(wire_ram_block1a_173portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[7])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -16160,12 +16222,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[6]}),
 	.portadataout(wire_ram_block1a_174portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[7]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[6]}),
 	.portbdataout(wire_ram_block1a_174portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[7])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -16244,12 +16306,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[7]}),
 	.portadataout(wire_ram_block1a_175portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[7]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[7]}),
 	.portbdataout(wire_ram_block1a_175portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[7])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -16328,12 +16390,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[8]}),
 	.portadataout(wire_ram_block1a_176portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[7]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[8]}),
 	.portbdataout(wire_ram_block1a_176portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[7])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -16412,12 +16474,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[9]}),
 	.portadataout(wire_ram_block1a_177portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[7]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[9]}),
 	.portbdataout(wire_ram_block1a_177portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[7])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -16496,12 +16558,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[10]}),
 	.portadataout(wire_ram_block1a_178portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[7]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[10]}),
 	.portbdataout(wire_ram_block1a_178portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[7])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -16580,12 +16642,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[11]}),
 	.portadataout(wire_ram_block1a_179portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[7]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[11]}),
 	.portbdataout(wire_ram_block1a_179portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[7])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -16664,12 +16726,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[12]}),
 	.portadataout(wire_ram_block1a_180portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[7]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[12]}),
 	.portbdataout(wire_ram_block1a_180portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[7])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -16748,12 +16810,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[13]}),
 	.portadataout(wire_ram_block1a_181portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[7]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[13]}),
 	.portbdataout(wire_ram_block1a_181portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[7])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -16832,12 +16894,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[14]}),
 	.portadataout(wire_ram_block1a_182portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[7]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[14]}),
 	.portbdataout(wire_ram_block1a_182portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[7])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -16916,12 +16978,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[15]}),
 	.portadataout(wire_ram_block1a_183portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[7]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[15]}),
 	.portbdataout(wire_ram_block1a_183portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[7])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -17000,12 +17062,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[16]}),
 	.portadataout(wire_ram_block1a_184portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[7]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[16]}),
 	.portbdataout(wire_ram_block1a_184portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[7])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -17084,12 +17146,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[17]}),
 	.portadataout(wire_ram_block1a_185portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[7]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[17]}),
 	.portbdataout(wire_ram_block1a_185portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[7])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -17168,12 +17230,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[18]}),
 	.portadataout(wire_ram_block1a_186portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[7]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[18]}),
 	.portbdataout(wire_ram_block1a_186portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[7])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -17252,12 +17314,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[19]}),
 	.portadataout(wire_ram_block1a_187portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[7]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[19]}),
 	.portbdataout(wire_ram_block1a_187portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[7])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -17336,12 +17398,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[20]}),
 	.portadataout(wire_ram_block1a_188portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[7]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[20]}),
 	.portbdataout(wire_ram_block1a_188portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[7])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -17420,12 +17482,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[21]}),
 	.portadataout(wire_ram_block1a_189portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[7]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[21]}),
 	.portbdataout(wire_ram_block1a_189portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[7])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -17504,12 +17566,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[22]}),
 	.portadataout(wire_ram_block1a_190portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[7]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[22]}),
 	.portbdataout(wire_ram_block1a_190portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[7])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -17588,12 +17650,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[23]}),
 	.portadataout(wire_ram_block1a_191portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[7]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[23]}),
 	.portbdataout(wire_ram_block1a_191portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[7])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -17672,12 +17734,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[0]}),
 	.portadataout(wire_ram_block1a_192portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[8]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[0]}),
 	.portbdataout(wire_ram_block1a_192portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[8])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -17756,12 +17818,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[1]}),
 	.portadataout(wire_ram_block1a_193portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[8]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[1]}),
 	.portbdataout(wire_ram_block1a_193portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[8])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -17840,12 +17902,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[2]}),
 	.portadataout(wire_ram_block1a_194portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[8]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[2]}),
 	.portbdataout(wire_ram_block1a_194portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[8])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -17924,12 +17986,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[3]}),
 	.portadataout(wire_ram_block1a_195portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[8]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[3]}),
 	.portbdataout(wire_ram_block1a_195portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[8])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -18008,12 +18070,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[4]}),
 	.portadataout(wire_ram_block1a_196portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[8]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[4]}),
 	.portbdataout(wire_ram_block1a_196portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[8])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -18092,12 +18154,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[5]}),
 	.portadataout(wire_ram_block1a_197portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[8]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[5]}),
 	.portbdataout(wire_ram_block1a_197portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[8])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -18176,12 +18238,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[6]}),
 	.portadataout(wire_ram_block1a_198portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[8]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[6]}),
 	.portbdataout(wire_ram_block1a_198portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[8])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -18260,12 +18322,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[7]}),
 	.portadataout(wire_ram_block1a_199portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[8]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[7]}),
 	.portbdataout(wire_ram_block1a_199portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[8])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -18344,12 +18406,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[8]}),
 	.portadataout(wire_ram_block1a_200portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[8]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[8]}),
 	.portbdataout(wire_ram_block1a_200portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[8])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -18428,12 +18490,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[9]}),
 	.portadataout(wire_ram_block1a_201portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[8]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[9]}),
 	.portbdataout(wire_ram_block1a_201portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[8])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -18512,12 +18574,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[10]}),
 	.portadataout(wire_ram_block1a_202portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[8]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[10]}),
 	.portbdataout(wire_ram_block1a_202portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[8])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -18596,12 +18658,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[11]}),
 	.portadataout(wire_ram_block1a_203portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[8]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[11]}),
 	.portbdataout(wire_ram_block1a_203portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[8])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -18680,12 +18742,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[12]}),
 	.portadataout(wire_ram_block1a_204portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[8]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[12]}),
 	.portbdataout(wire_ram_block1a_204portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[8])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -18764,12 +18826,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[13]}),
 	.portadataout(wire_ram_block1a_205portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[8]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[13]}),
 	.portbdataout(wire_ram_block1a_205portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[8])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -18848,12 +18910,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[14]}),
 	.portadataout(wire_ram_block1a_206portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[8]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[14]}),
 	.portbdataout(wire_ram_block1a_206portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[8])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -18932,12 +18994,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[15]}),
 	.portadataout(wire_ram_block1a_207portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[8]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[15]}),
 	.portbdataout(wire_ram_block1a_207portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[8])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -19016,12 +19078,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[16]}),
 	.portadataout(wire_ram_block1a_208portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[8]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[16]}),
 	.portbdataout(wire_ram_block1a_208portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[8])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -19100,12 +19162,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[17]}),
 	.portadataout(wire_ram_block1a_209portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[8]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[17]}),
 	.portbdataout(wire_ram_block1a_209portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[8])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -19184,12 +19246,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[18]}),
 	.portadataout(wire_ram_block1a_210portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[8]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[18]}),
 	.portbdataout(wire_ram_block1a_210portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[8])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -19268,12 +19330,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[19]}),
 	.portadataout(wire_ram_block1a_211portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[8]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[19]}),
 	.portbdataout(wire_ram_block1a_211portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[8])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -19352,12 +19414,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[20]}),
 	.portadataout(wire_ram_block1a_212portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[8]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[20]}),
 	.portbdataout(wire_ram_block1a_212portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[8])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -19436,12 +19498,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[21]}),
 	.portadataout(wire_ram_block1a_213portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[8]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[21]}),
 	.portbdataout(wire_ram_block1a_213portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[8])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -19520,12 +19582,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[22]}),
 	.portadataout(wire_ram_block1a_214portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[8]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[22]}),
 	.portbdataout(wire_ram_block1a_214portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[8])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -19604,12 +19666,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[23]}),
 	.portadataout(wire_ram_block1a_215portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[8]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[23]}),
 	.portbdataout(wire_ram_block1a_215portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[8])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -19688,12 +19750,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[0]}),
 	.portadataout(wire_ram_block1a_216portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[9]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[0]}),
 	.portbdataout(wire_ram_block1a_216portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[9])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -19772,12 +19834,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[1]}),
 	.portadataout(wire_ram_block1a_217portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[9]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[1]}),
 	.portbdataout(wire_ram_block1a_217portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[9])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -19856,12 +19918,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[2]}),
 	.portadataout(wire_ram_block1a_218portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[9]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[2]}),
 	.portbdataout(wire_ram_block1a_218portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[9])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -19940,12 +20002,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[3]}),
 	.portadataout(wire_ram_block1a_219portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[9]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[3]}),
 	.portbdataout(wire_ram_block1a_219portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[9])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -20024,12 +20086,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[4]}),
 	.portadataout(wire_ram_block1a_220portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[9]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[4]}),
 	.portbdataout(wire_ram_block1a_220portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[9])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -20108,12 +20170,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[5]}),
 	.portadataout(wire_ram_block1a_221portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[9]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[5]}),
 	.portbdataout(wire_ram_block1a_221portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[9])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -20192,12 +20254,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[6]}),
 	.portadataout(wire_ram_block1a_222portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[9]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[6]}),
 	.portbdataout(wire_ram_block1a_222portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[9])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -20276,12 +20338,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[7]}),
 	.portadataout(wire_ram_block1a_223portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[9]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[7]}),
 	.portbdataout(wire_ram_block1a_223portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[9])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -20360,12 +20422,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[8]}),
 	.portadataout(wire_ram_block1a_224portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[9]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[8]}),
 	.portbdataout(wire_ram_block1a_224portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[9])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -20444,12 +20506,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[9]}),
 	.portadataout(wire_ram_block1a_225portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[9]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[9]}),
 	.portbdataout(wire_ram_block1a_225portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[9])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -20528,12 +20590,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[10]}),
 	.portadataout(wire_ram_block1a_226portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[9]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[10]}),
 	.portbdataout(wire_ram_block1a_226portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[9])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -20612,12 +20674,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[11]}),
 	.portadataout(wire_ram_block1a_227portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[9]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[11]}),
 	.portbdataout(wire_ram_block1a_227portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[9])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -20696,12 +20758,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[12]}),
 	.portadataout(wire_ram_block1a_228portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[9]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[12]}),
 	.portbdataout(wire_ram_block1a_228portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[9])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -20780,12 +20842,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[13]}),
 	.portadataout(wire_ram_block1a_229portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[9]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[13]}),
 	.portbdataout(wire_ram_block1a_229portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[9])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -20864,12 +20926,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[14]}),
 	.portadataout(wire_ram_block1a_230portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[9]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[14]}),
 	.portbdataout(wire_ram_block1a_230portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[9])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -20948,12 +21010,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[15]}),
 	.portadataout(wire_ram_block1a_231portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[9]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[15]}),
 	.portbdataout(wire_ram_block1a_231portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[9])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -21032,12 +21094,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[16]}),
 	.portadataout(wire_ram_block1a_232portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[9]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[16]}),
 	.portbdataout(wire_ram_block1a_232portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[9])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -21116,12 +21178,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[17]}),
 	.portadataout(wire_ram_block1a_233portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[9]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[17]}),
 	.portbdataout(wire_ram_block1a_233portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[9])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -21200,12 +21262,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[18]}),
 	.portadataout(wire_ram_block1a_234portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[9]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[18]}),
 	.portbdataout(wire_ram_block1a_234portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[9])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -21284,12 +21346,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[19]}),
 	.portadataout(wire_ram_block1a_235portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[9]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[19]}),
 	.portbdataout(wire_ram_block1a_235portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[9])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -21368,12 +21430,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[20]}),
 	.portadataout(wire_ram_block1a_236portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[9]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[20]}),
 	.portbdataout(wire_ram_block1a_236portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[9])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -21452,12 +21514,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[21]}),
 	.portadataout(wire_ram_block1a_237portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[9]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[21]}),
 	.portbdataout(wire_ram_block1a_237portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[9])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -21536,12 +21598,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[22]}),
 	.portadataout(wire_ram_block1a_238portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[9]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[22]}),
 	.portbdataout(wire_ram_block1a_238portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[9])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -21620,12 +21682,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[23]}),
 	.portadataout(wire_ram_block1a_239portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[9]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[23]}),
 	.portbdataout(wire_ram_block1a_239portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[9])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -21704,12 +21766,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[0]}),
 	.portadataout(wire_ram_block1a_240portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[10]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[0]}),
 	.portbdataout(wire_ram_block1a_240portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[10])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -21788,12 +21850,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[1]}),
 	.portadataout(wire_ram_block1a_241portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[10]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[1]}),
 	.portbdataout(wire_ram_block1a_241portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[10])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -21872,12 +21934,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[2]}),
 	.portadataout(wire_ram_block1a_242portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[10]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[2]}),
 	.portbdataout(wire_ram_block1a_242portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[10])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -21956,12 +22018,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[3]}),
 	.portadataout(wire_ram_block1a_243portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[10]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[3]}),
 	.portbdataout(wire_ram_block1a_243portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[10])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -22040,12 +22102,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[4]}),
 	.portadataout(wire_ram_block1a_244portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[10]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[4]}),
 	.portbdataout(wire_ram_block1a_244portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[10])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -22124,12 +22186,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[5]}),
 	.portadataout(wire_ram_block1a_245portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[10]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[5]}),
 	.portbdataout(wire_ram_block1a_245portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[10])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -22208,12 +22270,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[6]}),
 	.portadataout(wire_ram_block1a_246portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[10]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[6]}),
 	.portbdataout(wire_ram_block1a_246portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[10])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -22292,12 +22354,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[7]}),
 	.portadataout(wire_ram_block1a_247portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[10]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[7]}),
 	.portbdataout(wire_ram_block1a_247portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[10])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -22376,12 +22438,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[8]}),
 	.portadataout(wire_ram_block1a_248portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[10]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[8]}),
 	.portbdataout(wire_ram_block1a_248portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[10])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -22460,12 +22522,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[9]}),
 	.portadataout(wire_ram_block1a_249portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[10]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[9]}),
 	.portbdataout(wire_ram_block1a_249portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[10])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -22544,12 +22606,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[10]}),
 	.portadataout(wire_ram_block1a_250portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[10]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[10]}),
 	.portbdataout(wire_ram_block1a_250portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[10])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -22628,12 +22690,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[11]}),
 	.portadataout(wire_ram_block1a_251portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[10]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[11]}),
 	.portbdataout(wire_ram_block1a_251portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[10])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -22712,12 +22774,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[12]}),
 	.portadataout(wire_ram_block1a_252portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[10]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[12]}),
 	.portbdataout(wire_ram_block1a_252portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[10])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -22796,12 +22858,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[13]}),
 	.portadataout(wire_ram_block1a_253portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[10]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[13]}),
 	.portbdataout(wire_ram_block1a_253portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[10])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -22880,12 +22942,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[14]}),
 	.portadataout(wire_ram_block1a_254portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[10]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[14]}),
 	.portbdataout(wire_ram_block1a_254portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[10])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -22964,12 +23026,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[15]}),
 	.portadataout(wire_ram_block1a_255portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[10]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[15]}),
 	.portbdataout(wire_ram_block1a_255portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[10])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -23048,12 +23110,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[16]}),
 	.portadataout(wire_ram_block1a_256portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[10]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[16]}),
 	.portbdataout(wire_ram_block1a_256portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[10])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -23132,12 +23194,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[17]}),
 	.portadataout(wire_ram_block1a_257portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[10]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[17]}),
 	.portbdataout(wire_ram_block1a_257portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[10])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -23216,12 +23278,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[18]}),
 	.portadataout(wire_ram_block1a_258portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[10]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[18]}),
 	.portbdataout(wire_ram_block1a_258portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[10])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -23300,12 +23362,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[19]}),
 	.portadataout(wire_ram_block1a_259portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[10]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[19]}),
 	.portbdataout(wire_ram_block1a_259portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[10])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -23384,12 +23446,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[20]}),
 	.portadataout(wire_ram_block1a_260portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[10]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[20]}),
 	.portbdataout(wire_ram_block1a_260portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[10])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -23468,12 +23530,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[21]}),
 	.portadataout(wire_ram_block1a_261portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[10]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[21]}),
 	.portbdataout(wire_ram_block1a_261portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[10])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -23552,12 +23614,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[22]}),
 	.portadataout(wire_ram_block1a_262portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[10]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[22]}),
 	.portbdataout(wire_ram_block1a_262portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[10])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -23636,12 +23698,12 @@ module  data_ram_altsyncram
 	.portaaddr({address_a_wire[12:0]}),
 	.portadatain({data_a[23]}),
 	.portadataout(wire_ram_block1a_263portadataout[0:0]),
-	.portare(rden_a),
+	.portare(1'b1),
 	.portawe(wire_decode2_eq[10]),
 	.portbaddr({address_b_wire[12:0]}),
 	.portbdatain({data_b[23]}),
 	.portbdataout(wire_ram_block1a_263portbdataout[0:0]),
-	.portbre(rden_b),
+	.portbre(1'b1),
 	.portbwe(wire_decode3_eq[10])
 	`ifndef FORMAL_VERIFICATION
 	// synopsys translate_off
@@ -23716,29 +23778,22 @@ module  data_ram_altsyncram
 		address_b_wire = address_b,
 		q_a = wire_mux4_result,
 		q_b = wire_mux5_result,
-		w_addr_val_a9w = wren_decode_addr_sel_a,
-		w_addr_val_b10w = wren_decode_addr_sel_b,
 		w_addr_val_b4w = address_b_wire[16:13],
+		w_addr_val_b8w = wren_decode_addr_sel_b,
 		wren_decode_addr_sel_a = address_a_wire[16:13],
 		wren_decode_addr_sel_b = address_b_wire[16:13];
-endmodule //data_ram_altsyncram
+endmodule //image_rom_altsyncram
 //VALID FILE
 
 
 // synopsys translate_off
 `timescale 1 ps / 1 ps
 // synopsys translate_on
-module data_ram (
+module image_rom (
 	address_a,
 	address_b,
 	clock_a,
 	clock_b,
-	data_a,
-	data_b,
-	rden_a,
-	rden_b,
-	wren_a,
-	wren_b,
 	q_a,
 	q_b)/* synthesis synthesis_clearbox = 1 */;
 
@@ -23746,42 +23801,32 @@ module data_ram (
 	input	[16:0]  address_b;
 	input	  clock_a;
 	input	  clock_b;
-	input	[23:0]  data_a;
-	input	[23:0]  data_b;
-	input	  rden_a;
-	input	  rden_b;
-	input	  wren_a;
-	input	  wren_b;
 	output	[23:0]  q_a;
 	output	[23:0]  q_b;
 `ifndef ALTERA_RESERVED_QIS
 // synopsys translate_off
 `endif
 	tri1	  clock_a;
-	tri1	  rden_a;
-	tri1	  rden_b;
-	tri0	  wren_a;
-	tri0	  wren_b;
 `ifndef ALTERA_RESERVED_QIS
 // synopsys translate_on
 `endif
 
 	wire [23:0] sub_wire0;
 	wire [23:0] sub_wire1;
+	wire [23:0] sub_wire2 = 24'h0;
+	wire  sub_wire3 = 1'h0;
 	wire [23:0] q_a = sub_wire0[23:0];
 	wire [23:0] q_b = sub_wire1[23:0];
 
-	data_ram_altsyncram	data_ram_altsyncram_component (
+	image_rom_altsyncram	image_rom_altsyncram_component (
 				.address_a (address_a),
 				.address_b (address_b),
 				.clock0 (clock_a),
 				.clock1 (clock_b),
-				.data_a (data_a),
-				.data_b (data_b),
-				.rden_a (rden_a),
-				.rden_b (rden_b),
-				.wren_a (wren_a),
-				.wren_b (wren_b),
+				.data_a (sub_wire2),
+				.data_b (sub_wire2),
+				.wren_a (sub_wire3),
+				.wren_b (sub_wire3),
 				.q_a (sub_wire0),
 				.q_b (sub_wire1));
 
@@ -23796,7 +23841,7 @@ endmodule
 // Retrieval info: PRIVATE: BYTEENA_ACLR_B NUMERIC "0"
 // Retrieval info: PRIVATE: BYTE_ENABLE_A NUMERIC "0"
 // Retrieval info: PRIVATE: BYTE_ENABLE_B NUMERIC "0"
-// Retrieval info: PRIVATE: BYTE_SIZE NUMERIC "8"
+// Retrieval info: PRIVATE: BYTE_SIZE NUMERIC "1"
 // Retrieval info: PRIVATE: BlankMemory NUMERIC "0"
 // Retrieval info: PRIVATE: CLOCK_ENABLE_INPUT_A NUMERIC "0"
 // Retrieval info: PRIVATE: CLOCK_ENABLE_INPUT_B NUMERIC "0"
@@ -23828,12 +23873,10 @@ endmodule
 // Retrieval info: PRIVATE: OUTDATA_REG_B NUMERIC "1"
 // Retrieval info: PRIVATE: RAM_BLOCK_TYPE NUMERIC "0"
 // Retrieval info: PRIVATE: READ_DURING_WRITE_MODE_MIXED_PORTS NUMERIC "2"
-// Retrieval info: PRIVATE: READ_DURING_WRITE_MODE_PORT_A NUMERIC "3"
-// Retrieval info: PRIVATE: READ_DURING_WRITE_MODE_PORT_B NUMERIC "3"
 // Retrieval info: PRIVATE: REGdata NUMERIC "1"
 // Retrieval info: PRIVATE: REGq NUMERIC "1"
 // Retrieval info: PRIVATE: REGrdaddress NUMERIC "0"
-// Retrieval info: PRIVATE: REGrren NUMERIC "1"
+// Retrieval info: PRIVATE: REGrren NUMERIC "0"
 // Retrieval info: PRIVATE: REGwraddress NUMERIC "1"
 // Retrieval info: PRIVATE: REGwren NUMERIC "1"
 // Retrieval info: PRIVATE: SYNTH_WRAPPER_GEN_POSTFIX STRING "1"
@@ -23848,7 +23891,7 @@ endmodule
 // Retrieval info: PRIVATE: WRADDR_REG_B NUMERIC "1"
 // Retrieval info: PRIVATE: WRCTRL_ACLR_B NUMERIC "0"
 // Retrieval info: PRIVATE: enable NUMERIC "0"
-// Retrieval info: PRIVATE: rden NUMERIC "1"
+// Retrieval info: PRIVATE: rden NUMERIC "0"
 // Retrieval info: LIBRARY: altera_mf altera_mf.altera_mf_components.all
 // Retrieval info: CONSTANT: ADDRESS_REG_B STRING "CLOCK1"
 // Retrieval info: CONSTANT: CLOCK_ENABLE_INPUT_A STRING "BYPASS"
@@ -23867,8 +23910,6 @@ endmodule
 // Retrieval info: CONSTANT: OUTDATA_REG_A STRING "CLOCK0"
 // Retrieval info: CONSTANT: OUTDATA_REG_B STRING "CLOCK1"
 // Retrieval info: CONSTANT: POWER_UP_UNINITIALIZED STRING "FALSE"
-// Retrieval info: CONSTANT: READ_DURING_WRITE_MODE_PORT_A STRING "NEW_DATA_NO_NBE_READ"
-// Retrieval info: CONSTANT: READ_DURING_WRITE_MODE_PORT_B STRING "NEW_DATA_NO_NBE_READ"
 // Retrieval info: CONSTANT: WIDTHAD_A NUMERIC "17"
 // Retrieval info: CONSTANT: WIDTHAD_B NUMERIC "17"
 // Retrieval info: CONSTANT: WIDTH_A NUMERIC "24"
@@ -23880,31 +23921,23 @@ endmodule
 // Retrieval info: USED_PORT: address_b 0 0 17 0 INPUT NODEFVAL "address_b[16..0]"
 // Retrieval info: USED_PORT: clock_a 0 0 0 0 INPUT VCC "clock_a"
 // Retrieval info: USED_PORT: clock_b 0 0 0 0 INPUT NODEFVAL "clock_b"
-// Retrieval info: USED_PORT: data_a 0 0 24 0 INPUT NODEFVAL "data_a[23..0]"
-// Retrieval info: USED_PORT: data_b 0 0 24 0 INPUT NODEFVAL "data_b[23..0]"
 // Retrieval info: USED_PORT: q_a 0 0 24 0 OUTPUT NODEFVAL "q_a[23..0]"
 // Retrieval info: USED_PORT: q_b 0 0 24 0 OUTPUT NODEFVAL "q_b[23..0]"
-// Retrieval info: USED_PORT: rden_a 0 0 0 0 INPUT VCC "rden_a"
-// Retrieval info: USED_PORT: rden_b 0 0 0 0 INPUT VCC "rden_b"
-// Retrieval info: USED_PORT: wren_a 0 0 0 0 INPUT GND "wren_a"
-// Retrieval info: USED_PORT: wren_b 0 0 0 0 INPUT GND "wren_b"
 // Retrieval info: CONNECT: @address_a 0 0 17 0 address_a 0 0 17 0
 // Retrieval info: CONNECT: @address_b 0 0 17 0 address_b 0 0 17 0
 // Retrieval info: CONNECT: @clock0 0 0 0 0 clock_a 0 0 0 0
 // Retrieval info: CONNECT: @clock1 0 0 0 0 clock_b 0 0 0 0
-// Retrieval info: CONNECT: @data_a 0 0 24 0 data_a 0 0 24 0
-// Retrieval info: CONNECT: @data_b 0 0 24 0 data_b 0 0 24 0
-// Retrieval info: CONNECT: @rden_a 0 0 0 0 rden_a 0 0 0 0
-// Retrieval info: CONNECT: @rden_b 0 0 0 0 rden_b 0 0 0 0
-// Retrieval info: CONNECT: @wren_a 0 0 0 0 wren_a 0 0 0 0
-// Retrieval info: CONNECT: @wren_b 0 0 0 0 wren_b 0 0 0 0
+// Retrieval info: CONNECT: @data_a 0 0 24 0 GND 0 0 24 0
+// Retrieval info: CONNECT: @data_b 0 0 24 0 GND 0 0 24 0
+// Retrieval info: CONNECT: @wren_a 0 0 0 0 GND 0 0 0 0
+// Retrieval info: CONNECT: @wren_b 0 0 0 0 GND 0 0 0 0
 // Retrieval info: CONNECT: q_a 0 0 24 0 @q_a 0 0 24 0
 // Retrieval info: CONNECT: q_b 0 0 24 0 @q_b 0 0 24 0
-// Retrieval info: GEN_FILE: TYPE_NORMAL data_ram.v TRUE
-// Retrieval info: GEN_FILE: TYPE_NORMAL data_ram.inc FALSE
-// Retrieval info: GEN_FILE: TYPE_NORMAL data_ram.cmp FALSE
-// Retrieval info: GEN_FILE: TYPE_NORMAL data_ram.bsf FALSE
-// Retrieval info: GEN_FILE: TYPE_NORMAL data_ram_inst.v FALSE
-// Retrieval info: GEN_FILE: TYPE_NORMAL data_ram_bb.v TRUE
-// Retrieval info: GEN_FILE: TYPE_NORMAL data_ram_syn.v TRUE
+// Retrieval info: GEN_FILE: TYPE_NORMAL image_rom.v TRUE
+// Retrieval info: GEN_FILE: TYPE_NORMAL image_rom.inc FALSE
+// Retrieval info: GEN_FILE: TYPE_NORMAL image_rom.cmp FALSE
+// Retrieval info: GEN_FILE: TYPE_NORMAL image_rom.bsf FALSE
+// Retrieval info: GEN_FILE: TYPE_NORMAL image_rom_inst.v FALSE
+// Retrieval info: GEN_FILE: TYPE_NORMAL image_rom_bb.v TRUE
+// Retrieval info: GEN_FILE: TYPE_NORMAL image_rom_syn.v TRUE
 // Retrieval info: LIB_FILE: altera_mf
