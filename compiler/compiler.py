@@ -17,6 +17,10 @@ op_codes = {
         'g1mul': '0010',
         'g1div': '0011',
         'g1mod': '0100'
+    },
+    'logical': {
+        'g1and': '1000',
+        'g1or': '1001'
     }
 }
 
@@ -55,7 +59,7 @@ def get_register_operand(operand):
         raise Exception
 
 
-def arithmetic_instruction(op_code, operands):
+def arith_logic_instruction(op_code, operands):
     operand_1 = get_register_operand(operands[0])
     operand_2 = get_register_operand(operands[1])
     operand_3 = get_register_operand(operands[2])
@@ -65,8 +69,8 @@ def arithmetic_instruction(op_code, operands):
 def decode_instruction(op_code_key, operands):
     try:
         inst_type, op_code = get_op_code(op_code_key)
-        if (inst_type == 'arithmetic'):
-            return arithmetic_instruction(op_code, operands)
+        if (inst_type == 'arithmetic' or inst_type == 'logical'):
+            return arith_logic_instruction(op_code, operands)
     except:
         raise Exception
 
@@ -92,7 +96,9 @@ for instruction in instruction_file:
 
         instruction_nibbles = decode_instruction(op_code_key, operands)
 
+        print(instruction)
         print(instruction_nibbles)
+        print('-------------------------------------')
 
         for nibble in instruction_nibbles:
             hex_pc = f'{pc:x}'.upper()
