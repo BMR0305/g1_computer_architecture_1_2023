@@ -1,0 +1,6 @@
+G1Add r0, r1, r2
+G1Sub r0, r1, r2
+G1Mul r0, r1, r2
+G1Div r0, r1, r2
+G1Mod r0, r1, r2
+G1Cmp r0, r1
