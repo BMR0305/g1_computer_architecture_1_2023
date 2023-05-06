@@ -10,13 +10,20 @@ if (os.path.exists(compiled_file_path)):
 instruction_file = open(instruction_file_path, 'r')
 compiled_file = open(compiled_file_path, 'a')
 
+empty_nibble = '0000'
+
 op_codes = {
     'arithmetic': {
         'g1add': '0000',
         'g1sub': '0001',
         'g1mul': '0010',
         'g1div': '0011',
-        'g1mod': '0100'
+        'g1mod': '0100',
+        # 'g1cmp': '0101'
+    },
+    'mov': {
+        'g1movi': '0110',
+        'g1movr': '0111'
     },
     'logical': {
         'g1and': '1000',
@@ -47,16 +54,35 @@ def get_op_code(op_code_key):
                 op_code = op_codes[inst_type][op_code_key]
                 return inst_type, op_code
     except KeyError:
-        print(f'Error: invalid operation "{op_code_key}"')
-        raise Exception
+        raise Exception(f'Error: invalid operation "{op_code_key}"')
 
 
 def get_register_operand(operand):
     try:
         return registers[operand]
     except KeyError:
-        print(f'Error: invalid operand "{operand}"')
-        raise Exception
+        raise Exception(f'Error: invalid operand "{operand}"')
+
+
+def get_immediate_operand(operand, width):
+    try:
+        int_operand = int(operand.replace('#0x', ''), 16)
+        binary_operand = f'{int_operand:0{width}b}'
+
+        if (width % 4 != 0):
+            raise Exception(
+                f'Error: immediate operand width must be a multiple of 4. Got {width}.')
+        if (int_operand > 2**width - 1):
+            max_hex_value = f'{(2**width - 1):x}'
+            raise Exception(
+                f'Error: immediate operand "{operand}" is too large. Max value is {max_hex_value}.')
+
+        result = []
+        for i in range(int(width/4)):
+            result.append(f'{binary_operand[i*4:(i+1)*4]}')
+        return result
+    except Exception as error:
+        raise Exception(str(error))
 
 
 def arith_logic_instruction(op_code, operands):
@@ -66,13 +92,27 @@ def arith_logic_instruction(op_code, operands):
     return [op_code, operand_1, operand_2, operand_3]
 
 
+def mov_instruction(op_code_key, op_code, operands):
+    if (op_code_key == 'g1movi'):
+        operand_1 = get_register_operand(operands[0])
+        operand_2 = get_immediate_operand(operands[1], 8)
+        return [op_code, operand_1, operand_2[0], operand_2[1]]
+    else:
+        operand_1 = get_register_operand(operands[0])
+        operand_2 = get_register_operand(operands[1])
+        return [op_code, operand_1, operand_2, empty_nibble]
+
+
 def decode_instruction(op_code_key, operands):
     try:
         inst_type, op_code = get_op_code(op_code_key)
+
         if (inst_type == 'arithmetic' or inst_type == 'logical'):
             return arith_logic_instruction(op_code, operands)
-    except:
-        raise Exception
+        elif (inst_type == 'mov'):
+            return mov_instruction(op_code_key, op_code, operands)
+    except Exception as error:
+        raise Exception(str(error))
 
 
 word_width = 4
@@ -105,7 +145,8 @@ for instruction in instruction_file:
             compiled_file.write(f'\t{hex_pc}: {nibble}\n')
             pc += 1
 
-    except:
+    except Exception as error:
+        print(str(error))
         os.remove(compiled_file_path)
         sys.exit(1)
 
