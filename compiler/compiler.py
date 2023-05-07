@@ -32,6 +32,10 @@ op_codes = {
     'branch': {
         'g1beq': '1010',
         'g1jmp': '1011'
+    },
+    'memory': {
+        'g1ldr': '1100',
+        'g1str': '1101'
     }
 }
 
@@ -51,15 +55,6 @@ registers = {
 }
 
 
-def get_op_code(op_code_key):
-    for inst_type in op_codes:
-        if op_code_key in op_codes[inst_type]:
-            op_code = op_codes[inst_type][op_code_key]
-            return inst_type, op_code
-
-    raise Exception(f'Error: invalid operation "{op_code_key}"')
-
-
 def to_binary_string(number, width):
     return f'{number:0{width}b}'
 
@@ -69,6 +64,15 @@ def split_nibbles(binary_string):
     for i in range(int(len(binary_string)/4)):
         result.append(f'{binary_string[i*4:(i+1)*4]}')
     return result
+
+
+def get_op_code(op_code_key):
+    for inst_type in op_codes:
+        if op_code_key in op_codes[inst_type]:
+            op_code = op_codes[inst_type][op_code_key]
+            return inst_type, op_code
+
+    raise Exception(f'Error: invalid operation "{op_code_key}"')
 
 
 def get_register_operand(operand):
@@ -129,6 +133,12 @@ def branch_instruction(op_code, operands, current_pc, labels):
         f'Error: label "{operands[0]}" not found in program.')
 
 
+def memory_instruction(op_code, operands):
+    operand_1 = get_register_operand(operands[0])
+    operand_2 = get_register_operand(operands[1])
+    return [op_code, operand_1, operand_2, empty_nibble]
+
+
 def decode_instruction(op_code_key, operands, current_pc, labels):
     try:
         inst_type, op_code = get_op_code(op_code_key)
@@ -139,6 +149,8 @@ def decode_instruction(op_code_key, operands, current_pc, labels):
             return mov_instruction(op_code_key, op_code, operands)
         elif (inst_type == 'branch'):
             return branch_instruction(op_code, operands, current_pc, labels)
+        elif (inst_type == 'memory'):
+            return memory_instruction(op_code, operands)
     except Exception as error:
         raise Exception(str(error))
 
