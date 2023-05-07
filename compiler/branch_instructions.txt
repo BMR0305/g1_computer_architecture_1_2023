@@ -1,0 +1,13 @@
+label1:
+  g1add r0, r1, r2
+  g1sub r0, r1, r2
+  g1sub r0, r1, r2
+  g1sub r0, r1, r2
+  g1beq label1
+
+label2:
+  g1sub r0, r1, r2
+  g1sub r0, r1, r2
+  g1sub r0, r1, r2
+  g1beq label2
+  g1jmp label1

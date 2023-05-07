@@ -28,6 +28,10 @@ op_codes = {
     'logical': {
         'g1and': '1000',
         'g1or': '1001'
+    },
+    'branch': {
+        'g1beq': '1010',
+        'g1jmp': '1011'
     }
 }
 
@@ -48,13 +52,23 @@ registers = {
 
 
 def get_op_code(op_code_key):
-    try:
-        for inst_type in op_codes:
-            if op_code_key in op_codes[inst_type]:
-                op_code = op_codes[inst_type][op_code_key]
-                return inst_type, op_code
-    except KeyError:
-        raise Exception(f'Error: invalid operation "{op_code_key}"')
+    for inst_type in op_codes:
+        if op_code_key in op_codes[inst_type]:
+            op_code = op_codes[inst_type][op_code_key]
+            return inst_type, op_code
+
+    raise Exception(f'Error: invalid operation "{op_code_key}"')
+
+
+def to_binary_string(number, width):
+    return f'{number:0{width}b}'
+
+
+def split_nibbles(binary_string):
+    result = []
+    for i in range(int(len(binary_string)/4)):
+        result.append(f'{binary_string[i*4:(i+1)*4]}')
+    return result
 
 
 def get_register_operand(operand):
@@ -67,7 +81,7 @@ def get_register_operand(operand):
 def get_immediate_operand(operand, width):
     try:
         int_operand = int(operand.replace('#0x', ''), 16)
-        binary_operand = f'{int_operand:0{width}b}'
+        binary_operand = to_binary_string(int_operand, width)
 
         if (width % 4 != 0):
             raise Exception(
@@ -77,10 +91,7 @@ def get_immediate_operand(operand, width):
             raise Exception(
                 f'Error: immediate operand "{operand}" is too large. Max value is {max_hex_value}.')
 
-        result = []
-        for i in range(int(width/4)):
-            result.append(f'{binary_operand[i*4:(i+1)*4]}')
-        return result
+        return split_nibbles(binary_operand)
     except Exception as error:
         raise Exception(str(error))
 
@@ -103,7 +114,22 @@ def mov_instruction(op_code_key, op_code, operands):
         return [op_code, operand_1, operand_2, empty_nibble]
 
 
-def decode_instruction(op_code_key, operands):
+def branch_instruction(op_code, operands, current_pc, labels):
+    for label in labels:
+        if (label['label_name'] == operands[0]):
+            label_pc = label['pc']
+            branch_pc = current_pc - label_pc
+
+            branch_operand = to_binary_string(branch_pc, 12)
+            branch_nibbles = split_nibbles(branch_operand)
+
+            return [op_code, branch_nibbles[0], branch_nibbles[1], branch_nibbles[2]]
+
+    raise Exception(
+        f'Error: label "{operands[0]}" not found in program.')
+
+
+def decode_instruction(op_code_key, operands, current_pc, labels):
     try:
         inst_type, op_code = get_op_code(op_code_key)
 
@@ -111,6 +137,8 @@ def decode_instruction(op_code_key, operands):
             return arith_logic_instruction(op_code, operands)
         elif (inst_type == 'mov'):
             return mov_instruction(op_code_key, op_code, operands)
+        elif (inst_type == 'branch'):
+            return branch_instruction(op_code, operands, current_pc, labels)
     except Exception as error:
         raise Exception(str(error))
 
@@ -127,14 +155,25 @@ compiled_file.write(f'DATA_RADIX={data_radix};\n\n')
 compiled_file.write('CONTENT BEGIN\n')
 
 pc = 0
+labels = []
 for instruction in instruction_file:
     try:
+        instruction = instruction.strip()
+
+        if (instruction == ''):
+            continue
+        elif (instruction[-1] == ':'):
+            label = {'label_name': instruction[:-1], 'pc': pc}
+            labels.append(label)
+            continue
+
         instruction = instruction.lower().split(' ', 1)
 
         op_code_key = instruction[0]
         operands = instruction[1].replace(' ', '').replace('\n', '').split(',')
 
-        instruction_nibbles = decode_instruction(op_code_key, operands)
+        instruction_nibbles = decode_instruction(
+            op_code_key, operands, pc, labels)
 
         print(instruction)
         print(instruction_nibbles)
