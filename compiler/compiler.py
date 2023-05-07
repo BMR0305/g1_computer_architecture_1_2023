@@ -198,7 +198,7 @@ for instruction in instruction_file:
 
         for nibble in instruction_nibbles:
             hex_pc = f'{pc:x}'.upper()
-            compiled_file.write(f'\t{hex_pc}: {nibble}\n')
+            compiled_file.write(f'\t{hex_pc} : {nibble};\n')
             pc += 1
 
     except Exception as error:
