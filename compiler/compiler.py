@@ -177,7 +177,7 @@ for instruction in instructions_file:
     try:
         instruction = instruction.strip().lower()
 
-        if (instruction == ''):
+        if (instruction == '' or instruction[0] == ';'):
             continue
         elif (instruction[-1] == ':'):
             label = {'label_name': instruction[:-1], 'pc': pc}
