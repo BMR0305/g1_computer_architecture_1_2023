@@ -19,7 +19,7 @@ op_codes = {
         'g1mul': '0010',
         'g1div': '0011',
         'g1mod': '0100',
-        # 'g1cmp': '0101'
+        'g1cmp': '0101'
     },
     'mov': {
         'g1movi': '0110',
@@ -100,18 +100,23 @@ def get_immediate_operand(operand, width):
         raise Exception(str(error))
 
 
-def arith_logic_instruction(op_code, operands):
-    operand_1 = get_register_operand(operands[0])
-    operand_2 = get_register_operand(operands[1])
-    operand_3 = get_register_operand(operands[2])
-    return [op_code, operand_1, operand_2, operand_3]
+def arith_logic_instruction(op_code_key, op_code, operands):
+    if (op_code_key == 'g1cmp'):
+        operand_1 = get_register_operand(operands[0])
+        operand_2 = get_register_operand(operands[1])
+        return [op_code, operand_1, operand_2, empty_nibble]
+    else:
+        operand_1 = get_register_operand(operands[0])
+        operand_2 = get_register_operand(operands[1])
+        operand_3 = get_register_operand(operands[2])
+        return [op_code, operand_1, operand_2, operand_3]
 
 
 def mov_instruction(op_code_key, op_code, operands):
     if (op_code_key == 'g1movi'):
         operand_1 = get_register_operand(operands[0])
-        operand_2 = get_immediate_operand(operands[1], 8)
-        return [op_code, operand_1, operand_2[0], operand_2[1]]
+        operand_2_nibbles = get_immediate_operand(operands[1], 8)
+        return [op_code, operand_1, operand_2_nibbles[0], operand_2_nibbles[1]]
     else:
         operand_1 = get_register_operand(operands[0])
         operand_2 = get_register_operand(operands[1])
@@ -144,7 +149,7 @@ def decode_instruction(op_code_key, operands, current_pc, labels):
         inst_type, op_code = get_op_code(op_code_key)
 
         if (inst_type == 'arithmetic' or inst_type == 'logical'):
-            return arith_logic_instruction(op_code, operands)
+            return arith_logic_instruction(op_code_key, op_code, operands)
         elif (inst_type == 'mov'):
             return mov_instruction(op_code_key, op_code, operands)
         elif (inst_type == 'branch'):
