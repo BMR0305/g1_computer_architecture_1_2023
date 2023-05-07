@@ -1,0 +1,6 @@
+G1Ldr r0, r1
+G1Str r0, r1
+G1Ldr r2, r3
+G1Str r2, r3
+G1Ldr r4, r5
+G1Str r11, r9

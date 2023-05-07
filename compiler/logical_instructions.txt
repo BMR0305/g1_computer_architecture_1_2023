@@ -1,0 +1,2 @@
+G1And r0, r1, r2
+G1Or r0, r1, r3

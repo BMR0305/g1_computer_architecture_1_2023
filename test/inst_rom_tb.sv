@@ -2,8 +2,8 @@
   
 module inst_rom_tb();
   logic clk;
-  logic [8:0] address;
-  logic [15:0] q;
+  logic [13:0] address;
+  logic [3:0] q;
 
   instruction_rom	dut (
     .address(address),
@@ -13,9 +13,20 @@ module inst_rom_tb();
 
   initial begin
     clk = 0;
-    address = 9'h000;  
+    address = 14'h0;  
 
-    #30; address = 9'h001;
+    #30; 
+    
+    address = 14'h1;
+
+    #20; 
+
+    address = 14'h2;
+
+    #20;
+
+    address = 14'h3;
+
     #50;
 
     $stop;
