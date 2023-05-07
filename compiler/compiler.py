@@ -1,13 +1,13 @@
 import sys
 import os
 
-instruction_file_path = sys.argv[1]
+instructions_file_path = sys.argv[1]
 compiled_file_path = sys.argv[2]
 
 if (os.path.exists(compiled_file_path)):
     os.remove(compiled_file_path)
 
-instruction_file = open(instruction_file_path, 'r')
+instructions_file = open(instructions_file_path, 'r')
 compiled_file = open(compiled_file_path, 'a')
 
 empty_nibble = '0000'
@@ -173,21 +173,21 @@ compiled_file.write('CONTENT BEGIN\n')
 
 pc = 0
 labels = []
-for instruction in instruction_file:
+for instruction in instructions_file:
     try:
-        instruction = instruction.strip()
+        instruction = instruction.strip().lower()
 
-        if (instruction == ''):
+        if (instruction == '' or instruction[0] == ';'):
             continue
         elif (instruction[-1] == ':'):
             label = {'label_name': instruction[:-1], 'pc': pc}
             labels.append(label)
             continue
 
-        instruction = instruction.lower().split(' ', 1)
+        instruction = instruction.split(' ', 1)
 
         op_code_key = instruction[0]
-        operands = instruction[1].replace(' ', '').replace('\n', '').split(',')
+        operands = instruction[1].replace(' ', '').split(',')
 
         instruction_nibbles = decode_instruction(
             op_code_key, operands, pc, labels)
@@ -205,6 +205,5 @@ for instruction in instruction_file:
         print(str(error))
         os.remove(compiled_file_path)
         sys.exit(1)
-
 
 compiled_file.write('END;')
