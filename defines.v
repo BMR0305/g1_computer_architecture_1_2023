@@ -5,6 +5,7 @@
 
 `define REG_FILE_ADDR_LEN 4
 `define FORW_SEL_LEN 2
+`define REG_FILE_SIZE 24
 
 
 // To be used inside controller.v
