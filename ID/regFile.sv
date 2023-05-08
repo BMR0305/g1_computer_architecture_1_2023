@@ -16,7 +16,7 @@ module regFile (
 
   always @ (negedge clk, posedge rst) begin
     if (rst) begin
-      for (i = 0; i < `REG_FILE_SIZE; i = i + 1)
+      for (i = 0; i < 12; i = i + 1)
         regMem[i] <= 0;
 	    end
 

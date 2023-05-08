@@ -52,15 +52,16 @@ module ID (hazard_detected, flagZ, is_imm_out, ST, instruction, reg1, reg2, src1
     .in1(instruction[3:0]),
     .in2(instruction[7:4]),
 	 .in3(4'b1111),
-    .sel({ST || Is_Imm || branchEn, Is_Cmp}),
+    .sel({ST || Is_Imm || branchEn || (`OP_MOVR == EXE_CMD), Is_Cmp}),
     .out(src2)
   );
 
-  my_mux #(.LENGTH(`REG_FILE_SIZE)) mux_val2 ( // determins whether val2 is from the reg file or the immediate value
+  my_mux_3 #(.LENGTH(`REG_FILE_SIZE)) mux_val2 ( // determins whether val2 is from the reg file or the immediate value
     .in1(reg2),
     .in2(signExtMux),
-    .sel(branchEn || Is_Imm),
-    .out(val2)
+	 .in3(24'b000000000000000000000000),
+    .sel({ST || (`OP_MOVR == EXE_CMD), branchEn || Is_Imm}),
+	 .out(val2)
   );
 
 
