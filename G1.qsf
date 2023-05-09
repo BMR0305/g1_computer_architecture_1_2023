@@ -39,7 +39,7 @@
 
 set_global_assignment -name FAMILY "Cyclone V"
 set_global_assignment -name DEVICE 5CSEBA6U23I7
-set_global_assignment -name TOP_LEVEL_ENTITY IFStage
+set_global_assignment -name TOP_LEVEL_ENTITY ID_Conection_Test
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 22.1STD.1
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "15:36:59  APRIL 29, 2023"
 set_global_assignment -name LAST_QUARTUS_VERSION "20.1.1 Lite Edition"
@@ -57,32 +57,68 @@ set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
 set_global_assignment -name EDA_TEST_BENCH_ENABLE_STATUS TEST_BENCH_MODE -section_id eda_simulation
-set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH testIf2 -section_id eda_simulation
+set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH ID_Conection_Test_tb -section_id eda_simulation
 set_global_assignment -name EDA_TEST_BENCH_NAME test -section_id eda_simulation
 set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id test
 set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME test -section_id test
+set_global_assignment -name EDA_TEST_BENCH_NAME testIF -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id testIF
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME testIf -section_id testIF
+set_global_assignment -name EDA_TEST_BENCH_NAME testIf2 -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id testIf2
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME testIf -section_id testIf2
+set_global_assignment -name EDA_TEST_BENCH_NAME test_add -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id test_add
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME test_add -section_id test_add
+set_global_assignment -name EDA_TEST_BENCH_NAME testController -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id testController
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME testController -section_id testController
+set_global_assignment -name SYSTEMVERILOG_FILE ControlUnit/controller.sv
 set_global_assignment -name SYSTEMVERILOG_FILE IF/IFStage.sv
 set_global_assignment -name SYSTEMVERILOG_FILE IF/my_mux.sv
 set_global_assignment -name SYSTEMVERILOG_FILE IF/adder.sv
 set_global_assignment -name SYSTEMVERILOG_FILE IF/register.sv
 set_global_assignment -name SYSTEMVERILOG_FILE IF/instructionMem.sv
-set_global_assignment -name EDA_TEST_BENCH_NAME testIF -section_id eda_simulation
-set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id testIF
-set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME testIf -section_id testIF
 set_global_assignment -name SYSTEMVERILOG_FILE IF/testIf.sv
+set_global_assignment -name SYSTEMVERILOG_FILE IF/test_add.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ControlUnit/conditionChecker.sv
+set_global_assignment -name VERILOG_FILE defines.v
+set_global_assignment -name SYSTEMVERILOG_FILE ControlUnit/testController.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ID/regFile.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ID/regFile_tb.sv
+set_global_assignment -name EDA_TEST_BENCH_NAME regFile_tb -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id regFile_tb
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME regFile_tb -section_id regFile_tb
+set_global_assignment -name SYSTEMVERILOG_FILE ID/ID.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ID/signExtendImm.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ID/signExtendBranch.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ID/ID_tb.sv
+set_global_assignment -name EDA_TEST_BENCH_NAME ID_tb -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id ID_tb
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME ID_tb -section_id ID_tb
+set_global_assignment -name SYSTEMVERILOG_FILE IF/my_mux_3.sv
+set_global_assignment -name SYSTEMVERILOG_FILE G1_Processor.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ID/hazard_detection.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ID/hazard_detection_tb.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ID/ID_Conection_Test.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ID/ID_Conection_Test_tb.sv
+set_global_assignment -name EDA_TEST_BENCH_NAME ID_Conection_Test_tb -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id ID_Conection_Test_tb
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME ID_Conection_Test_tb -section_id ID_Conection_Test_tb
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
-set_global_assignment -name EDA_TEST_BENCH_NAME testIf2 -section_id eda_simulation
-set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id testIf2
-set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME testIf -section_id testIf2
-set_global_assignment -name SYSTEMVERILOG_FILE IF/test_add.sv
-set_global_assignment -name EDA_TEST_BENCH_NAME test_add -section_id eda_simulation
-set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id test_add
-set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME test_add -section_id test_add
 set_global_assignment -name EDA_TEST_BENCH_FILE ControlUnit/test.sv -section_id test
 set_global_assignment -name EDA_TEST_BENCH_FILE IF/testIf.sv -section_id testIF
 set_global_assignment -name EDA_TEST_BENCH_FILE IF/testIf.sv -section_id testIf2
 set_global_assignment -name EDA_TEST_BENCH_FILE IF/IFStage.sv -section_id testIf2
 set_global_assignment -name EDA_TEST_BENCH_FILE IF/test_add.sv -section_id test_add
+set_global_assignment -name EDA_TEST_BENCH_FILE ControlUnit/testController.sv -section_id testController
+set_global_assignment -name EDA_TEST_BENCH_FILE defines.v -section_id testController
+set_global_assignment -name EDA_TEST_BENCH_FILE ControlUnit/controller.sv -section_id testController
+set_global_assignment -name EDA_TEST_BENCH_FILE ID/regFile_tb.sv -section_id regFile_tb
+set_global_assignment -name EDA_TEST_BENCH_FILE ID/regFile.sv -section_id regFile_tb
+set_global_assignment -name EDA_TEST_BENCH_FILE ID/ID_tb.sv -section_id ID_tb
+set_global_assignment -name EDA_TEST_BENCH_FILE ID/ID_Conection_Test_tb.sv -section_id ID_Conection_Test_tb
+set_global_assignment -name EDA_TEST_BENCH_FILE ID/ID_Conection_Test.sv -section_id ID_Conection_Test_tb
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

@@ -197,7 +197,7 @@ for instruction in instructions_file:
         print('-------------------------------------')
 
         for nibble in instruction_nibbles:
-            hex_pc = f'{pc:x}'.upper()
+            hex_pc = f'{pc:02x}'.upper()
             compiled_file.write(f'\t{hex_pc} : {nibble};\n')
             pc += 1
 
