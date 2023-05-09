@@ -14,7 +14,6 @@ module memory_stage(
   logic [16:0] address_a;
   logic [16:0] address_b_aux;
 
-  // Las entradas y salidas de las memorias ya tienen flip-flops
   logic [23:0] image_rom_q_a;
   logic [23:0] image_rom_q_b;
   image_rom image_rom(
