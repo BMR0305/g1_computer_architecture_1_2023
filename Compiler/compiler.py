@@ -160,17 +160,6 @@ def decode_instruction(op_code_key, operands, current_pc, labels):
         raise Exception(str(error))
 
 
-word_width = 4
-memory_depth = 16384
-address_radix = 'HEX'
-data_radix = 'BIN'
-
-compiled_file.write(f'WIDTH={word_width};\n')
-compiled_file.write(f'DEPTH={memory_depth};\n\n')
-compiled_file.write(f'ADDRESS_RADIX={address_radix};\n')
-compiled_file.write(f'DATA_RADIX={data_radix};\n\n')
-compiled_file.write('CONTENT BEGIN\n')
-
 pc = 0
 labels = []
 for instruction in instructions_file:
@@ -197,13 +186,10 @@ for instruction in instructions_file:
         print('-------------------------------------')
 
         for nibble in instruction_nibbles:
-            hex_pc = f'{pc:x}'.upper()
-            compiled_file.write(f'\t{hex_pc} : {nibble};\n')
+            compiled_file.write(f'{nibble}\n')
             pc += 1
 
     except Exception as error:
         print(str(error))
         os.remove(compiled_file_path)
         sys.exit(1)
-
-compiled_file.write('END;')
