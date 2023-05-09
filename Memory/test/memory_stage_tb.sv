@@ -1,7 +1,7 @@
 `timescale 1ns/1ns
   
 module memory_stage_tb();
-  logic reset;
+  logic rst;
 
   logic clk_a;
   logic clk_b;
@@ -19,7 +19,7 @@ module memory_stage_tb();
   logic [23:0] read_data_b;
 
   memory_stage dut (
-    .reset(reset),
+    .rst(rst),
     .clk_a(clk_a),
     .clk_b(clk_b),
     .read_enable(read_enable),
@@ -33,7 +33,7 @@ module memory_stage_tb();
 	);
 
   initial begin
-    reset = 0;
+    rst = 0;
 
     read_enable = 1;
     write_enable = 0;
@@ -51,18 +51,19 @@ module memory_stage_tb();
 
     alu_result = 24'h000001;
     address_b = 17'h00002;
+    mem_to_reg = 1;
 
     #30;
 
-    mem_to_reg = 1;
     alu_result = 24'h000001;
     address_b = 17'd90001;
 
     #30;
 
-    alu_result = 24'd90000;
+    alu_result = 24'd90064;
+    address_b = 24'd90438;
 
-    #200;
+    #100;
     $stop;
   end
 
