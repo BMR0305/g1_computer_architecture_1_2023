@@ -14,14 +14,16 @@ module image_rom_tb();
   logic [23:0] q_b;
 
   image_rom dut (
-    .clock_a(clk_a),
-    .clock_b(clk_b),
-    .read_enable_a(rden_a),
-    .read_enable_b(rden_b),
+    .aclr_a(1'b0),
+    .aclr_b(1'b0),
     .address_a(address_a),
     .address_b(address_b),
-    .read_data_a(q_a),
-    .read_data_b(q_b)
+    .clock_a(clk_a),
+    .clock_b(clk_b),
+    .rden_a(rden_a),
+    .rden_b(rden_b),
+    .q_a(q_a),
+    .q_b(q_b)
 	);
 
   initial begin
@@ -44,6 +46,6 @@ module image_rom_tb();
   end
 
   always #10 clk_a = ~clk_a;
-  always #30 clk_b  = ~clk_b;
+  always #20 clk_b  = ~clk_b;
 
 endmodule

@@ -55,7 +55,7 @@ module memory_stage_tb();
 
     #30;
 
-    alu_result = 24'h000001;
+    alu_result = 24'h000002;
     address_b = 17'd90001;
 
     #30;
