@@ -22,19 +22,20 @@ module data_ram_tb();
   logic [23:0] q_b;
 
   data_ram dut (
-    .reset(rst),
-    .clock_a(clk_a),
-    .clock_b(clk_b),
-    .read_enable_a(rden_a),
-    .read_enable_b(rden_b),
-    .write_enable_a(wren_a),
-    .write_enable_b(wren_b),
+    .aclr_a(rst),
+    .aclr_b(rst),
     .address_a(address_a),
     .address_b(address_b),
-    .write_data_a(data_a),
-    .write_data_b(data_b),
-    .read_data_a(q_a),
-    .read_data_b(q_b)
+    .clock_a(clk_a),
+    .clock_b(clk_b),
+    .data_a(data_a),
+    .data_b(data_b),
+    .rden_a(rden_a),
+    .rden_b(rden_b),
+    .wren_a(wren_a),
+    .wren_b(wren_b),
+    .q_a(q_a),
+    .q_b(q_b)
 	);
 
   initial begin

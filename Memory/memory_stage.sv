@@ -11,47 +11,52 @@ module memory_stage(
   output logic [23:0] result,
   output logic [23:0] read_data_b
 );
+  // !!! Las entradas y salidas de las memorias tienen flip-flops
   logic [16:0] address_a;
   logic [16:0] address_b_aux;
 
   logic [23:0] image_rom_q_a;
   logic [23:0] image_rom_q_b;
   image_rom image_rom(
-    .clock_a(clk_a),
-    .clock_b(clk_b),
-    .read_enable_a(read_enable),
-    .read_enable_b(1'b1),
+    .aclr_a(rst),
+    .aclr_b(rst),
     .address_a(address_a),
     .address_b(address_b_aux),
-    .read_data_a(image_rom_q_a),
-    .read_data_b(image_rom_q_b)
+    .clock_a(clk_a),
+    .clock_b(clk_b),
+    .rden_a(read_enable),
+    .rden_b(1'b1),
+    .q_a(image_rom_q_a),
+    .q_b(image_rom_q_b)
   );
 
   logic [23:0] sin_rom_q_a;
   logic [23:0] sin_rom_q_b;
   sin_rom sin_rom(
-    .clock(clk_a),
-    .read_enable(read_enable),
+    .aclr(rst),
     .address(address_a),
-    .read_data(sin_rom_q_a)
+    .clock(clk_a),
+    .rden(read_enable),
+    .q(sin_rom_q_a)
   );
 
   logic [23:0] ram_q_a;
   logic [23:0] ram_q_b;
   data_ram ram(
-    .reset(rst),
-    .clock_a(clk_a),
-    .clock_b(clk_b),
-    .read_enable_a(read_enable),
-    .read_enable_b(1'b1),
-    .write_enable_a(write_enable),
-    .write_enable_b(1'b0),
+    .aclr_a(rst),
+    .aclr_b(rst),
     .address_a(address_a),
     .address_b(address_b_aux),
-    .write_data_a(write_data_a),
-    .write_data_b(24'b0),
-    .read_data_a(ram_q_a),
-    .read_data_b(ram_q_b)
+    .clock_a(clk_a),
+    .clock_b(clk_b),
+    .data_a(write_data_a),
+    .data_b(24'b0),
+    .rden_a(read_enable),
+    .rden_b(1'b1),
+    .wren_a(write_enable),
+    .wren_b(1'b0),
+    .q_a(ram_q_a),
+    .q_b(ram_q_b)
   );
 
   // logic [23:0] alu_ff_result;
