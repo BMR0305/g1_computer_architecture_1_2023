@@ -10,7 +10,7 @@ module image_rom(
 );
   logic [23:0] image_memory [89999:0];
 
-	initial $readmemh("./init/image.memh", image_memory);
+	initial $readmemh("init/image.memh", image_memory);
  
   always_ff @(posedge clock_a) begin
     if (read_enable_a) read_data_a <= image_memory[address_a];
@@ -21,4 +21,4 @@ module image_rom(
     if (read_enable_b) read_data_b <= image_memory[address_b];
     else read_data_b <= 24'b0;
   end
-endmodule
+endmodule 

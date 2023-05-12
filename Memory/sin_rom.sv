@@ -6,10 +6,10 @@ module sin_rom(
 );
   logic [23:0] sin_memory [299:0];
 
-	initial $readmemh("./init/sin.memh", sin_memory);
+	initial $readmemh("init/sin.memh", sin_memory);
  
   always_ff @(posedge clock) begin
     if (read_enable) read_data <= sin_memory[address[8:0]];
     else read_data <= 24'b0;
   end
-endmodule
+endmodule 

@@ -97,4 +97,4 @@ module memory_stage(
       read_data_b = ram_q_b;
     end
   end
-endmodule
+endmodule 

@@ -40,11 +40,11 @@
 set_global_assignment -name FAMILY "Cyclone V"
 set_global_assignment -name DEVICE 5CSEBA6U23I7
 
-set_global_assignment -name TOP_LEVEL_ENTITY G1_Processor
+set_global_assignment -name TOP_LEVEL_ENTITY Memory_HDMI_Conection
 
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 22.1STD.1
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "15:36:59  APRIL 29, 2023"
-set_global_assignment -name LAST_QUARTUS_VERSION "21.1.1 Lite Edition"
+set_global_assignment -name LAST_QUARTUS_VERSION "20.1.1 Lite Edition"
 set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP "-40"
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 100
@@ -82,19 +82,21 @@ set_global_assignment -name EDA_TEST_BENCH_NAME ID_Conection_Test_tb -section_id
 set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id ID_Conection_Test_tb
 set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME ID_Conection_Test_tb -section_id ID_Conection_Test_tb
 
-set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
-set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
-set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name EDA_TEST_BENCH_NAME IF_to_ID_tb -section_id eda_simulation
 set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id IF_to_ID_tb
 set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME IF_to_ID_tb -section_id IF_to_ID_tb
-set_global_assignment -name SYSTEMVERILOG_FILE PipeRegisters/IF_ID_Conection_Test_tb.sv
-set_global_assignment -name SOURCE_FILE IF/ROMInstructions.mem
 
-set_global_assignment -name EDA_TEST_BENCH_FILE ControlUnit/test.sv -section_id test
-set_global_assignment -name EDA_TEST_BENCH_FILE IF/testIf.sv -section_id testIF
 set_global_assignment -name EDA_TEST_BENCH_FILE IF/testIf.sv -section_id testIf2
 set_global_assignment -name EDA_TEST_BENCH_FILE IF/IFStage.sv -section_id testIf2
+set_global_assignment -name TIMING_ANALYZER_MULTICORNER_ANALYSIS ON
+set_global_assignment -name NUM_PARALLEL_PROCESSORS ALL
+
+set_global_assignment -name EDA_TEST_BENCH_NAME IF_ID_Conection_Test -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id IF_ID_Conection_Test
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME IF_ID_Conection_Test_tb -section_id IF_ID_Conection_Test
+set_global_assignment -name EDA_TEST_BENCH_FILE ControlUnit/test.sv -section_id test
+set_global_assignment -name EDA_TEST_BENCH_FILE IF/testIf.sv -section_id testIF
+set_global_assignment -name EDA_TEST_BENCH_FILE IF/ROMInstructions.mem -section_id testIF
 set_global_assignment -name EDA_TEST_BENCH_FILE IF/test_add.sv -section_id test_add
 set_global_assignment -name EDA_TEST_BENCH_FILE ControlUnit/testController.sv -section_id testController
 set_global_assignment -name EDA_TEST_BENCH_FILE defines.v -section_id testController
@@ -104,9 +106,33 @@ set_global_assignment -name EDA_TEST_BENCH_FILE ID/regFile.sv -section_id regFil
 set_global_assignment -name EDA_TEST_BENCH_FILE ID/ID_tb.sv -section_id ID_tb
 set_global_assignment -name EDA_TEST_BENCH_FILE ID/ID_Conection_Test_tb.sv -section_id ID_Conection_Test_tb
 set_global_assignment -name EDA_TEST_BENCH_FILE ID/ID_Conection_Test.sv -section_id ID_Conection_Test_tb
-set_global_assignment -name TIMING_ANALYZER_MULTICORNER_ANALYSIS ON
-set_global_assignment -name NUM_PARALLEL_PROCESSORS ALL
+set_global_assignment -name EDA_TEST_BENCH_FILE PipeRegisters/IF_to_ID_tb.sv -section_id IF_to_ID_tb
+set_global_assignment -name EDA_TEST_BENCH_FILE PipeRegisters/IF_ID_Conection_Test_tb.sv -section_id IF_ID_Conection_Test
+set_global_assignment -name EDA_TEST_BENCH_FILE PipeRegisters/IF_ID_Conection_Test.sv -section_id IF_ID_Conection_Test
+set_global_assignment -name EDA_TEST_BENCH_FILE IF/ROMInstructions.mem -section_id IF_ID_Conection_Test
 
+
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name SOURCE_FILE Memory/init/sin.memh
+set_global_assignment -name SOURCE_FILE Memory/init/instructions.memh
+set_global_assignment -name SOURCE_FILE Memory/init/image.memh
+set_global_assignment -name QIP_FILE HDMI_Controller/pll/sys_pll.qip
+set_global_assignment -name QIP_FILE HDMI_Controller/pll/pll_reconfig.qip
+set_global_assignment -name QIP_FILE HDMI_Controller/pll/pll.qip
+set_global_assignment -name VERILOG_FILE HDMI_Controller/vpg_source/vpg_mode.v
+set_global_assignment -name VERILOG_FILE HDMI_Controller/vpg_source/vpg.v
+set_global_assignment -name SOURCE_FILE HDMI_Controller/vpg_source/vpg.h
+set_global_assignment -name VERILOG_FILE HDMI_Controller/vpg_source/vga_generator.v
+set_global_assignment -name VERILOG_FILE HDMI_Controller/vpg_source/pll_controller.v
+set_global_assignment -name VERILOG_FILE HDMI_Controller/I2C_WRITE_WDATA.v
+set_global_assignment -name VERILOG_FILE HDMI_Controller/I2C_HDMI_Config.v
+set_global_assignment -name VERILOG_FILE HDMI_Controller/I2C_Controller.v
+set_global_assignment -name SYSTEMVERILOG_FILE HDMI_Controller/HDMIController.sv
+set_global_assignment -name VERILOG_FILE HDMI_Controller/AUDIO_IF.v
+set_global_assignment -name SYSTEMVERILOG_FILE PipeRegisters/IF_ID_Conection_Test_tb.sv
+set_global_assignment -name SOURCE_FILE IF/ROMInstructions.mem
 set_global_assignment -name SYSTEMVERILOG_FILE ControlUnit/controller.sv
 set_global_assignment -name SYSTEMVERILOG_FILE IF/IFStage.sv
 set_global_assignment -name SYSTEMVERILOG_FILE IF/my_mux.sv
@@ -133,32 +159,9 @@ set_global_assignment -name SYSTEMVERILOG_FILE ID/ID_Conection_Test_tb.sv
 set_global_assignment -name SYSTEMVERILOG_FILE PipeRegisters/IF_to_ID.sv
 set_global_assignment -name SYSTEMVERILOG_FILE PipeRegisters/IF_to_ID_tb.sv
 set_global_assignment -name SYSTEMVERILOG_FILE PipeRegisters/IF_ID_Conection_Test.sv
-set_global_assignment -name EDA_TEST_BENCH_NAME IF_ID_Conection_Test -section_id eda_simulation
-set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id IF_ID_Conection_Test
-set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME IF_ID_Conection_Test_tb -section_id IF_ID_Conection_Test
-set_global_assignment -name EDA_TEST_BENCH_FILE ControlUnit/test.sv -section_id test
-set_global_assignment -name EDA_TEST_BENCH_FILE IF/testIf.sv -section_id testIF
-set_global_assignment -name EDA_TEST_BENCH_FILE IF/ROMInstructions.mem -section_id testIF
-set_global_assignment -name EDA_TEST_BENCH_FILE IF/test_add.sv -section_id test_add
-set_global_assignment -name EDA_TEST_BENCH_FILE ControlUnit/testController.sv -section_id testController
-set_global_assignment -name EDA_TEST_BENCH_FILE defines.v -section_id testController
-set_global_assignment -name EDA_TEST_BENCH_FILE ControlUnit/controller.sv -section_id testController
-set_global_assignment -name EDA_TEST_BENCH_FILE ID/regFile_tb.sv -section_id regFile_tb
-set_global_assignment -name EDA_TEST_BENCH_FILE ID/regFile.sv -section_id regFile_tb
-set_global_assignment -name EDA_TEST_BENCH_FILE ID/ID_tb.sv -section_id ID_tb
-set_global_assignment -name EDA_TEST_BENCH_FILE ID/ID_Conection_Test_tb.sv -section_id ID_Conection_Test_tb
-set_global_assignment -name EDA_TEST_BENCH_FILE ID/ID_Conection_Test.sv -section_id ID_Conection_Test_tb
-set_global_assignment -name EDA_TEST_BENCH_FILE PipeRegisters/IF_to_ID_tb.sv -section_id IF_to_ID_tb
-set_global_assignment -name EDA_TEST_BENCH_FILE PipeRegisters/IF_ID_Conection_Test_tb.sv -section_id IF_ID_Conection_Test
-set_global_assignment -name EDA_TEST_BENCH_FILE PipeRegisters/IF_ID_Conection_Test.sv -section_id IF_ID_Conection_Test
-set_global_assignment -name EDA_TEST_BENCH_FILE IF/ROMInstructions.mem -section_id IF_ID_Conection_Test
-
 set_global_assignment -name SYSTEMVERILOG_FILE Memory/image_rom.sv
 set_global_assignment -name SYSTEMVERILOG_FILE Memory/sin_rom.sv
 set_global_assignment -name SYSTEMVERILOG_FILE Memory/data_ram.sv
 set_global_assignment -name SYSTEMVERILOG_FILE Memory/memory_stage.sv
-set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
-set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
-set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
-
+set_global_assignment -name SYSTEMVERILOG_FILE Memory_HDMI_Conection.sv
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
