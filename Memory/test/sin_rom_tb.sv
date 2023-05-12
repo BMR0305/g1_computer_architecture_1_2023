@@ -7,10 +7,11 @@ module sin_rom_tb();
   logic [23:0] q;
 
   sin_rom dut (
-    .clock(clk),
-    .read_enable(rden),
+    .aclr(1'b0),
     .address(address),
-    .read_data(q)
+    .clock(clk),
+    .rden(rden),
+    .q(q)
 	);
 
   initial begin

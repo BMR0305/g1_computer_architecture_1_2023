@@ -1,16 +1,39 @@
-`include "defines.v"
+`include "../defines.v"
 
-module G1_Processor(input clk, input rst, input forward_EN);
+module IF_ID_Conection_Test(
+	input clk, 
+	input rst, 
+	input forward_EN,
+	input writeEn,
+	input [`REG_FILE_ADDR_LEN-1:0] dest,
+	input [`REG_FILE_SIZE-1:0]  writeVal,
+	input [`REG_FILE_ADDR_LEN-1:0] dest_EXE,
+	input [`REG_FILE_ADDR_LEN-1:0] dest_MEM,
+	input WB_EN_EXE, 
+	input WB_EN_MEM,
+	input MEM_R_EN_EXE,
+	input flagZ,
 	
-	logic writeEn, WB_EN_EXE, WB_EN_MEM, is_imm, ST, MEM_R_EN_EXE, hazard_detected, flagZ;
-	logic brTaken, MEM_R_EN, MEM_W_EN, WB_EN;
-	logic [`REG_FILE_ADDR_LEN-1:0] src1, src2, dest, dest_EXE, dest_MEM; 
-   logic [`REG_FILE_SIZE-1:0]  writeVal, reg1, reg2, val1, val2;
-	logic [`WORD_LEN-1:0] instruction_IF, instruction_ID; 
-	logic [3:0] branch_comm;
-	logic [`EXE_CMD_LEN-1:0] EXE_CMD;
-
-
+	output is_imm,
+	output ST,
+	output hazard_detected,
+	output brTaken,
+	output MEM_R_EN,
+	output MEM_W_EN,
+	output WB_EN,
+	output [`REG_FILE_ADDR_LEN-1:0] src1,
+	output [`REG_FILE_ADDR_LEN-1:0] src2,
+	output [`REG_FILE_SIZE-1:0] val1,
+	output [`REG_FILE_SIZE-1:0] val2,
+	output [3:0] branch_comm,
+	output [`EXE_CMD_LEN-1:0] EXE_CMD
+	
+	);
+	
+   logic [`REG_FILE_SIZE-1:0] reg1, reg2;
+	logic [`WORD_LEN-1:0] instruction_IF, instruction_ID;
+	
+	
 
 	regFile rF(
 		.clk(clk),
@@ -18,8 +41,8 @@ module G1_Processor(input clk, input rst, input forward_EN);
 		.writeEn(writeEn), //*
 		.src1(src1),
 		.src2(src2),
-		.dest(dest),
-		.writeVal(writeVal),
+		.dest(dest), //*
+		.writeVal(writeVal), //*
 		
 		.reg1(reg1),
 		.reg2(reg2)
@@ -59,10 +82,6 @@ module G1_Processor(input clk, input rst, input forward_EN);
 		.instructionIn(instruction_IF),
 		.instruction(instruction_ID)
  );
-
-	
-	
-	
 
    ID id(
 	  .hazard_detected(hazard_detected),

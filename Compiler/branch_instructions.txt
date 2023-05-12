@@ -10,4 +10,10 @@ label2:
   g1sub r0, r1, r2
   g1sub r0, r1, r2
   g1beq label2
+  g1jmp label3
+
+label3:
+  g1sub r0, r1, r2
+  g1sub r0, r1, r2
+  g1sub r0, r1, r2
   g1jmp label1
