@@ -64,7 +64,9 @@ module HDMIController(
 		input			[23:0]    color,
 		
 		output		[9:0]		pixel_x,
-		output		[8:0]		pixel_y
+		output		[8:0]		pixel_y,
+		
+		output		[5:0]		num_cycle
 		
 		
 );
@@ -125,7 +127,8 @@ vpg u_vpg (
 	.vpg_b(HDMI_TX_D[7:0]), 
 	.color(color),
 	.pixel_x(pixel_x),
-	.pixel_y(pixel_y)
+	.pixel_y(pixel_y),
+	.num_cycle(num_cycle)
 	);
 
 //HDMI I2C

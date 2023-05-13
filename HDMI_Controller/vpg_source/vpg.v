@@ -46,7 +46,8 @@ module vpg(
 	vpg_b,
 	color,
 	pixel_x,
-	pixel_y
+	pixel_y,
+	num_cycle
 );
 
 input					clk_50;
@@ -65,6 +66,7 @@ output	[7:0]		vpg_g;
 output	[7:0]		vpg_b;
 output 	[9:0]		pixel_x;
 output 	[8:0]		pixel_y;
+output 	[5:0]		num_cycle;
 
 //=======================================================
 //  Signal declarations
@@ -136,6 +138,7 @@ vga_generator u_vga_generator (
 	.vga_de(vpg_de),
 	.pixel_x(pixel_x),
 	.pixel_y(pixel_y),
+	.num_cycle(num_cycle),
 	.color(color),
 	.vga_r(vpg_r),
 	.vga_g(vpg_g),

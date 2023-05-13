@@ -28,10 +28,12 @@ module Memory_HDMI_Conection(
       input       [3:0]  SW);
 		
 		logic [23:0] color;
+		logic [23:0] color_mem;
 		reg   [9:0] pixel_x;
 		reg   [8:0] pixel_y;
+		reg   [5:0] num_cycle;
 		logic [23:0] result;
-		logic [16:0] address_b;
+		logic [17:0] address_b;
 
 
 	HDMIController HDMIController(
@@ -67,10 +69,26 @@ module Memory_HDMI_Conection(
 		.color(color),
 		
 		.pixel_x(pixel_x),
-		.pixel_y(pixel_y)
+		.pixel_y(pixel_y),
+		
+		.num_cycle(num_cycle)
 	);
 	
-	assign address_b = pixel_x + pixel_y * 9'd300;
+	address_sel a_s(
+		.pixel_x(pixel_x),
+		.pixel_y(pixel_y),
+		.sel(SW[3]),
+		.address_b(address_b)
+	);
+	
+	color_selector c_s(
+		.color_mem(color_mem),
+		.pixel_x(pixel_x),
+		.pixel_y(pixel_y),
+		.num_cycle(num_cycle),
+		.is_RAM(SW[3]),
+		.color(color)
+	);
 	
 	memory_stage m_s(
 	  .rst(1'b0),
@@ -83,7 +101,7 @@ module Memory_HDMI_Conection(
 	  .address_b(address_b),
 	  .write_data_a(1'b0),
 	  .result(result),
-	  .read_data_b(color)
+	  .read_data_b(color_mem)
 	);
 	
 	

@@ -49,6 +49,7 @@ module vga_generator(
   output	reg				vga_de,
   output reg	[9:0]		pixel_x,
   output reg	[8:0]		pixel_y,
+  output reg 	[5:0]		num_cycle,
   input			[23:0]    color,
   output	reg 	[7:0]		vga_r,
   output	reg  	[7:0]		vga_g,
@@ -132,6 +133,7 @@ always@(posedge clk or negedge reset_n)
 		vga_vs		<=	1'b1;
 		v_act			<=	1'b0;
 		pixel_y	   <=	8'b0;
+		num_cycle   <= 6'b0;
 	end
 	else 
 	begin		
@@ -139,10 +141,15 @@ always@(posedge clk or negedge reset_n)
 		begin		  
 			v_act_d	  <=	v_act;
 		  
-			if (v_max)
-				v_count	<=	12'b0;
-			else
+			if (v_max) begin
+				v_count	 <= 12'b0;
+				num_cycle   <= num_cycle + 6'b1;
+			end
+			else begin
 				v_count	<=	v_count + 12'b1;
+			end
+			if (num_cycle > 59)
+				num_cycle   <= 6'b0;
 				
 			if (v_act_d)
 				pixel_y	<=	pixel_y + 8'b1;
