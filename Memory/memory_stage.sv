@@ -6,7 +6,7 @@ module memory_stage(
   input logic write_enable,
   input logic mem_to_reg,
   input logic [23:0] alu_result,
-  input logic [16:0] address_b,
+  input logic [17:0] address_b,
   input logic [23:0] write_data_a,
   output logic [23:0] result,
   output logic [23:0] read_data_b
@@ -69,21 +69,21 @@ module memory_stage(
 
   always_comb begin
     if(mem_to_reg) begin
-      if(alu_result[16:0] <= 89999) begin
-        address_a = alu_result[16:0];
+      if(alu_result[17:0] <= 89999) begin
+        address_a = alu_result[17:0];
         result = image_rom_q_a;
       end
       else if(alu_result > 89999 && alu_result <= 90299) begin
-        address_a = alu_result[16:0] - 17'd90000;
+        address_a = alu_result[17:0] - 18'd90000;
         result = sin_rom_q_a;
       end
       else begin
-        address_a = alu_result[16:0] - 17'd90300;
+        address_a = alu_result[17:0] - 18'd90300;
         result = ram_q_a;
       end
     end
     else begin
-      address_a = 17'b0;
+      address_a = 18'b0;
       result = alu_result;
     end
   end
@@ -94,12 +94,12 @@ module memory_stage(
       read_data_b = image_rom_q_b;
     end
     else if(address_b > 89999 && address_b <= 90299) begin
-      address_b_aux = 17'b0;
+      address_b_aux = 18'b0;
       read_data_b = 24'b0;
     end
     else begin
-      address_b_aux = address_b - 17'd90300;
+      address_b_aux = address_b - 18'd90300;
       read_data_b = ram_q_b;
     end
   end
-endmodule
+endmodule 
