@@ -46,9 +46,9 @@ module EXECUTE (
     .reg2(reg2_alu),
     .operation(operation),
     .result(alu_result),
-	 .z_flag(z_flag_alu),
-	 .n_flag(n_flag_alu),
-	 .v_flag(v_flag_alu),
-	 .c_flag(c_flag_alu)
+    .z_flag(z_flag_alu),
+    .n_flag(n_flag_alu),
+    .v_flag(v_flag_alu),
+    .c_flag(c_flag_alu)
   );
 endmodule

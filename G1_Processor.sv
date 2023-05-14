@@ -85,10 +85,11 @@ module G1_Processor(
 	  .src1(src1), 
 	  .src2(src2), 
 	  .val1(val1), 
-	  .val2(val2)
-  
+	  .val2(val2),
+		.dest(dest)
   );
   
+
    unidad_adelantamiento forwarding_unit(
 	  .reg1_EXE(src1_forw), 
 	  .reg2_EXE(src2_forw), 
@@ -101,24 +102,6 @@ module G1_Processor(
 	  .reg1_sel(reg1_sel), 
 	  .reg2_sel(reg2_sel),
 	  .ST_reg_sel(ST_reg_sel)
-);
- 
- 
-	EXECUTE Ex(
-	  .clk(clk),
-	  .reg1_sel(reg1_sel),
-	  .reg2_sel(reg2_sel),
-	  .ST_reg_sel(ST_reg_sel), 
-	  .operation(EXE_CMD_Ex), 
-	  .reg1(val1_Ex), 
-	  .reg2(val2_Ex), 
-	  .mem_result(mem_result_alu), 
-	  .wb_result(writeVal), 
-	  .ST_reg_in(ST_value),
-	  //outputs
-	  .alu_result(alu_result),   
-	  .z_flag_alu(flagZ),
-	  .ST_reg_out(ST_reg_out_mem) 
 	);
   
   
@@ -146,7 +129,25 @@ module G1_Processor(
 	  .src2(src2_forw),
 	  .val1(val1_Ex), 
 	  .val2(val2_Ex)
-);
+	);
+
+	logic [23:0] ST_reg_out_mem
+	EXECUTE Ex(
+	  .clk(clk),
+	  .reg1_sel(reg1_sel),
+	  .reg2_sel(reg2_sel),
+	  .ST_reg_sel(ST_reg_sel), 
+	  .operation(EXE_CMD_Ex), 
+	  .reg1(val1_Ex), 
+	  .reg2(val2_Ex), 
+	  .mem_result(mem_result_alu), 
+	  .wb_result(writeVal), 
+	  .ST_reg_in(ST_value),
+	  //outputs
+	  .alu_result(alu_result),   
+	  .z_flag_alu(flagZ),
+	  .ST_reg_out(ST_reg_out_mem) 
+	);
 
 
 	logic alu_writeback_enable_out_pipe;
@@ -158,12 +159,12 @@ module G1_Processor(
   ALU_to_MEM alu_to_mem(
     .rst(rst),
     .clk(clk),
-    .writeback_enable(writeback_enable),
-    .mem_read_enable(mem_read_enable),
-    .mem_write_enable(mem_write_enable),
+    .writeback_enable(WB_EN_EXE),
+    .mem_read_enable(MEM_R_EN_EXE),
+    .mem_write_enable(MEM_W_EN_EXE),
     .instruction_dest(instruction_dest),
     .alu_result(alu_result),
-    .write_data(write_data),
+    .write_data(ST_reg_out_mem),
     .writeback_enable_out(alu_writeback_enable_out_pipe),
     .mem_read_enable_out(alu_mem_read_enable_out_pipe),
     .mem_write_enable_out(alu_mem_write_enable_out_pipe),
@@ -227,7 +228,7 @@ module G1_Processor(
     .mem_read_data(memory_mem_read_data_out_pipe),
     .alu_result(memory_alu_result_pipe_out),
     .writeback_enable_out(writeEn),
-    .instruction_dest_out(dest),
+    .instruction_dest_out(dest_WB),
     .writeback_data_out(writeVal)
   );
 endmodule 
