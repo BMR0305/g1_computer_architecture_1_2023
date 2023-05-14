@@ -113,6 +113,16 @@ module alu_tb();
     if (n_flag !== 0) $display("Error en la bandera de negativo");
     if (v_flag !== 0) $display("Error en la bandera de overflow");
     if (c_flag !== 0) $display("Error en la bandera de acarreo");
+	 // G1Pow
+    reg1 = 2;
+    reg2 = 4;
+    operation = 4'b1110;
+    #10;
+    if (result != 16) $display("Error en la operación de módulo");
+    if (z_flag !== 0) $display("Error en la bandera de cero");
+    if (n_flag !== 0) $display("Error en la bandera de negativo");
+    if (v_flag !== 0) $display("Error en la bandera de overflow");
+    if (c_flag !== 0) $display("Error en la bandera de acarreo");
 	end
 		
 endmodule

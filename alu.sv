@@ -81,22 +81,6 @@ logic signed [31:0] tmp; // variable temporal para guardar resultados
           v_flag = 0;
           c_flag = 0;
         end
-      4'b1110: // G1Shl
-        begin
-          result = reg1 << reg2[4:0];
-          z_flag = (result == 0);
-          n_flag = (result < 0);
-          v_flag = ((reg1[31] != 0) && (result[31] != reg1[31]));
-          c_flag = (reg2 > 31) ? 0 : reg1[reg2];
-        end
-      4'b1111: // G1Shr
-        begin
-          result = reg1 >> reg2[4:0];
-          z_flag = (result == 0);
-          n_flag = (result < 0);
-          v_flag = 0;
-          c_flag = (reg2 > 31) ? 0 : reg1[reg2];
-        end
       default:
         begin
           result = 0;
