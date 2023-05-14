@@ -56,7 +56,10 @@ registers = {
 
 
 def to_binary_string(number, width):
-    return f'{number:0{width}b}'
+    if (number < 0):
+        return f'{number % (1 << width):0{width}b}'
+    else:
+        return f'{number:0{width}b}'
 
 
 def split_nibbles(binary_string):
@@ -127,7 +130,7 @@ def branch_instruction(op_code, operands, current_pc, labels):
     for label in labels:
         if (label['label_name'] == operands[0]):
             label_pc = label['pc']
-            branch_pc = current_pc - label_pc
+            branch_pc = label_pc - current_pc
 
             branch_operand = to_binary_string(branch_pc, 12)
             branch_nibbles = split_nibbles(branch_operand)
@@ -162,17 +165,23 @@ def decode_instruction(op_code_key, operands, current_pc, labels):
 
 pc = 0
 labels = []
+instructions = []
 for instruction in instructions_file:
+    instruction = instruction.strip().lower()
+
+    if (instruction == '' or instruction[0] == ';'):
+        continue
+    elif (instruction[-1] == ':'):
+        label = {'label_name': instruction[:-1], 'pc': pc}
+        labels.append(label)
+        continue
+
+    instructions.append(instruction)
+    pc += 4
+
+pc = 0
+for instruction in instructions:
     try:
-        instruction = instruction.strip().lower()
-
-        if (instruction == '' or instruction[0] == ';'):
-            continue
-        elif (instruction[-1] == ':'):
-            label = {'label_name': instruction[:-1], 'pc': pc}
-            labels.append(label)
-            continue
-
         instruction = instruction.split(' ', 1)
 
         op_code_key = instruction[0]

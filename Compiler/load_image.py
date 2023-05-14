@@ -14,6 +14,20 @@ memory_file = open(memory_file_path, 'a')
 image = Image.open(image_path)
 pixels = list(image.getdata())
 
+word_width = 24
+memory_depth = 90000
+address_radix = 'HEX'
+data_radix = 'HEX'
+
+memory_file.write(f'WIDTH={word_width};\n')
+memory_file.write(f'DEPTH={memory_depth};\n\n')
+memory_file.write(f'ADDRESS_RADIX={address_radix};\n')
+memory_file.write(f'DATA_RADIX={data_radix};\n\n')
+memory_file.write('CONTENT BEGIN\n')
+
 for i in range(len(pixels)):
     pixel = pixels[i]
-    memory_file.write(f'{pixel[0]:06x}\n'.upper())
+    hex_pixel = f'{pixel[0]:06x}'
+    memory_file.write(f'\t{i:05x} : {hex_pixel};\n'.upper())
+
+memory_file.write('END;')
