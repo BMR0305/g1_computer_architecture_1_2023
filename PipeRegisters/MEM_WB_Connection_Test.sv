@@ -20,7 +20,7 @@ module MEM_WB_Connection_Test(
   memory_stage memory_stage(
     .rst(rst),
     .clk_a(clk_a),
-    .clk_b(0'b0),
+    .clk_b(1'b0),
     .writeback_enable(writeback_enable),
     .read_enable(read_enable),
     .write_enable(write_enable),

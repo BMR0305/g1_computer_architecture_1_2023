@@ -66,14 +66,14 @@ module memory_stage(
   
   D_FF #(.NUM_BITS(24)) alu_result_input_pipe(
     .CLK(clk_a),
-    .RST(reset), 
+    .RST(rst), 
     .D(alu_result),
     .Q(alu_result_out)
   );
   
   D_FF #(.NUM_BITS(1)) read_enable_input_pipe(
     .CLK(clk_a),
-    .RST(reset), 
+    .RST(rst), 
     .D(read_enable),
     .Q(read_enable_out)
   );

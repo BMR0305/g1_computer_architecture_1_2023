@@ -41,7 +41,7 @@ set_global_assignment -name FAMILY "Cyclone V"
 set_global_assignment -name DEVICE 5CSEBA6U23I7
 
 
-set_global_assignment -name TOP_LEVEL_ENTITY memory_stage
+set_global_assignment -name TOP_LEVEL_ENTITY ALU_MEM_WB_Connection_Test
 
 
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 22.1STD.1
@@ -158,6 +158,9 @@ set_location_assignment PIN_W20 -to SW[3]
 set_location_assignment PIN_W21 -to SW[2]
 set_location_assignment PIN_W24 -to SW[1]
 set_location_assignment PIN_Y24 -to SW[0]
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name QIP_FILE HDMI_Controller/pll/sys_pll.qip
 set_global_assignment -name QIP_FILE HDMI_Controller/pll/pll_reconfig.qip
 set_global_assignment -name QIP_FILE HDMI_Controller/pll/pll.qip
@@ -200,14 +203,16 @@ set_global_assignment -name SYSTEMVERILOG_FILE PipeRegisters/IF_to_ID.sv
 set_global_assignment -name SYSTEMVERILOG_FILE PipeRegisters/IF_to_ID_tb.sv
 set_global_assignment -name SYSTEMVERILOG_FILE PipeRegisters/IF_ID_Conection_Test.sv
 set_global_assignment -name SYSTEMVERILOG_FILE PipeRegisters/ALU_to_MEM.sv
+set_global_assignment -name SYSTEMVERILOG_FILE PipeRegisters/MEM_to_WB.sv
+set_global_assignment -name SYSTEMVERILOG_FILE PipeRegisters/MEM_WB_Connection_Test.sv
+set_global_assignment -name SYSTEMVERILOG_FILE PipeRegisters/ALU_MEM_WB_Connection_Test.sv
 set_global_assignment -name SYSTEMVERILOG_FILE Memory_HDMI_Conection.sv
 set_global_assignment -name SYSTEMVERILOG_FILE Memory/memory_stage.sv
 set_global_assignment -name QIP_FILE Memory/image_rom.qip
 set_global_assignment -name QIP_FILE Memory/sin_rom.qip
 set_global_assignment -name QIP_FILE Memory/data_ram.qip
+set_global_assignment -name SYSTEMVERILOG_FILE WB/writeback_stage.sv
+set_global_assignment -name SYSTEMVERILOG_FILE D_FF.sv
 set_global_assignment -name SYSTEMVERILOG_FILE HDMI_Controller/color_selector.sv
 set_global_assignment -name SYSTEMVERILOG_FILE HDMI_Controller/address_sel.sv
-set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
-set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
-set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
