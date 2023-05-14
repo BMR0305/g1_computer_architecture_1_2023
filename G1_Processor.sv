@@ -12,7 +12,7 @@ module G1_Processor(
 	logic [`REG_FILE_SIZE-1:0]  writeVal, reg1, reg2, val1, val2;
 	logic [`WORD_LEN-1:0] instruction_IF, instruction_ID; 
 	logic [3:0] branch_comm;
-	logic [`EXE_CMD_LEN-1:0] EXE_CMD;
+	logic [`EXE_CMD_LEN-1:0] EXE_CMD, EXE_CMD_Ex;
 
 
 	regFile rF(
@@ -73,7 +73,7 @@ module G1_Processor(
 	  .instruction(instruction_ID), //*
 	  .reg1(reg1),
 	  .reg2(reg2),
-	  
+	  //outputs
 	  .brTaken(brTaken), 
 	  .MEM_R_EN(MEM_R_EN), 
 	  .MEM_W_EN(MEM_W_EN), 
@@ -88,6 +88,65 @@ module G1_Processor(
 	  .val2(val2)
   
   );
+  
+   unidad_adelantamiento forwarding_unit(
+	  .reg1_EXE(src1_forw), 
+	  .reg2_EXE(src2_forw), 
+	  .ST_src_EXE(dest_EXE), 
+	  .dest_MEM(dest_MEM), 
+	  .dest_WB(dest), 
+	  .WB_EN_MEM(WB_EN_MEM), 
+	  .WB_EN_WB(writeEn),
+	  //outputs
+	  .reg1_sel(reg1_sel), 
+	  .reg2_sel(reg2_sel),
+	  .ST_reg_sel(ST_reg_sel)
+);
+ 
+ 
+	EXECUTE Ex(
+	  .clk(clk),
+	  .reg1_sel(reg1_sel),
+	  .reg2_sel(reg2_sel),
+	  .ST_reg_sel(ST_reg_sel), 
+	  .operation(EXE_CMD_Ex), 
+	  .reg1(val1_Ex), 
+	  .reg2(val2_Ex), 
+	  .mem_result(mem_result_alu), 
+	  .wb_result(writeVal), 
+	  .ST_reg_in(ST_value),
+	  //outputs
+	  .alu_result(alu_result),   
+	  .z_flag_alu(flagZ),
+	  .ST_reg_out(ST_reg_out_mem) 
+	);
+  
+  
+  Decode_Execute ID_Ex(
+	  .clk(clk), 
+	  .rst(rst),
+	  .MEM_R_EN_IN(MEM_R_EN), 
+	  .MEM_W_EN_IN(MEM_W_EN), 
+	  .WB_EN_IN(WB_EN), 
+	  .brTaken_in(brTaken),
+	  .EXE_CMD_IN(EXE_CMD),
+	  .src1_in(src1), 
+	  .src2_in(src2),
+	  .reg2In(reg2), 
+	  .val1In(val1), 
+	  .val2In(val2),
+	  //outputs
+	  .brTaken(brTaken_Ex), 
+	  .MEM_R_EN(MEM_R_EN_EXE), 
+	  .MEM_W_EN(MEM_W_EN_EXE), 
+	  .WB_EN(WB_EN_EXE), 
+	  .ST(ST_value),
+	  .EXE_CMD(EXE_CMD_Ex),
+	  .src1(src1_forw), 
+	  .src2(src2_forw),
+	  .val1(val1_Ex), 
+	  .val2(val2_Ex)
+);
 
 
 	logic alu_writeback_enable_out_pipe;
