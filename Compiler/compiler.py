@@ -163,6 +163,7 @@ def decode_instruction(op_code_key, operands, current_pc, labels):
         raise Exception(str(error))
 
 
+instruction_memory_size = 16384
 pc = 0
 labels = []
 instructions = []
@@ -180,8 +181,8 @@ for instruction in instructions_file:
     pc += 4
 
 pc = 0
-for instruction in instructions:
-    try:
+try:
+    for instruction in instructions:
         instruction = instruction.split(' ', 1)
 
         op_code_key = instruction[0]
@@ -198,7 +199,11 @@ for instruction in instructions:
             compiled_file.write(f'{nibble}\n')
             pc += 1
 
-    except Exception as error:
-        print(str(error))
-        os.remove(compiled_file_path)
-        sys.exit(1)
+    while pc < instruction_memory_size:
+        compiled_file.write(f'{empty_nibble}\n')
+        pc += 1
+
+except Exception as error:
+    print(str(error))
+    os.remove(compiled_file_path)
+    sys.exit(1)

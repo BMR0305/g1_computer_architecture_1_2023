@@ -15,11 +15,7 @@ module regFile (
   integer i;
 
   always @ (negedge clk, posedge rst) begin
-    if (rst) begin
-      for (i = 0; i < 12; i = i + 1)
-        regMem[i] <= 0;
-	    end
-
+    if (rst) regMem <= '{ default: '0};
     else if (writeEn) regMem[dest] <= writeVal;
   end
 
