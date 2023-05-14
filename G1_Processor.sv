@@ -8,7 +8,7 @@ module G1_Processor(
 	
 	logic writeEn, WB_EN_EXE, WB_EN_MEM, is_imm, ST, MEM_R_EN_EXE, hazard_detected, flagZ;
 	logic brTaken, MEM_R_EN, MEM_W_EN, WB_EN;
-	logic [`REG_FILE_ADDR_LEN-1:0] src1, src2, dest, dest_EXE, dest_MEM; 
+	logic [`REG_FILE_ADDR_LEN-1:0] src1, src2, dest, dest_EXE, dest_MEM, dest_WB; 
 	logic [`REG_FILE_SIZE-1:0]  writeVal, reg1, reg2, val1, val2;
 	logic [`WORD_LEN-1:0] instruction_IF, instruction_ID; 
 	logic [3:0] branch_comm;
@@ -95,7 +95,7 @@ module G1_Processor(
 	  .reg2_EXE(src2_forw), 
 	  .ST_src_EXE(dest_EXE), 
 	  .dest_MEM(dest_MEM), 
-	  .dest_WB(dest), 
+	  .dest_WB(dest_WB), 
 	  .WB_EN_MEM(WB_EN_MEM), 
 	  .WB_EN_WB(writeEn),
 	  //outputs
@@ -108,6 +108,7 @@ module G1_Processor(
   Decode_Execute ID_Ex(
 	  .clk(clk), 
 	  .rst(rst),
+	  .dest_in(dest),
 	  .MEM_R_EN_IN(MEM_R_EN), 
 	  .MEM_W_EN_IN(MEM_W_EN), 
 	  .WB_EN_IN(WB_EN), 
@@ -128,7 +129,8 @@ module G1_Processor(
 	  .src1(src1_forw), 
 	  .src2(src2_forw),
 	  .val1(val1_Ex), 
-	  .val2(val2_Ex)
+	  .val2(val2_Ex),
+	  .dest_out(dest_EXE)
 	);
 
 	logic [23:0] ST_reg_out_mem
@@ -162,13 +164,13 @@ module G1_Processor(
     .writeback_enable(WB_EN_EXE),
     .mem_read_enable(MEM_R_EN_EXE),
     .mem_write_enable(MEM_W_EN_EXE),
-    .instruction_dest(instruction_dest),
+    .instruction_dest(dest_EXE),
     .alu_result(alu_result),
     .write_data(ST_reg_out_mem),
     .writeback_enable_out(alu_writeback_enable_out_pipe),
     .mem_read_enable_out(alu_mem_read_enable_out_pipe),
     .mem_write_enable_out(alu_mem_write_enable_out_pipe),
-    .instruction_dest_out(alu_instruction_dest_out_pipe),
+    .instruction_dest_out(dest_MEM),
     .alu_result_out(alu_alu_result_out_pipe),
     .write_data_out(alu_write_data_out_pipe)
   );
@@ -176,7 +178,6 @@ module G1_Processor(
 
   logic memory_writeback_enable_out;
   logic memory_read_enable_out;
-  logic [3:0] memory_instruction_dest_out;
   logic [23:0] memory_data_out;
   logic [23:0] memory_alu_result_out;
   logic [23:0] memory_data_b;
@@ -202,7 +203,6 @@ module G1_Processor(
 
   logic memory_writeback_enable_out_pipe;
   logic memory_mem_read_enable_out_pipe;
-  logic [3:0] memory_instruction_dest_out_pipe;
   logic [23:0] memory_mem_read_data_out_pipe;
   logic [23:0] memory_alu_result_pipe_out;
   MEM_to_WB mem_to_wb(
@@ -210,12 +210,12 @@ module G1_Processor(
     .clk(clk),
     .writeback_enable(memory_writeback_enable_out),
     .mem_read_enable(memory_read_enable_out),
-    .instruction_dest(memory_instruction_dest_out),
+    .instruction_dest(dest_MEM),
     .mem_read_data(memory_data_out),
     .alu_result(memory_alu_result_out),
     .writeback_enable_out(memory_writeback_enable_out_pipe),
     .mem_read_enable_out(memory_mem_read_enable_out_pipe),
-    .instruction_dest_out(memory_instruction_dest_out_pipe),
+    .instruction_dest_out(dest_WB),
     .mem_read_data_out(memory_mem_read_data_out_pipe),
     .alu_result_out(memory_alu_result_pipe_out)
   );
