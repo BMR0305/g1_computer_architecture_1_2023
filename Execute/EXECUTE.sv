@@ -2,16 +2,16 @@ module EXECUTE (
   input clk,
   input [1:0] reg1_sel, reg2_sel, ST_reg_sel, // valores desde forwarding
   input [3:0] operation, // seleccion operacion para alu
-  input [31:0] reg1, reg2, mem_result, wb_result, ST_reg_in, // registros de decode, mem y wb
-  output [31:0] alu_result,   
+  input [23:0] reg1, reg2, mem_result, wb_result, ST_reg_in, // registros de decode, mem y wb
+  output [23:0] alu_result,   
   output z_flag_alu,
   output n_flag_alu,
   output v_flag_alu,
   output c_flag_alu, 
-  output [31:0] ST_reg_out 
+  output [23:0] ST_reg_out 
 );
 
-  wire [31:0] reg1_alu, reg2_alu;
+  wire [23:0] reg1_alu, reg2_alu;
   
   // mux para reg1 de alu
   mux3 mux_reg1 (

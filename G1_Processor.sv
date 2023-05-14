@@ -6,7 +6,7 @@ module G1_Processor(
 	input logic forward_EN
 );
 	
-	logic writeEn, WB_EN_EXE, WB_EN_MEM, is_imm, ST, MEM_R_EN_EXE, hazard_detected, flagZ;
+	logic writeEn, WB_EN_MEM, is_imm, ST, MEM_R_EN_EXE, MEM_W_EN_EXE, WB_EN_EXE, hazard_detected, flagZ;
 	logic brTaken, MEM_R_EN, MEM_W_EN, WB_EN;
 	logic [`REG_FILE_ADDR_LEN-1:0] src1, src2, dest, dest_EXE, dest_MEM, dest_WB; 
 	logic [`REG_FILE_SIZE-1:0]  writeVal, reg1, reg2, val1, val2;
@@ -50,7 +50,7 @@ module G1_Processor(
 	IFStage ifS (
 		.clk(clk),
 		.rst(rst),
-		.brTaken(brTaken),
+		.brTaken(brTaken_Ex),
 		.brOffset(val2),
 		.freeze(hazard_detected),
 		.instruction(instruction_IF)
@@ -60,7 +60,7 @@ module G1_Processor(
 	IF_to_ID f2d(
 		.clk(clk),
 		.rst(rst),
-		.flush(brTaken),
+		.flush(brTaken_Ex),
 		.freeze(hazard_detected),
 		.instructionIn(instruction_IF),
 		.instruction(instruction_ID)
@@ -88,23 +88,12 @@ module G1_Processor(
 	  .val2(val2),
 		.dest(dest)
   );
-  
 
-   unidad_adelantamiento forwarding_unit(
-	  .reg1_EXE(src1_forw), 
-	  .reg2_EXE(src2_forw), 
-	  .ST_src_EXE(dest_EXE), 
-	  .dest_MEM(dest_MEM), 
-	  .dest_WB(dest_WB), 
-	  .WB_EN_MEM(WB_EN_MEM), 
-	  .WB_EN_WB(writeEn),
-	  //outputs
-	  .reg1_sel(reg1_sel), 
-	  .reg2_sel(reg2_sel),
-	  .ST_reg_sel(ST_reg_sel)
-	);
-  
-  
+  logic brTaken_Ex;
+	logic [23:0] ST_VALUE_EXE;
+	logic [23:0] reg2_Ex;
+  logic [3:0] src1_forw, src2_forw;
+	logic [23:0] val1_Ex, val2_Ex;
   Decode_Execute ID_Ex(
 	  .clk(clk), 
 	  .rst(rst),
@@ -124,16 +113,34 @@ module G1_Processor(
 	  .MEM_R_EN(MEM_R_EN_EXE), 
 	  .MEM_W_EN(MEM_W_EN_EXE), 
 	  .WB_EN(WB_EN_EXE), 
-	  .ST(ST_value),
+	  .ST(ST_VALUE_EXE),
 	  .EXE_CMD(EXE_CMD_Ex),
 	  .src1(src1_forw), 
 	  .src2(src2_forw),
 	  .val1(val1_Ex), 
 	  .val2(val2_Ex),
+		.reg2Out(reg2_Ex),
 	  .dest_out(dest_EXE)
 	);
 
-	logic [23:0] ST_reg_out_mem
+  logic [1:0] reg1_sel, reg2_sel, ST_reg_sel;
+	unidad_adelantamiento forwarding_unit(
+	  .reg1_EXE(src1_forw), 
+	  .reg2_EXE(src2_forw), 
+	  .ST_src_EXE(ST), 
+	  .dest_MEM(dest_MEM), 
+	  .dest_WB(dest_WB), 
+	  .WB_EN_MEM(alu_writeback_enable_out_pipe), 
+	  .WB_EN_WB(memory_writeback_enable_out_pipe),
+	  //outputs
+	  .reg1_sel(reg1_sel), 
+	  .reg2_sel(reg2_sel),
+	  .ST_reg_sel(ST_reg_sel)
+	);
+  
+
+	logic [23:0] ST_reg_out_mem;
+	logic [23:0] alu_result;
 	EXECUTE Ex(
 	  .clk(clk),
 	  .reg1_sel(reg1_sel),
@@ -142,9 +149,9 @@ module G1_Processor(
 	  .operation(EXE_CMD_Ex), 
 	  .reg1(val1_Ex), 
 	  .reg2(val2_Ex), 
-	  .mem_result(mem_result_alu), 
+	  .mem_result(memory_alu_result_out), 
 	  .wb_result(writeVal), 
-	  .ST_reg_in(ST_value),
+	  .ST_reg_in(reg2_Ex),
 	  //outputs
 	  .alu_result(alu_result),   
 	  .z_flag_alu(flagZ),
@@ -155,7 +162,6 @@ module G1_Processor(
 	logic alu_writeback_enable_out_pipe;
   logic alu_mem_read_enable_out_pipe;
   logic alu_mem_write_enable_out_pipe;
-  logic [3:0] alu_instruction_dest_out_pipe;
   logic [23:0] alu_alu_result_out_pipe;
   logic [23:0] alu_write_data_out_pipe;
   ALU_to_MEM alu_to_mem(
@@ -178,6 +184,7 @@ module G1_Processor(
 
   logic memory_writeback_enable_out;
   logic memory_read_enable_out;
+	logic [3:0] memory_instruction_dest_out;
   logic [23:0] memory_data_out;
   logic [23:0] memory_alu_result_out;
   logic [23:0] memory_data_b;
@@ -188,7 +195,7 @@ module G1_Processor(
     .writeback_enable(alu_writeback_enable_out_pipe),
     .read_enable(alu_mem_read_enable_out_pipe),
     .write_enable(alu_mem_write_enable_out_pipe),
-    .instruction_dest(alu_instruction_dest_out_pipe),
+    .instruction_dest(dest_MEM),
     .alu_result(alu_alu_result_out_pipe),
     .write_data_a(alu_write_data_out_pipe),
     .address_b(18'b0),
@@ -203,6 +210,7 @@ module G1_Processor(
 
   logic memory_writeback_enable_out_pipe;
   logic memory_mem_read_enable_out_pipe;
+	logic [3:0] memory_instruction_dest_out_pipe;
   logic [23:0] memory_mem_read_data_out_pipe;
   logic [23:0] memory_alu_result_pipe_out;
   MEM_to_WB mem_to_wb(
@@ -210,12 +218,12 @@ module G1_Processor(
     .clk(clk),
     .writeback_enable(memory_writeback_enable_out),
     .mem_read_enable(memory_read_enable_out),
-    .instruction_dest(dest_MEM),
+    .instruction_dest(memory_instruction_dest_out),
     .mem_read_data(memory_data_out),
     .alu_result(memory_alu_result_out),
     .writeback_enable_out(memory_writeback_enable_out_pipe),
     .mem_read_enable_out(memory_mem_read_enable_out_pipe),
-    .instruction_dest_out(dest_WB),
+    .instruction_dest_out(memory_instruction_dest_out_pipe),
     .mem_read_data_out(memory_mem_read_data_out_pipe),
     .alu_result_out(memory_alu_result_pipe_out)
   );

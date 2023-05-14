@@ -32,7 +32,7 @@ module ID (hazard_detected, flagZ, is_imm_out, ST, instruction, reg1, reg2, src1
 	  .MEM_W_EN(MEM_W_EN)
   );
   
-    my_mux_3 #(.LENGTH(`REG_FILE_ADDR_LEN)) mux_src1 ( // determins the register source 1 for register file
+  my_mux_3 #(.LENGTH(`REG_FILE_ADDR_LEN)) mux_src1 ( // determins the register source 1 for register file
     .in1(instruction[7:4]),
     .in2(instruction[11:8]),
 	  .in3(4'b1111),
@@ -46,9 +46,7 @@ module ID (hazard_detected, flagZ, is_imm_out, ST, instruction, reg1, reg2, src1
     .sel(branchEn || Is_Imm),
     .out(val1)
   );
-
   
-
   my_mux_3 #(.LENGTH(`REG_FILE_ADDR_LEN)) mux_src2 ( // determins the register source 2 for register file
     .in1(instruction[3:0]),
     .in2(instruction[7:4]),
@@ -60,9 +58,9 @@ module ID (hazard_detected, flagZ, is_imm_out, ST, instruction, reg1, reg2, src1
   my_mux_3 #(.LENGTH(`REG_FILE_SIZE)) mux_val2 ( // determins whether val2 is from the reg file or the immediate value
     .in1(reg2),
     .in2(signExtMux),
-	 .in3(24'b000000000000000000000000),
+	  .in3(24'b000000000000000000000000),
     .sel({ST || (`OP_MOVR == EXE_CMD), branchEn || Is_Imm}),
-	 .out(val2)
+	  .out(val2)
   );
 
 
