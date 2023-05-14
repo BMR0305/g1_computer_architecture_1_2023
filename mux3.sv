@@ -1,7 +1,7 @@
 module mux3 (
 	input logic [31:0] a, b, c, // entradas para alu
 	input logic [1:0] sel, // selección de cuál registro va a alu
-	input logic [31:0] out); // registro seleccionado
+	output logic [31:0] out); // registro seleccionado
 	
     always_comb begin
         case(sel)
