@@ -3,11 +3,10 @@ module testIf();
 	logic clk;
 	logic rst;
 	logic brTaken;
-	logic [31:0] brOffset;
+	logic [23:0] brOffset;
 	logic freeze;
 	
-	logic [31:0] PC;
-	logic [31:0] instruction;
+	logic [15:0] instruction;
 	
 
 	
@@ -18,7 +17,6 @@ module testIf();
 	 .brTaken(brTaken),
 	 .brOffset(brOffset),
 	 .freeze(freeze),
-	 .PC(PC),
 	 .instruction(instruction) );
 	 
 	 
