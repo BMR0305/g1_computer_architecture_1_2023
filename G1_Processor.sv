@@ -10,7 +10,7 @@ module G1_Processor(input clk, input rst, input forward_EN);
 	logic [`FORW_SEL_LEN-1:0]  reg1_sel, reg2_sel, ST_reg_sel;
 	logic [`WORD_LEN-1:0] instruction_IF, instruction_ID; 
 	logic [3:0] branch_comm;
-	logic [`EXE_CMD_LEN-1:0] EXE_CMD;
+	logic [`EXE_CMD_LEN-1:0] EXE_CMD, EXE_CMD_Ex;
 
 
 
@@ -104,7 +104,7 @@ module G1_Processor(input clk, input rst, input forward_EN);
 	  .reg1_sel(reg1_sel),
 	  .reg2_sel(reg2_sel),
 	  .ST_reg_sel(ST_reg_sel), 
-	  .operation(EXE_CMD), 
+	  .operation(EXE_CMD_Ex), 
 	  .reg1(val1_Ex), 
 	  .reg2(val2_Ex), 
 	  .mem_result(mem_result_alu), 
@@ -136,7 +136,7 @@ module G1_Processor(input clk, input rst, input forward_EN);
 	  .MEM_W_EN(MEM_W_EN_EXE), 
 	  .WB_EN(WB_EN_EXE), 
 	  .ST(ST_value),
-	  .EXE_CMD(EXE_CMD),
+	  .EXE_CMD(EXE_CMD_Ex),
 	  .src1(src1_forw), 
 	  .src2(src2_forw),
 	  .val1(val1_Ex), 
