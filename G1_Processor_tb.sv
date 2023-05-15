@@ -6,15 +6,20 @@ module G1_Processor_tb();
   logic forward_EN;
 
   G1_Processor dut(
-
+    .clk(clk),
+    .rst(rst),
+    .forward_EN(forward_EN)
   );
 
   initial begin
     clk = 0;
-    rst = 0;
+    rst = 1;
     forward_EN = 1;
 
-    #1000;
+    #1;
+    rst = 0;
+
+    #500;
     $stop;
   end
 

@@ -1,6 +1,12 @@
+G1Movi r1, #0x01
+G1Movi r10, #0x0A
+
+; r0 = 0xB
 G1Ldr r0, r1
+
+; mem[0x0B] = 0x01
 G1Str r0, r1
-G1Ldr r2, r3
-G1Str r2, r3
-G1Ldr r4, r5
-G1Str r11, r9
+
+; r0 = 0x01
+G1Movi r2, #0x0B 
+G1Ldr r0, r2

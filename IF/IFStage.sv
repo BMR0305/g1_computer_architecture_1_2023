@@ -8,7 +8,8 @@ module IFStage (
   output [15:0] instruction);
   
 
-  logic [13:0] adderOut, PC;
+  logic [23:0] adderOut;
+  logic [23:0] PC;
   logic [23:0] adderIn1;
   
 

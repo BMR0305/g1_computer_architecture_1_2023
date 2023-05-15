@@ -39,7 +39,7 @@ module memory_stage(
   logic [23:0] sin_rom_q_b;
   sin_rom sin_rom(
     .aclr(rst),
-    .address(address_a),
+    .address(address_a[8:0]),
     .clock(clk_a),
     .rden(read_enable),
     .q(sin_rom_q_a)

@@ -1,5 +1,5 @@
-G1Movi r0, #0xFA
+G1Movi r1, #0x7F
 G1Movi r3, #0x0
 G1Movi r2, #0x12
 G1Movr r1, r0
-G1Movr r5, r11
+G1Movr r5, r2

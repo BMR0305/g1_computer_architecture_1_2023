@@ -21,7 +21,7 @@ module G1_Processor(
 		.writeEn(writeEn), //*
 		.src1(src1),
 		.src2(src2),
-		.dest(dest),
+		.dest(dest_WB),
 		.writeVal(writeVal),
 		
 		.reg1(reg1),
@@ -47,6 +47,7 @@ module G1_Processor(
 	);
 	
 
+  logic brTaken_Ex;
 	IFStage ifS (
 		.clk(clk),
 		.rst(rst),
@@ -89,7 +90,6 @@ module G1_Processor(
 		.dest(dest)
   );
 
-  logic brTaken_Ex;
 	logic [23:0] ST_VALUE_EXE;
 	logic [23:0] reg2_Ex;
   logic [3:0] src1_forw, src2_forw;
@@ -123,11 +123,13 @@ module G1_Processor(
 	  .dest_out(dest_EXE)
 	);
 
+	logic alu_writeback_enable_out_pipe;
+  logic memory_writeback_enable_out_pipe;
   logic [1:0] reg1_sel, reg2_sel, ST_reg_sel;
 	unidad_adelantamiento forwarding_unit(
 	  .reg1_EXE(src1_forw), 
 	  .reg2_EXE(src2_forw), 
-	  .ST_src_EXE(ST), 
+	  .ST_src_EXE(dest_EXE), 
 	  .dest_MEM(dest_MEM), 
 	  .dest_WB(dest_WB), 
 	  .WB_EN_MEM(alu_writeback_enable_out_pipe), 
@@ -141,6 +143,7 @@ module G1_Processor(
 
 	logic [23:0] ST_reg_out_mem;
 	logic [23:0] alu_result;
+  logic [23:0] memory_alu_result_out;
 	EXECUTE Ex(
 	  .clk(clk),
 	  .reg1_sel(reg1_sel),
@@ -159,7 +162,6 @@ module G1_Processor(
 	);
 
 
-	logic alu_writeback_enable_out_pipe;
   logic alu_mem_read_enable_out_pipe;
   logic alu_mem_write_enable_out_pipe;
   logic [23:0] alu_alu_result_out_pipe;
@@ -186,7 +188,6 @@ module G1_Processor(
   logic memory_read_enable_out;
 	logic [3:0] memory_instruction_dest_out;
   logic [23:0] memory_data_out;
-  logic [23:0] memory_alu_result_out;
   logic [23:0] memory_data_b;
   memory_stage memory_stage(
     .rst(rst),
@@ -208,7 +209,6 @@ module G1_Processor(
   );
 
 
-  logic memory_writeback_enable_out_pipe;
   logic memory_mem_read_enable_out_pipe;
 	logic [3:0] memory_instruction_dest_out_pipe;
   logic [23:0] memory_mem_read_data_out_pipe;

@@ -1,10 +1,15 @@
 module instructionMem (
-  input [13:0] addr,
+  input [23:0] addr,
   output [15:0] instruction);
 
 	logic [3:0] rom [0:16383] = '{default: '0};
 
 	initial $readmemb("ROMInstructions.mem", rom);
 
-	assign instruction = {rom[addr],rom[addr+1],rom[addr+2],rom[addr+3]};
+	assign instruction = {
+		rom[addr[13:0]],
+		rom[addr[13:0]+1],
+		rom[addr[13:0]+2],
+		rom[addr[13:0]+3]
+	};
 endmodule // insttructionMem

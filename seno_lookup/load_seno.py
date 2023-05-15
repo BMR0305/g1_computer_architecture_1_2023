@@ -27,9 +27,9 @@ for i in range(0,300):
        
     if (seno < 0):
         seno = seno % (1 << word_width)
-    print(seno) 
+    # print(seno) 
     hex_seno = f'{seno:06x}'
-    print(hex_seno)
+    # print(hex_seno)
     memory_file.write(f'\t{i:05x} : {hex_seno};\n'.upper())
 
 memory_file.write('END;')

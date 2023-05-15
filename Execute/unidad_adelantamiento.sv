@@ -1,7 +1,7 @@
 module unidad_adelantamiento (
-  input [31:0] reg1_EXE, reg2_EXE, // registros operandos para alu en exe
-  input [31:0] ST_src_EXE, // registro a almacenarse en memoria
-  input [31:0] dest_MEM, dest_WB, // registros para memoria y WB
+  input [3:0] reg1_EXE, reg2_EXE, // registros operandos para alu en exe
+  input [3:0] ST_src_EXE, // registro a almacenarse en memoria
+  input [3:0] dest_MEM, dest_WB, // registros para memoria y WB
   input WB_EN_MEM, WB_EN_WB, // señales de control para escritura en memoria o WB (si está habilitado o no)
   output reg [1:0] reg1_sel, reg2_sel, // señales de control para selección de registros a alu
   output reg [1:0] ST_reg_sel // señal de control para almacenar en memoria

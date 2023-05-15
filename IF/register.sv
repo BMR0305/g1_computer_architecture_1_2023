@@ -2,8 +2,8 @@ module register (
   input	clk, 
   input rst, 
   input writeEn,
-  input [13:0] regIn,
-  output reg [13:0] regOut);
+  input [23:0] regIn,
+  output reg [23:0] regOut = 0);
 
   always @ (posedge clk, posedge rst) begin
     if (rst) regOut <= 0;

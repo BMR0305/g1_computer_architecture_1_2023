@@ -41,13 +41,13 @@ module controller (opCode, branchEn, EXE_CMD, Branch_command, Is_Imm, Is_Str, Is
         end
 		  
 		    `OP_CMP: begin
-          EXE_CMD <= `OP_CMP; 
+          EXE_CMD <= `OP_SUB; 
           Is_Cmp <= 1;
           {branchEn, Branch_command, Is_Imm, Is_Str, Is_Ldr, WB_EN, MEM_R_EN, MEM_W_EN} <= 0;
         end
 		  
 		    `OP_MOVR: begin
-          EXE_CMD <= `OP_MOVR; 
+          EXE_CMD <= `OP_ADD; 
           WB_EN <= 1;
           {branchEn, Branch_command, Is_Imm, Is_Str, Is_Ldr, Is_Cmp, MEM_R_EN, MEM_W_EN} <= 0;
         end
@@ -65,7 +65,7 @@ module controller (opCode, branchEn, EXE_CMD, Branch_command, Is_Imm, Is_Str, Is
 		  
         // operations using an immediate value embedded in the instruction
 		    `OP_MOVI: begin
-          EXE_CMD <= `OP_MOVI; 
+          EXE_CMD <= `OP_ADD; 
           WB_EN <= 1; 
           Is_Imm <= 1;
           {branchEn, Branch_command, Is_Str, Is_Ldr, Is_Cmp, MEM_R_EN, MEM_W_EN} <= 0;
@@ -73,9 +73,11 @@ module controller (opCode, branchEn, EXE_CMD, Branch_command, Is_Imm, Is_Str, Is
   
         // memory operations
         `OP_LDR: begin
-          EXE_CMD <= `OP_ADD; WB_EN <= 1; 
-          MEM_R_EN <= 1; Is_Ldr <= 1;
-          {branchEn, Branch_command, Is_Imm, Is_Str, Is_Ldr, Is_Cmp, WB_EN, MEM_W_EN} <= 0;
+          EXE_CMD <= `OP_ADD;
+          WB_EN <= 1; 
+          MEM_R_EN <= 1; 
+          Is_Ldr <= 1;
+          {branchEn, Branch_command, Is_Imm, Is_Str, Is_Cmp, MEM_W_EN} <= 0;
         end
         `OP_STR: begin
           EXE_CMD <= `OP_ADD; 
