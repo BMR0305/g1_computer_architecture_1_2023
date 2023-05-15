@@ -6,7 +6,7 @@ module hazard_detection(
   input [`REG_FILE_ADDR_LEN-1:0] dest_EXE,//id del registro destino de la etapa de execute
   input [`REG_FILE_ADDR_LEN-1:0] dest_MEM,//id del registro destino de la etapa de memory
   input [3:0] op, //op de la instrucion a ejecutar
-  input forward_EN, WB_EN_EXE, WB_EN_MEM, is_imm, ST, MEM_R_EN_EXE,
+  input forward_EN, WB_EN_EXE, WB_EN_MEM, is_imm, Is_Ldr, Is_Str, MEM_R_EN_EXE, MEM_R_EN_MEM,
   // Foward_EN = flag que indica si está activo el adelantamiento
   // WB_EN_EXE = flag que indica si el WB sera utilizado con la instruccion que está etapa de ejecucion
   // WB_EN_MEM = flag que indica si el WB sera utilizado con la instruccion que está etapa de memoria
@@ -17,7 +17,7 @@ module hazard_detection(
 
   logic src2_is_valid, src1_is_valid, exe_has_hazard, mem_has_hazard, hazard, is_branch;
 
-  assign src2_is_valid =  (~is_imm) && (op != `OP_MOVR) && (~ST) && (op != `OP_BEQ) && (op != `OP_JMP); // flag que indica si existe un src2 en la instruccion
+  assign src2_is_valid =  (~is_imm) && (op != `OP_MOVR) && (~Is_Ldr) && (op != `OP_BEQ) && (op != `OP_JMP); // flag que indica si existe un src2 en la instruccion
 
   assign src1_is_valid =  (op != `OP_MOVI) && (op != `OP_BEQ) && (op != `OP_JMP) ; // flag que indica si existe un src1 en la instruccion
 
@@ -34,5 +34,6 @@ module hazard_detection(
   assign is_branch = (op== `OP_BEQ);
 	
 	//Deteccion de un problema tomando en cuenta si se encuentra habilitado o no el adelantamiento
-  assign hazard_detected = ~forward_EN ? hazard : (is_branch && hazard) || (MEM_R_EN_EXE && mem_has_hazard);
+
+  assign hazard_detected = ~forward_EN ? hazard : (is_branch && hazard) || (MEM_R_EN_EXE && mem_has_hazard) || (MEM_R_EN_EXE && exe_has_hazard) || (MEM_R_EN_MEM && mem_has_hazard);
 endmodule 

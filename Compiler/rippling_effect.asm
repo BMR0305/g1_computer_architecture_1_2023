@@ -126,15 +126,19 @@ frame_loop:
     g1mul r3, r1, r2
 
     ; stores the value of the current pixel in its new position
-    ; r1 = 215
-    g1movi r1, #0xD7
+    ; r1 = 43
+    g1movi r1, #0x2B
     ; r2 = 35
     g1movi r2, #0x23
-    ; r1 = 215 * 35 = 7525
+    ; r1 = 43 * 35 = 1505
     g1mul r1, r1, r2
     ; r2 = 12
     g1movi r2, #0xC
-    ; r1 = 7525 * 12 =  90300
+    ; r1 = 1505 * 12 =  18060
+    g1mul r1, r1, r2
+    ; r2 = 5
+    g1movi r2, #0x5
+    ; r1 = 18060 * 5 =  90300
     g1mul r1, r1, r2
     ; r3 = x_new * y_new + 90300 -> stores in ram 
     g1add r3, r3, r1
@@ -147,7 +151,7 @@ frame_loop:
     ; x = x + 1
     g1add r5, r5, r3
     
-    ; if x == 301, jump to increment_pixel_y
+    ; if x == 300, jump to increment_pixel_y
     g1cmp r5, r11
     g1beq increment_pixel_y
 

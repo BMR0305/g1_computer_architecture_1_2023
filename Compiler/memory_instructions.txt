@@ -8,5 +8,5 @@ G1Ldr r0, r1
 G1Str r0, r1
 
 ; r0 = 0x01
-G1Movi r2, #0x0B 
+G1Movi r2, #0x0B
 G1Ldr r0, r2

@@ -6,7 +6,7 @@ module G1_Processor(
 	input logic forward_EN
 );
 	
-	logic writeEn, WB_EN_MEM, is_imm, ST, MEM_R_EN_EXE, MEM_W_EN_EXE, WB_EN_EXE, hazard_detected, flagZ;
+	logic writeEn, WB_EN_MEM, is_imm, Is_Ldr, Is_Str, MEM_R_EN_EXE, MEM_W_EN_EXE, WB_EN_EXE, hazard_detected, flagZ;
 	logic brTaken, MEM_R_EN, MEM_W_EN, WB_EN;
 	logic [`REG_FILE_ADDR_LEN-1:0] src1, src2, dest, dest_EXE, dest_MEM, dest_WB; 
 	logic [`REG_FILE_SIZE-1:0]  writeVal, reg1, reg2, val1, val2;
@@ -28,7 +28,8 @@ module G1_Processor(
 		.reg2(reg2)
 	);
 	
-
+  logic memory_read_enable_out;
+	logic alu_writeback_enable_out_pipe;
 	hazard_detection h_d(
 		.src1_ID(src1),
 		.src2_ID(src2),
@@ -36,11 +37,14 @@ module G1_Processor(
 		.dest_MEM(dest_MEM), //*
 		.op(instruction_ID[15:12]),
 		.WB_EN_EXE(WB_EN_EXE), //*
-		.WB_EN_MEM(WB_EN_MEM), //*
+		.WB_EN_MEM(alu_writeback_enable_out_pipe), //*
 		.MEM_R_EN_EXE(MEM_R_EN_EXE), //*
+		.MEM_R_EN_MEM(memory_read_enable_out), //*
 		.forward_EN(forward_EN),
 		.is_imm(is_imm),
-		.ST(ST),
+		// .ST(ST),
+		.Is_Ldr(Is_Ldr),
+		.Is_Str(Is_Str),
 		
 		
 		.hazard_detected(hazard_detected)
@@ -51,7 +55,7 @@ module G1_Processor(
 	IFStage ifS (
 		.clk(clk),
 		.rst(rst),
-		.brTaken(brTaken_Ex),
+		.brTaken(brTaken),
 		.brOffset(val2),
 		.freeze(hazard_detected),
 		.instruction(instruction_IF)
@@ -61,7 +65,7 @@ module G1_Processor(
 	IF_to_ID f2d(
 		.clk(clk),
 		.rst(rst),
-		.flush(brTaken_Ex),
+		.flush(brTaken),
 		.freeze(hazard_detected),
 		.instructionIn(instruction_IF),
 		.instruction(instruction_ID)
@@ -80,7 +84,9 @@ module G1_Processor(
 	  .MEM_W_EN(MEM_W_EN), 
 	  .WB_EN(WB_EN), 
 	  .is_imm_out(is_imm), 
-	  .ST(ST), 
+	  // .ST(ST), 
+		.Is_Ldr(Is_Ldr),
+		.Is_Str(Is_Str),
 	  .EXE_CMD(EXE_CMD), 
 	  .branch_comm(branch_comm), 
 	  .src1(src1), 
@@ -123,7 +129,6 @@ module G1_Processor(
 	  .dest_out(dest_EXE)
 	);
 
-	logic alu_writeback_enable_out_pipe;
   logic memory_writeback_enable_out_pipe;
   logic [1:0] reg1_sel, reg2_sel, ST_reg_sel;
 	unidad_adelantamiento forwarding_unit(
@@ -185,7 +190,6 @@ module G1_Processor(
 
 
   logic memory_writeback_enable_out;
-  logic memory_read_enable_out;
 	logic [3:0] memory_instruction_dest_out;
   logic [23:0] memory_data_out;
   logic [23:0] memory_data_b;
