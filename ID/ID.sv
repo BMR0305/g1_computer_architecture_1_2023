@@ -36,7 +36,7 @@ module ID (hazard_detected, flagZ, is_imm_out, ST, instruction, reg1, reg2, src1
     .in1(instruction[7:4]),
     .in2(instruction[11:8]),
 	  .in3(4'b1111),
-    .sel({Is_Imm || branchEn, Is_Cmp}),
+    .sel({Is_Imm || branchEn, Is_Cmp || Is_Str}),
     .out(src1)
   );
 
@@ -51,7 +51,7 @@ module ID (hazard_detected, flagZ, is_imm_out, ST, instruction, reg1, reg2, src1
     .in1(instruction[3:0]),
     .in2(instruction[7:4]),
 	  .in3(4'b1111),
-    .sel({ST || Is_Imm || branchEn || (`OP_MOVR == EXE_CMD), Is_Cmp}),
+    .sel({Is_Ldr || Is_Imm || branchEn || (`OP_MOVR == EXE_CMD), Is_Cmp || Is_Str}),
     .out(src2)
   );
 
