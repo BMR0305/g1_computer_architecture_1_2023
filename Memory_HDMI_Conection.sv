@@ -91,16 +91,13 @@ module Memory_HDMI_Conection(
 	);
 	
 	memory_stage m_s(
-	  .rst(1'b0),
+	  .rst(KEY[0]),
 	  .clk_a(1'b0),
 	  .clk_b(FPGA_CLK2_50),
 	  .read_enable(1'b0),
 	  .write_enable(1'b0),
-	  .mem_to_reg(1'b0),
 	  .alu_result(1'b0),
 	  .address_b(address_b),
-	  .write_data_a(1'b0),
-	  .result(result),
 	  .read_data_b(color_mem)
 	);
 	

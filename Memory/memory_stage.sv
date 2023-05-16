@@ -23,8 +23,8 @@ module memory_stage(
   logic [23:0] image_rom_q_a;
   logic [23:0] image_rom_q_b;
   image_rom image_rom(
-    .aclr_a(rst),
-    .aclr_b(rst),
+    .aclr_a(1'b0),
+    .aclr_b(1'b0),
     .address_a(address_a),
     .address_b(address_b_aux),
     .clock_a(clk_a),
@@ -38,7 +38,7 @@ module memory_stage(
   logic [23:0] sin_rom_q_a;
   logic [23:0] sin_rom_q_b;
   sin_rom sin_rom(
-    .aclr(rst),
+    .aclr(1'b0),
     .address(address_a[8:0]),
     .clock(clk_a),
     .rden(read_enable),
