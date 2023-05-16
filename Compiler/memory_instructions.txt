@@ -1,12 +1,28 @@
-G1Movi r1, #0x01
-G1Movi r10, #0x0A
+g1movi r0, #0x2B
 
-; r0 = 0xB
-G1Ldr r0, r1
+; r1 = 43
+g1movi r1, #0x2B
+; r2 = 35
+g1movi r2, #0x23
+; r1 = 43 * 35 = 1505
+g1mul r1, r1, r2
+; r2 = 12
+g1movi r2, #0xC
+; r1 = 1505 * 12 =  18060
+g1mul r1, r1, r2
+; r2 = 5
+g1movi r2, #0x5
+; r1 = 18060 * 5 =  90300
+g1mul r1, r1, r2
+; r1 = 90300 + 5 = 90305
+g1add r1, r1, r2
 
 ; mem[0x0B] = 0x01
-G1Str r0, r1
+G1Str r1, r0
+
+g1add r10, r10, r10
+g1add r10, r10, r10
 
 ; r0 = 0x01
-G1Movi r2, #0x0B
-G1Ldr r0, r2
+G1Ldr r2, r1
+G1Ldr r2, r1

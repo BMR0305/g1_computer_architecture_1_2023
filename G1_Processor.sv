@@ -1,10 +1,42 @@
 `include "defines.v"
 
 module G1_Processor(
-	input logic clk,
-	input logic rst,
-	input logic forward_EN
+	// input logic rst,
+
+	input              FPGA_CLK1_50,
+	input              FPGA_CLK2_50,
+	input              FPGA_CLK3_50,
+
+	///////// HDMI /////////
+	inout              HDMI_I2C_SCL,
+	inout              HDMI_I2C_SDA,
+	inout              HDMI_I2S,
+	inout              HDMI_LRCLK,
+	inout              HDMI_MCLK,
+	inout              HDMI_SCLK,
+	output             HDMI_TX_CLK,
+	output      [23:0] HDMI_TX_D,
+	output             HDMI_TX_DE,
+	output             HDMI_TX_HS,
+	input              HDMI_TX_INT,
+	output             HDMI_TX_VS,
+
+	///////// KEY /////////
+	input       [1:0]  KEY,
+
+	///////// LED /////////
+	output      [7:0]  LED,
+
+	///////// SW /////////
+	input       [3:0]  SW
 );
+	logic forward_EN = 1;
+
+	logic rst;
+	assign rst = KEY[0];
+
+	logic clk;
+	assign clk = FPGA_CLK2_50;
 	
 	logic writeEn, WB_EN_MEM, is_imm, Is_Ldr, Is_Str, MEM_R_EN_EXE, MEM_W_EN_EXE, WB_EN_EXE, hazard_detected, flagZ;
 	logic brTaken, MEM_R_EN, MEM_W_EN, WB_EN;
@@ -134,7 +166,7 @@ module G1_Processor(
 	unidad_adelantamiento forwarding_unit(
 	  .reg1_EXE(src1_forw), 
 	  .reg2_EXE(src2_forw), 
-	  .ST_src_EXE(dest_EXE), 
+	  .ST_src_EXE(src2_forw), 
 	  .dest_MEM(dest_MEM), 
 	  .dest_WB(dest_WB), 
 	  .WB_EN_MEM(alu_writeback_enable_out_pipe), 
@@ -189,27 +221,37 @@ module G1_Processor(
   );
 
 
+	logic [23:0] color;
+	logic [23:0] color_mem;
+	reg   [9:0] pixel_x;
+	reg   [8:0] pixel_y;
+	reg   [5:0] num_cycle;
+	// logic [23:0] result;
+	logic [17:0] address_b;
+
+
+
   logic memory_writeback_enable_out;
 	logic [3:0] memory_instruction_dest_out;
   logic [23:0] memory_data_out;
-  logic [23:0] memory_data_b;
+  // logic [23:0] memory_data_b;
   memory_stage memory_stage(
     .rst(rst),
     .clk_a(clk),
-    .clk_b(1'b0),
+    .clk_b(FPGA_CLK2_50),
     .writeback_enable(alu_writeback_enable_out_pipe),
     .read_enable(alu_mem_read_enable_out_pipe),
     .write_enable(alu_mem_write_enable_out_pipe),
     .instruction_dest(dest_MEM),
     .alu_result(alu_alu_result_out_pipe),
     .write_data_a(alu_write_data_out_pipe),
-    .address_b(18'b0),
+    .address_b(address_b),
     .writeback_enable_out(memory_writeback_enable_out),
     .read_enable_out(memory_read_enable_out),
     .instruction_dest_out(memory_instruction_dest_out),
     .memory_out(memory_data_out),
     .alu_result_out(memory_alu_result_out),
-    .read_data_b(memory_data_b)
+    .read_data_b(color_mem)
   );
 
 
@@ -243,4 +285,58 @@ module G1_Processor(
     .instruction_dest_out(dest_WB),
     .writeback_data_out(writeVal)
   );
+
+	HDMIController HDMIController(
+		///////// FPGA /////////
+      .FPGA_CLK1_50(FPGA_CLK1_50),
+      .FPGA_CLK2_50(FPGA_CLK2_50),
+      .FPGA_CLK3_50(FPGA_CLK3_50),
+
+      ///////// HDMI /////////
+      .HDMI_I2C_SCL(HDMI_I2C_SCL),
+      .HDMI_I2C_SDA(HDMI_I2C_SDA),
+      .HDMI_I2S(HDMI_I2S),
+      .HDMI_LRCLK(HDMI_LRCLK),
+      .HDMI_MCLK(HDMI_MCLK),
+      .HDMI_SCLK(HDMI_SCLK),
+      .HDMI_TX_CLK(HDMI_TX_CLK),
+      .HDMI_TX_D(HDMI_TX_D),
+      .HDMI_TX_DE(HDMI_TX_DE),
+      .HDMI_TX_HS(HDMI_TX_HS),
+      .HDMI_TX_INT(HDMI_TX_INT),
+      .HDMI_TX_VS(HDMI_TX_VS),
+
+      ///////// KEY /////////
+      .KEY(KEY),
+
+      ///////// LED /////////
+      .LED(LED),
+
+      ///////// SW /////////
+      .SW(SW),
+		
+		// X, Y, color
+		.color(color),
+		
+		.pixel_x(pixel_x),
+		.pixel_y(pixel_y),
+		
+		.num_cycle(num_cycle)
+	);
+	
+	address_sel a_s(
+		.pixel_x(pixel_x),
+		.pixel_y(pixel_y),
+		.sel(SW[3]),
+		.address_b(address_b)
+	);
+	
+	color_selector c_s(
+		.color_mem(color_mem),
+		.pixel_x(pixel_x),
+		.pixel_y(pixel_y),
+		.num_cycle(num_cycle),
+		.is_RAM(SW[3]),
+		.color(color)
+	);
 endmodule 

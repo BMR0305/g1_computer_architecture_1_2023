@@ -78,19 +78,24 @@ module memory_stage(
     .Q(read_enable_out)
   );
 
+  logic entro_ram;
   logic [17:0] address_a_18_bits;
   always_comb begin
     if(alu_result <= 89999) begin
       address_a = alu_result[16:0];
       memory_out = image_rom_q_a;
+      entro_ram =1'b0;
     end
     else if(alu_result > 89999 && alu_result <= 90299) begin
       address_a = alu_result[16:0] - 17'd90000;
       memory_out = sin_rom_q_a;
+      entro_ram =1'b0;
+
     end
     else begin
       address_a = address_a_18_bits[16:0];
       memory_out = ram_q_a;
+      entro_ram =1'b1;
     end
   end
 
