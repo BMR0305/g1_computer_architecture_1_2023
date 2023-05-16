@@ -1,18 +1,19 @@
 `include "../defines.v"
 
-module ID (hazard_detected, flagZ, is_imm_out, ST, instruction, reg1, reg2, src1, src2, val1, val2, brTaken, EXE_CMD, MEM_R_EN, MEM_W_EN, WB_EN, branch_comm, dest);
+module ID (hazard_detected, flagZ, is_imm_out, Is_Ldr, Is_Str, instruction, reg1, reg2, src1, src2, val1, val2, brTaken, EXE_CMD, MEM_R_EN, MEM_W_EN, WB_EN, branch_comm, dest);
   input logic hazard_detected, flagZ;
   input logic [`WORD_LEN-1:0] instruction; 
   input logic [`REG_FILE_SIZE-1:0] reg1, reg2;
-  output logic brTaken, MEM_R_EN, MEM_W_EN, WB_EN, is_imm_out, ST;
+  output logic brTaken, MEM_R_EN, MEM_W_EN, WB_EN, is_imm_out, Is_Ldr, Is_Str;
   output logic [3:0] branch_comm;
   output logic [`EXE_CMD_LEN-1:0] EXE_CMD;
   output logic [`REG_FILE_ADDR_LEN-1:0] src1, src2;
   output logic [`REG_FILE_SIZE-1:0] val1, val2;
   output logic [`REG_FILE_ADDR_LEN-1:0] dest;
 
+  wire ST;
   wire branchEn;
-  wire Is_Imm, Is_Str, Is_Ldr, Is_Cmp;
+  wire Is_Imm, Is_Cmp;
   wire [`REG_FILE_SIZE-1:0] signExt_Imm, signExt_Brnch, signExtMux;
 
   controller controller(

@@ -2,7 +2,7 @@ module instructionMem (
   input [23:0] addr,
   output [15:0] instruction);
 
-	logic [3:0] rom [0:16383] = '{default: '0};
+	logic [3:0] rom [0:399] = '{default: '0};
 
 	initial $readmemb("ROMInstructions.mem", rom);
 

@@ -8,7 +8,7 @@ module color_selector(
 );
 
 	always_comb begin
-		if ((pixel_x > 299 || pixel_y > 299) || (is_RAM && (num_cycle != 0) && (num_cycle != 15) && (num_cycle != 30) && (num_cycle != 45)))
+		if ((pixel_x > 299 || pixel_y > 299) /* || (is_RAM && (num_cycle != 0) && (num_cycle != 15) && (num_cycle != 30) && (num_cycle != 45)) */)
 			color <= 24'b0;
 		else
 			color <= color_mem;

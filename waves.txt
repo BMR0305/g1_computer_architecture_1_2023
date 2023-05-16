@@ -18,10 +18,35 @@ FETCH:
 add wave -position insertpoint sim:/G1_Processor_tb/dut/ifS/*
 add wave -position insertpoint sim:/G1_Processor_tb/dut/f2d/*
 
-DECODE:
-add wave -position insertpoint sim:/G1_Processor_tb/dut/ifS/instructions/rom
+vsim -gui -l /dev/null -L altera_mf_ver -L altera_mf -voptargs=+acc work.G1_Processor_tb
+add wave -position insertpoint sim:/G1_Processor_tb/dut/ifS/PC
 add wave -position insertpoint sim:/G1_Processor_tb/dut/rF/regMem
+run -all
+
+DECODE:
+vsim -gui -l /dev/null -L altera_mf_ver -L altera_mf -voptargs=+acc work.G1_Processor_tb
+add wave -position insertpoint sim:/G1_Processor_tb/dut/ifS/PC
+add wave -position insertpoint sim:/G1_Processor_tb/dut/rF/regMem
+add wave -position insertpoint sim:/G1_Processor_tb/dut/forwarding_unit/dest_MEM 
+add wave -position insertpoint sim:/G1_Processor_tb/dut/forwarding_unit/dest_WB 
+add wave -position insertpoint sim:/G1_Processor_tb/dut/forwarding_unit/ST_reg_sel
+add wave -position insertpoint sim:/G1_Processor_tb/dut/forwarding_unit/ST_src_EXE
+add wave -position insertpoint sim:/G1_Processor_tb/dut/Ex/mux_ST_value/*
+add wave -position insertpoint sim:/G1_Processor_tb/dut/Ex/alu_result
+add wave -position insertpoint sim:/G1_Processor_tb/dut/Ex/reg1
+add wave -position insertpoint sim:/G1_Processor_tb/dut/Ex/mem_result
+add wave -position insertpoint sim:/G1_Processor_tb/dut/Ex/wb_result
+add wave -position insertpoint sim:/G1_Processor_tb/dut/Ex/reg1_sel
+add wave -position insertpoint sim:/G1_Processor_tb/dut/Ex/reg1_alu
+add wave -position insertpoint sim:/G1_Processor_tb/dut/memory_stage/alu_result
+add wave -position insertpoint sim:/G1_Processor_tb/dut/memory_stage/entro_ram
+add wave -position insertpoint sim:/G1_Processor_tb/dut/memory_stage/write_data_a
+add wave -position insertpoint sim:/G1_Processor_tb/dut/memory_stage/write_enable
+add wave -position insertpoint sim:/G1_Processor_tb/dut/memory_stage/read_enable 
+add wave -position insertpoint sim:/G1_Processor_tb/dut/memory_stage/address_a
+add wave -position insertpoint sim:/G1_Processor_tb/dut/memory_stage/memory_out
+
 add wave -position insertpoint sim:/G1_Processor_tb/dut/rF/writeEn
 add wave -position insertpoint sim:/G1_Processor_tb/dut/f2d/*
 add wave -position insertpoint sim:/G1_Processor_tb/dut/id/*
-add wave -position insertpoint sim:/G1_Processor_tb/dut/ID_Ex/*
+run -all

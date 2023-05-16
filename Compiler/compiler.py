@@ -163,7 +163,7 @@ def decode_instruction(op_code_key, operands, current_pc, labels):
         raise Exception(str(error))
 
 
-instruction_memory_size = 16384
+instruction_memory_size = 400
 pc = 0
 labels = []
 instructions = []

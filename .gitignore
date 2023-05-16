@@ -7,4 +7,5 @@
 /**/**/*.ver
 /custom_simulation/**/*
 !/custom_simulation/custom_simulation.mpf
+!/**/**/output_files/G1.sof
 /**/**/*.qws
