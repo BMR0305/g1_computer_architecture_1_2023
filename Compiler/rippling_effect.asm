@@ -58,7 +58,7 @@ frame_loop:
     increment_clear_y:
       g1movi r5, #0x00
 
-      g1add r4, r4, r3
+      ; g1add r4, r4, r3
       g1cmp r4, r11
       ; if r4 == r11, jump to end_clear_loop
       g1beq end_clear_loop
