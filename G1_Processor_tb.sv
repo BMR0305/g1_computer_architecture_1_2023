@@ -19,7 +19,7 @@ module G1_Processor_tb();
     #1;
     rst = 0;
 
-    #500;
+    #1000;
     $stop;
   end
 

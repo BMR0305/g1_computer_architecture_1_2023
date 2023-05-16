@@ -48,8 +48,8 @@ frame_loop:
     ; stores the black pixel in the current position
     g1str r3, r0
 
-    g1movi r3, #0x01
-    g1add r5, r5, r3
+    ; g1movi r3, #0x01
+    ; g1add r5, r5, r3
     g1cmp r5, r11
     ; if r5 == r11, jump to increment_clear_y
     g1beq increment_clear_y
