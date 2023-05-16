@@ -191,6 +191,7 @@ try:
         instruction_nibbles = decode_instruction(
             op_code_key, operands, pc, labels)
 
+        print(f'PC: {pc}')
         print(instruction)
         print(instruction_nibbles)
         print('-------------------------------------')
