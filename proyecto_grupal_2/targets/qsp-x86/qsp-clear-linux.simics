@@ -1,0 +1,3 @@
+# Auto-generated file. Any changes will be overwritten!
+decl { substitute "/home/rijegaro/Documents/intel-simics-package-manager-1.7.2/simics-qsp-x86-6.0.67/targets/qsp-x86/qsp-clear-linux.simics" }
+run-command-file "/home/rijegaro/Documents/intel-simics-package-manager-1.7.2/simics-qsp-x86-6.0.67/targets/qsp-x86/qsp-clear-linux.simics"

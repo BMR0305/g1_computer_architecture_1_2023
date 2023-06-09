@@ -1,0 +1,469 @@
+/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Execute/EXECUTE.sv {1 {vlog -work work -vopt -sv -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Execute/EXECUTE.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module EXECUTE
+
+Top level modules:
+	EXECUTE
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ID/ID_Conection_Test_tb.sv {1 {vlog -work work -vopt -sv -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ID/ID_Conection_Test_tb.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module ID_Conection_Test_tb
+
+Top level modules:
+	ID_Conection_Test_tb
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Hazard_Detection/hazard_detection.sv {1 {vlog -work work -vopt -sv -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Hazard_Detection/hazard_detection.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module hazard_detection
+
+Top level modules:
+	hazard_detection
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/MEM_WB_Connection_Test.sv {1 {vlog -work work -vopt -sv -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/MEM_WB_Connection_Test.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module MEM_WB_Connection_Test
+
+Top level modules:
+	MEM_WB_Connection_Test
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ControlUnit/top.sv {1 {vlog -work work -vopt -sv -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ControlUnit/top.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module top
+
+Top level modules:
+	top
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Hazard_Detection/hazard_detection_tb.sv {1 {vlog -work work -vopt -sv -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Hazard_Detection/hazard_detection_tb.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module hazard_detection_tb
+
+Top level modules:
+	hazard_detection_tb
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Memory/memory_stage.sv {1 {vlog -work work -vopt -sv -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/IF/IFStage.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module IFStage
+
+Top level modules:
+	IFStage
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ControlUnit/defines.sv {1 {vlog -work work -vopt -sv -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ControlUnit/defines.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ID/regFile_tb.sv {1 {vlog -work work -vopt -sv -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ID/regFile_tb.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module regFile_tb
+
+Top level modules:
+	regFile_tb
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Memory/test/memory_stage_tb.sv {1 {vlog -work work -vopt -sv -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Memory/test/memory_stage_tb.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module memory_stage_tb
+
+Top level modules:
+	memory_stage_tb
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ID/ID_Conection_Test.sv {1 {vlog -work work -vopt -sv -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ID/ID_Conection_Test.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module ID_Conection_Test
+
+Top level modules:
+	ID_Conection_Test
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/IF/IFStage.sv {1 {vlog -work work -vopt -sv -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/IF/IFStage.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module IFStage
+
+Top level modules:
+	IFStage
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/IF_to_ID.sv {1 {vlog -work work -vopt -sv -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/IF_to_ID.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module IF_to_ID
+
+Top level modules:
+	IF_to_ID
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/IF/register.sv {1 {vlog -work work -vopt -sv -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/IF/register.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module register
+
+Top level modules:
+	register
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Memory/sin_rom.v {1 {vlog -work work -vopt -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Memory/sin_rom.v
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module sin_rom
+
+Top level modules:
+	sin_rom
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/IF/test_add.sv {1 {vlog -work work -vopt -sv -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/IF/test_add.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module test_add
+
+Top level modules:
+	test_add
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/D_FF.sv {1 {vlog -work work -vopt -sv -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/D_FF.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module D_FF
+
+Top level modules:
+	D_FF
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/MEM_WB_Connection_Test_tb.sv {1 {vlog -work work -vopt -sv -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/MEM_WB_Connection_Test_tb.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module MEM_WB_Connection_Test_tb
+
+Top level modules:
+	MEM_WB_Connection_Test_tb
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/ALU_MEM_WB_Connection_Test_tb.sv {1 {vlog -work work -vopt -sv -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/ALU_MEM_WB_Connection_Test_tb.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module ALU_MEM_WB_Connection_Test_tb
+
+Top level modules:
+	ALU_MEM_WB_Connection_Test_tb
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/WB/writeback_tb.sv {1 {vlog -work work -vopt -sv -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/WB/writeback_tb.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module writeback_tb
+
+Top level modules:
+	writeback_tb
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/HDMI_Controller/I2C_Controller.v {1 {vlog -work work -vopt -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/HDMI_Controller/I2C_Controller.v
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module I2C_Controller
+
+Top level modules:
+	I2C_Controller
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Memory/test/sin_rom_tb.sv {1 {vlog -work work -vopt -sv -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Memory/test/sin_rom_tb.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module sin_rom_tb
+
+Top level modules:
+	sin_rom_tb
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ControlUnit/controller.sv {1 {vlog -work work -vopt -sv -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ControlUnit/controller.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module controller
+
+Top level modules:
+	controller
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ControlUnit/conditionChecker.sv {1 {vlog -work work -vopt -sv -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ControlUnit/conditionChecker.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module conditionChecker
+
+Top level modules:
+	conditionChecker
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/D_FF_tb.sv {1 {vlog -work work -vopt -sv -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/D_FF_tb.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module D_FF_tb
+
+Top level modules:
+	D_FF_tb
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/IF_ID_Conection_Test_tb.sv {1 {vlog -work work -vopt -sv -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/IF_ID_Conection_Test_tb.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module IF_ID_Conection_Test_tb
+
+Top level modules:
+	IF_ID_Conection_Test_tb
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/IF/my_mux.sv {1 {vlog -work work -vopt -sv -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/IF/my_mux.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module my_mux
+
+Top level modules:
+	my_mux
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Execute/mux3.sv {1 {vlog -work work -vopt -sv -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Execute/mux3.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module mux3
+
+Top level modules:
+	mux3
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/IF_to_ID_tb.sv {1 {vlog -work work -vopt -sv -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/IF_to_ID_tb.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module IF_to_ID_tb
+
+Top level modules:
+	IF_to_ID_tb
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ControlUnit/test.sv {1 {vlog -work work -vopt -sv -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ControlUnit/test.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module test
+
+Top level modules:
+	test
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/ALU_MEM_Connection_Test_tb.sv {1 {vlog -work work -vopt -sv -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/ALU_MEM_Connection_Test_tb.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module ALU_MEM_Connection_Test_tb
+
+Top level modules:
+	ALU_MEM_Connection_Test_tb
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Execute/Decode_Execute.sv {1 {vlog -work work -vopt -sv -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Execute/Decode_Execute.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module Decode_Execute
+
+Top level modules:
+	Decode_Execute
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/HDMI_Controller/I2C_WRITE_WDATA.v {1 {vlog -work work -vopt -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/HDMI_Controller/I2C_WRITE_WDATA.v
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module I2C_WRITE_WDATA
+
+Top level modules:
+	I2C_WRITE_WDATA
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/MEM_to_WB_tb.sv {1 {vlog -work work -vopt -sv -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/MEM_to_WB_tb.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module MEM_to_WB_tb
+
+Top level modules:
+	MEM_to_WB_tb
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Memory/image_rom.v {1 {vlog -work work -vopt -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Memory/image_rom.v
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module image_rom
+
+Top level modules:
+	image_rom
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/IF/adder.sv {1 {vlog -work work -vopt -sv -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/IF/adder.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module adder
+
+Top level modules:
+	adder
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/IF/my_mux_3.sv {1 {vlog -work work -vopt -sv -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/IF/my_mux_3.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module my_mux_3
+
+Top level modules:
+	my_mux_3
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ID/ID_tb.sv {1 {vlog -work work -vopt -sv -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ID/ID_tb.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module ID_tb
+
+Top level modules:
+	ID_tb
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/HDMI_Controller/AUDIO_IF.v {1 {vlog -work work -vopt -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/HDMI_Controller/AUDIO_IF.v
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module AUDIO_IF
+
+Top level modules:
+	AUDIO_IF
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ID/hazard_detection_tb.sv {1 {vlog -work work -vopt -sv -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ID/hazard_detection_tb.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module hazard_detection_tb
+
+Top level modules:
+	hazard_detection_tb
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/ALU_MEM_WB_Connection_Test.sv {1 {vlog -work work -vopt -sv -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/ALU_MEM_WB_Connection_Test.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module ALU_MEM_WB_Connection_Test
+
+Top level modules:
+	ALU_MEM_WB_Connection_Test
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ID/signExtendBranch.sv {1 {vlog -work work -vopt -sv -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ID/signExtendBranch.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module signExtendBranch
+
+Top level modules:
+	signExtendBranch
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Execute/unidad_adelantamiento.sv {1 {vlog -work work -vopt -sv -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Execute/unidad_adelantamiento.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module unidad_adelantamiento
+
+Top level modules:
+	unidad_adelantamiento
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ID/hazard_detection.sv {1 {vlog -work work -vopt -sv -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ID/hazard_detection.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module hazard_detection
+
+Top level modules:
+	hazard_detection
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/IF/testIf.sv {1 {vlog -work work -vopt -sv -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/IF/testIf.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module testIf
+
+Top level modules:
+	testIf
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/IF/test.sv {1 {vlog -work work -vopt -sv -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/IF/test.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module testIF
+
+Top level modules:
+	testIF
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/MEM_to_WB.sv {1 {vlog -work work -vopt -sv -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/MEM_to_WB.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module MEM_to_WB
+
+Top level modules:
+	MEM_to_WB
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/WB/writeback_stage.sv {1 {vlog -work work -vopt -sv -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/WB/writeback_stage.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module writeback_stage
+
+Top level modules:
+	writeback_stage
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/G1_Processor.sv {1 {vlog -work work -vopt -sv -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/G1_Processor.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module G1_Processor
+
+Top level modules:
+	G1_Processor
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ID/ID.sv {1 {vlog -work work -vopt -sv -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ID/ID.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module ID
+
+Top level modules:
+	ID
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Hazard_Detection/defines.v {1 {vlog -work work -vopt -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Hazard_Detection/defines.v
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/ALU_MEM_Connection_Test.sv {1 {vlog -work work -vopt -sv -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/ALU_MEM_Connection_Test.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module ALU_MEM_Connection_Test
+
+Top level modules:
+	ALU_MEM_Connection_Test
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Memory/test/image_rom_tb.sv {1 {vlog -work work -vopt -sv -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Memory/test/image_rom_tb.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module image_rom_tb
+
+Top level modules:
+	image_rom_tb
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/G1_Processor_tb.sv {1 {vlog -work work -vopt -sv -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/G1_Processor_tb.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module G1_Processor_tb
+
+Top level modules:
+	G1_Processor_tb
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Memory/test/data_ram_tb.sv {1 {vlog -work work -vopt -sv -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Memory/test/data_ram_tb.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module data_ram_tb
+
+Top level modules:
+	data_ram_tb
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/HDMI_Controller/I2C_HDMI_Config.v {1 {vlog -work work -vopt -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/HDMI_Controller/I2C_HDMI_Config.v
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module I2C_HDMI_Config
+
+Top level modules:
+	I2C_HDMI_Config
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Memory/data_ram.v {1 {vlog -work work -vopt -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Memory/data_ram.v
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module data_ram
+
+Top level modules:
+	data_ram
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/ALU_to_MEM.sv {1 {vlog -work work -vopt -sv -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/ALU_to_MEM.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module ALU_to_MEM
+
+Top level modules:
+	ALU_to_MEM
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/IF/instructionMem.sv {1 {vlog -work work -vopt -sv -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/IF/instructionMem.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module instructionMem
+
+Top level modules:
+	instructionMem
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ID/signExtendImm.sv {1 {vlog -work work -vopt -sv -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ID/signExtendImm.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module signExtendImm
+
+Top level modules:
+	signExtendImm
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/IF_ID_Conection_Test.sv {1 {vlog -work work -vopt -sv -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/IF_ID_Conection_Test.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module IF_ID_Conection_Test
+
+Top level modules:
+	IF_ID_Conection_Test
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Execute/alu_tb.sv {1 {vlog -work work -vopt -sv -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Execute/alu_tb.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module alu_tb
+
+Top level modules:
+	alu_tb
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ID/regFile.sv {1 {vlog -work work -vopt -sv -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ID/regFile.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module regFile
+
+Top level modules:
+	regFile
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/HDMI_Controller/HDMIController.sv {1 {vlog -work work -vopt -sv -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/HDMI_Controller/HDMIController.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module HDMIController
+
+Top level modules:
+	HDMIController
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Memory_HDMI_Conection.sv {1 {vlog -work work -vopt -sv -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Memory_HDMI_Conection.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module Memory_HDMI_Conection
+
+Top level modules:
+	Memory_HDMI_Conection
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Execute/alu.sv {1 {vlog -work work -vopt -sv -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Execute/alu.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module alu
+
+Top level modules:
+	alu
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/ALU_to_MEM_tb.sv {1 {vlog -work work -vopt -sv -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/ALU_to_MEM_tb.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module ALU_to_MEM_tb
+
+Top level modules:
+	ALU_to_MEM_tb
+
+} {} {}} /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ControlUnit/testController.sv {1 {vlog -work work -vopt -sv -stats=none /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ControlUnit/testController.sv
+Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+-- Compiling module testController
+
+Top level modules:
+	testController
+
+} {} {}}

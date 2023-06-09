@@ -1,0 +1,5 @@
+#!/bin/bash
+# this file will be overwritten by the project setup script
+SIMICS_BASE_PACKAGE="/home/rijegaro/Documents/intel-simics-package-manager-1.7.2/simics-6.0.166"
+export SIMICS_BASE_PACKAGE
+exec "/home/rijegaro/Documents/intel-simics-package-manager-1.7.2/simics-6.0.166/bin/simics-old" --project "/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/proyecto_grupal_2" "$@"
