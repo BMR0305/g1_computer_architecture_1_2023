@@ -2,8 +2,8 @@
 # this file will be overwritten by the project setup script
 SIMICS_BASE_PACKAGE="/home/rijegaro/Documents/intel-simics-package-manager-1.7.2/simics-6.0.166"
 export SIMICS_BASE_PACKAGE
-if [ -f "/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/proyecto_grupal_2/.package-list" ]; then
-    exec "/home/rijegaro/Documents/intel-simics-package-manager-1.7.2/simics-6.0.166/bin/lookup-file" --package-list "/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/proyecto_grupal_2/.package-list"  "$@"
+if [ -f "/home/rijegaro/Documents/simics-projects/academia-collaboration/simics-project/.package-list" ]; then
+    exec "/home/rijegaro/Documents/intel-simics-package-manager-1.7.2/simics-6.0.166/bin/lookup-file" --package-list "/home/rijegaro/Documents/simics-projects/academia-collaboration/simics-project/.package-list"  "$@"
 else
     exec "/home/rijegaro/Documents/intel-simics-package-manager-1.7.2/simics-6.0.166/bin/lookup-file"  "$@"
 fi
