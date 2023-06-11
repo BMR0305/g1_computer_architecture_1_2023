@@ -39,13 +39,11 @@ connect cnt0 = "motherboard0.dimm[0]" cnt1 = dimm0.mem_bus
 #connect the processor to the motherboard
 connect processor0.socket cnt1 = "motherboard0.cpu[0]"
 
-
 #instantiate everything
 instantiate-components
 
 #connect the instrumentation model for the tomasulo
 if($activate_tomasulo == TRUE) {
-    new-tomasulo
     new-tomasulo name = tomasulo -connect-all
     tomasulo_0.log-level 4
 }

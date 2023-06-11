@@ -1,0 +1,1 @@
+{"version": 2, "interface": {"inputs": {"cdyns": [{"name": "Cdyn_core0"}, {"name": "IPC_core0"}], "frequencies": [{"name": "F_core0"}], "voltages": [{"name": "V_core0"}]}, "outputs": {"currents": [{"name": "I_core0"}], "temperatures": [{"name": "T_core0"}]}}}

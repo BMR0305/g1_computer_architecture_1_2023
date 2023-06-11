@@ -1,0 +1,31 @@
+decl {
+ params from "%simics%/targets/qsp-x86/qsp-clear-linux.simics"
+  #default cpu_comp_class = "x86QSP2"
+  default machine_name         = "machine"
+  default num_cores = 1
+  default num_threads = 1
+  default freq_mhz = 3000
+}
+
+run-command-file "%simics%/targets/qsp-x86/qsp-clear-linux.simics"
+
+#load the tomasulo instrumentation tool 
+load-module tomasulo
+load-module tomasulo_connection_t
+
+#this is in case you want to run your program without the tomasulo algorithm
+if not defined activate_tomasulo {$activate_tomasulo = FALSE}
+
+#load-module sample-core-timing
+
+#connect the instrumentation model for the tomasulo
+if($activate_tomasulo == TRUE) {
+  new-tomasulo name = tomasulo_0 (machine.mb.cpu0.core[0][0])
+  tomasulo_0.log-level 4
+}
+
+#new-sample-core-timing-tool name = timing_0 (machine.mb.cpu0.core[0][0])
+
+start-agent-manager manager
+manager.connect-to-agent matic
+matic.upload -executable example /home/simics/
