@@ -1,9 +1,10 @@
 ../simics-oss-sources-6.0.51
 ../simics-gdb-6.0.0
+../simics-risc-v-simple-6.0.2
 ../simics-qsp-x86-6.0.67
-../simics-qsp-clear-linux-6.0.14
-../simics-training-6.0.pre32
 ../simics-docea-base-6.0.24
 ../simics-qsp-cpu-6.0.17
 ../simics-viewer-6.0.17
 ../simics-qsp-isim-6.0.pre4
+../simics-qsp-clear-linux-6.0.14
+../simics-training-6.0.pre32

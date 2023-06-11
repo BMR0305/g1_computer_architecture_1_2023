@@ -2,4 +2,4 @@
 # this file will be overwritten by the project setup script
 SIMICS_BASE_PACKAGE="/home/rijegaro/Documents/intel-simics-package-manager-1.7.2/simics-6.0.166"
 export SIMICS_BASE_PACKAGE
-exec "/home/rijegaro/Documents/intel-simics-package-manager-1.7.2/simics-6.0.166/../simics-viewer-6.0.17/bin/start-viewer"  "$@"
+exec "/home/rijegaro/Documents/intel-simics-package-manager-1.7.2/simics-viewer-6.0.17/bin/start-viewer"  "$@"

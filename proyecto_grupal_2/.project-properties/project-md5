@@ -47,6 +47,13 @@ targets/qsp-x86/qsp-clear-linux-pcie-demo.simics MD5 0961151aa90407cf8db59814063
 targets/qsp-x86/qsp-hdd-boot.simics MD5 6d8fe9b8382741f49cd42ac0f2762187
 targets/qsp-x86/qsp-clear-linux.simics MD5 0eb400a10635b2bc2b9b615701d4e8f1
 targets/qsp-x86/firststeps.simics MD5 86d23b5904a2c9f653eb29648543b184
+targets/docea/docea-physical.simics MD5 632bfc3f09b01d6cbb57edc63125aa26
+targets/docea/docea-initial-time.simics MD5 2bfa73b9895556dfe7f9eea55f024cb3
+targets/qsp-x86/qsp-client-core.simics MD5 06032be2f39795cb94b2bc37b172ddce
+targets/qsp-x86/qsp-modern-core.simics MD5 08f97637df664a28153ef36904102cf9
+targets/qsp-x86/qsp-server-core.simics MD5 80f2f376ed90ca49dc0e9b97bdc1f307
+targets/qsp-x86/qsp-atom-core.simics MD5 6d586d38de77910432f9fd45b372e19d
+targets/qsp-isim/qsp-isim-clear-linux.simics MD5 7100a25b0155bc9c508f98945113a214
 targets/workshop-01/004-auto-imix-analysis.simics MD5 64b471d0323eba147ae50a6dde11f5af
 targets/workshop-01/003-auto-save-checkpoint.simics MD5 2503abeee7330aa7dc9874bb4931b591
 targets/workshop-01/001-prep-workload-disk-image.simics MD5 89f9c76e4bdd7dd0a79837a4f5deac83
@@ -70,13 +77,6 @@ targets/simics-builder-training/001-qsp-training-setup.simics MD5 59803e2ec602be
 targets/simics-builder-training/020-explore-lifecycle.simics MD5 5efc0ad61da802ab4ce28331db69f841
 targets/simics-builder-training/011-events-and-time.simics MD5 15b9be2d0b426e3265dfa67e944329ad
 targets/simics-builder-training/010-explore-mem-map.simics MD5 862d97e7bd09109813c0c830bc666d0a
-targets/docea/docea-physical.simics MD5 632bfc3f09b01d6cbb57edc63125aa26
-targets/docea/docea-initial-time.simics MD5 2bfa73b9895556dfe7f9eea55f024cb3
-targets/qsp-x86/qsp-client-core.simics MD5 06032be2f39795cb94b2bc37b172ddce
-targets/qsp-x86/qsp-modern-core.simics MD5 08f97637df664a28153ef36904102cf9
-targets/qsp-x86/qsp-server-core.simics MD5 80f2f376ed90ca49dc0e9b97bdc1f307
-targets/qsp-x86/qsp-atom-core.simics MD5 6d586d38de77910432f9fd45b372e19d
-targets/qsp-isim/qsp-isim-clear-linux.simics MD5 7100a25b0155bc9c508f98945113a214
 compiler.mk MD5 4f657dd4bbc1e68e751f915ec669c5e7
 config.mk MD5 8dbf02924e42d1126a47ae94ea4e0ce1
 GNUmakefile MD5 c6cf3ff56f04e5d365da6baf5ff544d2

@@ -43,11 +43,11 @@ connect processor0.socket cnt1 = "motherboard0.cpu[0]"
 #instantiate everything
 instantiate-components
 
-
 #connect the instrumentation model for the tomasulo
 if($activate_tomasulo == TRUE) {
     new-tomasulo
     new-tomasulo name = tomasulo -connect-all
+    tomasulo_0.log-level 4
 }
 
 #setup of all the segments needed. Code segment: CS, Data segment:DS, Stack segment: SS
@@ -59,7 +59,6 @@ processor0.core[0][0]->cs[0] = 0
 processor0.core[0][0]->ss[7] = 0xfff + 1
 processor0.core[0][0]->ss[0] = 0
 processor0.core[0][0]->ds[7] = 0xfff + 0xfff + 2
-
 
 #example of loading a binary image...
 load-file filename = example.bin offset = 0x0

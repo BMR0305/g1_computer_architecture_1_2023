@@ -1,0 +1,47 @@
+decl {
+    param machine_nb : string = "0"
+
+    # Borrow all parameters from the standard file, with some small
+    # changes to default parameters.
+    params from "%simics%/targets/qsp-x86/qsp-clear-linux.simics"
+        default show_con0            = TRUE
+        default connect_real_network = "no"
+        default auto_login_root      = FALSE
+        default auto_login           = TRUE
+        default num_cores            = 1
+        default freq_mhz             = 1
+
+    result system : string
+    result eth_link : string or nil
+    result service_node : string or nil
+}
+
+$machine_name = ("machine" + $machine_nb)
+run-command-file "%simics%/targets/qsp-x86/qsp-clear-linux.simics" rtc_time = "2021-11-11 11:11:11" connect_real_network = "no"
+$system->system_info = "QSP ISIM Tutorial"
+
+script-branch {
+    #this is in case you want to run your program without the tomasulo algorithm
+    if not defined activate_tomasulo {$activate_tomasulo = TRUE}
+
+    if($activate_tomasulo == TRUE) {
+      new-tomasulo
+      new-tomasulo name = tomasulo -connect-all
+      tomasulo_0.log-level 4
+    }
+
+    #setup of all the segments needed. Code segment: CS, Data segment:DS, Stack segment: SS
+    machine0.mb.cpu0.core[0][0]->cs[7] = 0
+    machine0.mb.cpu0.core[0][0]->cs[0] = 0
+    machine0.mb.cpu0.core[0][0]->rip = 0
+    machine0.mb.cpu0.core[0][0]->ds[0] = 0
+    machine0.mb.cpu0.core[0][0]->cs[0] = 0
+    machine0.mb.cpu0.core[0][0]->ss[7] = 0xfff + 1
+    machine0.mb.cpu0.core[0][0]->ss[0] = 0
+    machine0.mb.cpu0.core[0][0]->ds[7] = 0xfff + 0xfff + 2
+
+    system-perfmeter sample_rate=0.00001 mode=normal
+
+    #example of loading a binary image...
+    load-file filename = example.bin offset = 0x0
+}

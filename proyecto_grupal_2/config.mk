@@ -8,7 +8,7 @@ RAW_SIMICS_MODEL_BUILDER=/home/rijegaro/Documents/intel-simics-package-manager-1
 RAW_EML_PACKAGE=
 RAW_DODOC_PKG=/home/rijegaro/Documents/intel-simics-package-manager-1.7.2/simics-6.0.166
 
-RAW_SIMICS_PACKAGE_LIST=/home/rijegaro/Documents/intel-simics-package-manager-1.7.2/simics-6.0.166/.package-list
+RAW_SIMICS_PACKAGE_LIST=/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/proyecto_grupal_2/.package-list
 
 INCLUDE_PATHS = /home/rijegaro/Documents/intel-simics-package-manager-1.7.2/simics-6.0.166/src/include
 CXX_INCLUDE_PATHS = /home/rijegaro/Documents/intel-simics-package-manager-1.7.2/simics-6.0.166/linux64/api
