@@ -27,7 +27,7 @@
 #define TYPE_LOAD 0
 #define TYPE_INT 1
 #define LOAD_TIMEOUT 1
-#define INT_TIMEOUT 3
+#define INT_TIMEOUT 2
 
 #define REGISTER_COUNT 6
 #define TYPE_EAX 0
@@ -36,6 +36,7 @@
 #define TYPE_EDX 3
 #define TYPE_ESI 4
 #define TYPE_EDI 5
+#define TYPE_EBP 6
 #define TYPE_IMM -1
 
 conf_class_t *connection_class;
@@ -247,18 +248,20 @@ void identify_instruction_and_operand(conf_object_t *obj, conf_object_t *cpu, lo
             conn->restore_rip = true;                                       // controls that rip should be returned to the real address after finished instruction
             conn->finished_address = conn->stations[i]->curr_inst->address; // Address of the finished instruction
             conn->finish = true;                                            // tells the state machine to finish an instruction in this cycle at finished address
-            conn->stations[i]->in_use = false;                              // since the instruction is finised, this engine is no longer busy
-            conn->stall = false;                                            // just in case we were stalling before
+            conn->stations[i]->in_use = false;
+            // conn->stations[i]->curr_inst->state = 0;
+            conn->stall = false; // just in case we were stalling before
             SIM_LOG_INFO(2, obj, 0, "I'm going to finishg something here: %x and return to: %x\n, index %i", conn->finished_address, conn->restore_rip_address, i);
             break;
         }
     }
+
     // If I'm on the instruction that's about to finish, then we need to prioritize finish to avoid a loop
     // Add instruction to the station and DON'T finish it
     // you have 2 choices here, either you process the string or use the opcodes and identify the instruction
     // the operands are most likely easier to detect as a string
     bool available_station_load = false;
-    bool available_station_sum = false;
+    bool available_station_int = false;
     if (strncmp(entry->disassembled_text, "int", 3) == 0)
     {
         conn->exit = true;
@@ -293,14 +296,14 @@ void identify_instruction_and_operand(conf_object_t *obj, conf_object_t *cpu, lo
                 conn->stations[i]->curr_inst = entry;
                 conn->stations[i]->in_use = true;
                 conn->stations[i]->current_timeout = INT_TIMEOUT;
-                available_station_sum = true;
+                available_station_int = true;
                 conn->skip_instruction = true; // is already in a station, do not execute yet
                 break;
             }
         }
     }
     // No station can take this instruction that was issued, we need to stall until they free up
-    if (!available_station_sum && !available_station_load && !conn->finish)
+    if (!available_station_int && !available_station_load && !conn->finish)
     {
         SIM_LOG_INFO(1, obj, 0, "I need to stall");
         conn->stall = true;
@@ -314,13 +317,29 @@ void identify_instruction_and_operand(conf_object_t *obj, conf_object_t *cpu, lo
 /*
  * This function runs EVERY CYCLE and decrements the counters on each of the
  * */
-void station_timers(conf_object_t *obj)
+void station_timers(conf_object_t *obj, logical_address_t address)
 {
     connection_t *conn = conn_of_obj(obj);
     conf_object_t *cpu = conn->provider;
-    for (int i = 0; i < conn->total_reservation_stations; ++i)
+
+    instruction_entry *entry = get_instruction_details(obj, address);
+    for (int i = 0; i < conn->total_reservation_stations; i++)
     {
-        if (conn->stations[i]->in_use && conn->stations[i]->current_timeout > 0)
+        bool flag_error = false;
+        for (int j = 0; j < conn->total_reservation_stations; j++)
+        {
+            if (i < j)
+            {
+                if (conn->stations[i]->in_use && conn->stations[j]->in_use &&
+                    (conn->stations[i]->curr_inst->dest_reg == conn->stations[j]->curr_inst->src_reg ||
+                     conn->stations[i]->curr_inst->dest_reg == conn->stations[j]->curr_inst->dest_reg))
+                {
+                    flag_error = true;
+                    break;
+                }
+            }
+        }
+        if (conn->stations[i]->in_use && conn->stations[i]->current_timeout > 0 && !flag_error)
         {
             --conn->stations[i]->current_timeout;
             if (conn->stations[i]->type == TYPE_LOAD)
@@ -390,7 +409,7 @@ tomasulo_algorithm(conf_object_t *obj, conf_object_t *cpu, void *user_data)
 
     if (conn->exit)
     {
-        SIM_LOG_INFO(1, obj, 0, "Current CPU Cycle: %i", conn->cycles + 1);
+        SIM_LOG_INFO(1, obj, 0, "Current CPU Cycle: %d", conn->cycles + 1);
         SIM_break_simulation("Program finished! :D");
     }
     // Even if the RIP changes in between don't print current instruction pointer
@@ -409,7 +428,7 @@ tomasulo_algorithm(conf_object_t *obj, conf_object_t *cpu, void *user_data)
         conn->finish = false;
         add_finished_instruction(obj, address);
         // print_all_ordered_instructions(obj);
-        station_timers(obj);
+        station_timers(obj, address);
         ++conn->cycles;
         SIM_LOG_INFO(1, obj, 0, "Current CPU Cycle: %i", conn->cycles);
         return CPU_Emulation_Default_Semantics;
@@ -429,7 +448,7 @@ tomasulo_algorithm(conf_object_t *obj, conf_object_t *cpu, void *user_data)
         SIM_LOG_INFO(3, obj, 0, "Instruction after restore or stall doesn't need to do fetch.");
         return CPU_Emulation_Fall_Through;
     }
-    station_timers(obj);
+    station_timers(obj, address);
     // This is the most important function where YOU control the CPU model to comply with Tomasulo's algorithm
     ++conn->cycles;
     SIM_LOG_INFO(1, obj, 0, "Current CPU Cycle: %i", conn->cycles);
@@ -497,6 +516,10 @@ int get_register(char *reg_string)
     {
         return TYPE_EDI;
     }
+    else if (strncmp(reg_string, "ebp", 3) == 0)
+    {
+        return TYPE_EBP;
+    }
     else
     {
         return TYPE_IMM;
@@ -506,17 +529,23 @@ int get_register(char *reg_string)
 int get_dest_register(char *disasm)
 {
     char dest_reg[10] = "";
+
     slice(disasm, dest_reg, 4, 3);
 
-    return get_register(dest_reg);
+    int reg = get_register(dest_reg);
+
+    return reg;
 }
 
 int get_src_register(char *disasm)
 {
     char src_reg[10] = "";
+
     slice(disasm, src_reg, 8, strlen(disasm) - 8);
 
-    return get_register(src_reg);
+    int reg = get_register(src_reg);
+
+    return reg;
 }
 
 /*
@@ -535,15 +564,25 @@ void add_instruction_data(conf_object_t *obj, logical_address_t pa, char *disasm
     const char *disasm_dup = strdup(disasm);
 
     conn->issued_instructions[conn->issued_instruction_size].address = pa;
-    conn->issued_instructions[conn->issued_instruction_size++].disassembled_text = disasm_dup;
+    conn->issued_instructions[conn->issued_instruction_size].disassembled_text = disasm_dup;
 
-    conn->issued_instructions[conn->issued_instruction_size].dest_reg = get_dest_register(disasm_dup);
-    conn->issued_instructions[conn->issued_instruction_size].src_reg = get_src_register(disasm_dup);
+    if (strncmp(disasm_dup, "int", 3) != 0)
+    {
+        if (strncmp(disasm_dup, "div", 3) == 0)
+        {
+            conn->issued_instructions[conn->issued_instruction_size].dest_reg = get_dest_register(disasm_dup);
+        }
+        else
+        {
+            conn->issued_instructions[conn->issued_instruction_size].dest_reg = get_dest_register(disasm_dup);
+            conn->issued_instructions[conn->issued_instruction_size].src_reg = get_src_register(disasm_dup);
+            SIM_LOG_INFO(1, obj, 0, "Issued instruction src: %d", conn->issued_instructions[conn->issued_instruction_size].src_reg);
+        }
 
-    SIM_LOG_INFO(1, obj, 0, "Issued Instruction: %s", disasm_dup);
-    SIM_LOG_INFO(1, obj, 0, "Issued Instruction dest: %d", conn->issued_instructions[conn->issued_instruction_size].dest_reg);
-    SIM_LOG_INFO(1, obj, 0, "Issued Instruction src: %d", conn->issued_instructions[conn->issued_instruction_size].src_reg);
-    // SIM_LOG_INFO(1, obj, 0, "Issued Instruction src: %s", src_reg);
+        SIM_LOG_INFO(1, obj, 0, "Issued instruction: %s", disasm_dup);
+        SIM_LOG_INFO(1, obj, 0, "Issued instruction dest: %d", conn->issued_instructions[conn->issued_instruction_size].dest_reg);
+    }
+    conn->issued_instruction_size++;
 }
 
 /*

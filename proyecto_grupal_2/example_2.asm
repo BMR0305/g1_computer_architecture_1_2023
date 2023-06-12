@@ -7,9 +7,9 @@ section .text
 global _start
 
 _start:
-	mov eax, 10
 	mov ebx, 20
-	add eax, ebx
+	mov eax, 10
+	add eax, ecx
 	add eax, eax
 	add eax, eax
 	add eax, eax

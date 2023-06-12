@@ -1,5 +1,5 @@
-# nasm ./RSA/rsa_unrolling.asm -o rsa_unrolling.bin
-nasm example_2.asm -o example_2.bin
+nasm ./RSA/rsa_unrolling.asm -o rsa_unrolling.bin
+# nasm example_2.asm -o example_2.bin
 
 make
 
