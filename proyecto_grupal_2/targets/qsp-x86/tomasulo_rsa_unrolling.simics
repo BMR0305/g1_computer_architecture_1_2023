@@ -19,6 +19,9 @@ load-module memory-comp
 load-module tomasulo
 load-module tomasulo_connection_t
 
+#load the pipeline instrumentation tool
+load-module pipeline
+load-module pipeline_connection_t
 
 #---- create the objects -----
 #create the dimm
@@ -45,8 +48,14 @@ instantiate-components
 #connect the instrumentation model for the tomasulo
 if($activate_tomasulo == TRUE) {
     new-tomasulo name = tomasulo -connect-all
-    tomasulo_0.log-level 4
+    tomasulo.log-level 4
 }
+
+if($activate_tomasulo == FALSE) {
+    new-pipeline name = pipeline -connect-all
+    pipeline.log-level 4
+}
+
 
 #setup of all the segments needed. Code segment: CS, Data segment:DS, Stack segment: SS
 processor0.core[0][0]->cs[7] = 0

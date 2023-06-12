@@ -24,22 +24,9 @@
 
 #include <time.h>
 
+#define TIMEOUT 4
 #define MAX_INST 1000
-#define MAX_STATIONS 4
-#define TYPE_LOAD 0
-#define TYPE_INT 1
-#define LOAD_TIMEOUT 2
-#define INT_TIMEOUT 4
-
-#define REGISTER_COUNT 6
-#define TYPE_EAX 0
-#define TYPE_EBX 1
-#define TYPE_ECX 2
-#define TYPE_EDX 3
-#define TYPE_ESI 4
-#define TYPE_EDI 5
-#define TYPE_EBP 6
-#define TYPE_IMM -1
+#define MAX_STATIONS 1
 
 clock_t start_time, end_time;
 
@@ -71,8 +58,6 @@ typedef struct
     int current_timeout;
     instruction_entry *curr_inst;
     bool in_use;
-    // you add more
-    int type;
 } unit_functional_station;
 
 /* The connection (between tool and provider)
@@ -119,15 +104,15 @@ typedef struct
     int unit_sum_cycles;
     VECT(connection_t *)
     connections;
-} tomasulo_t;
+} pipeline_t;
 
 /*
  * conf_object_t is a structure every Simics object inherits from.
- * This is a helper function to return a pointer to the tomasulo_t
+ * This is a helper function to return a pointer to the pipeline_t
  * This way we can operate directly over the properties of that struct instead of doing this every time in the code using a cast
  * */
-FORCE_INLINE tomasulo_t *
-tool_of_obj(conf_object_t *obj) { return (tomasulo_t *)obj; }
+FORCE_INLINE pipeline_t *
+tool_of_obj(conf_object_t *obj) { return (pipeline_t *)obj; }
 
 /*
  * conf_object_t is a structure every Simics object inherits from.
@@ -253,7 +238,6 @@ void identify_instruction_and_operand(conf_object_t *obj, conf_object_t *cpu, lo
             conn->finished_address = conn->stations[i]->curr_inst->address; // Address of the finished instruction
             conn->finish = true;                                            // tells the state machine to finish an instruction in this cycle at finished address
             conn->stations[i]->in_use = false;
-            // conn->stations[i]->curr_inst->state = 0;
             conn->stall = false; // just in case we were stalling before
             SIM_LOG_INFO(2, obj, 0, "I'm going to finishg something here: %x and return to: %x\n, index %i", conn->finished_address, conn->restore_rip_address, i);
             break;
@@ -264,28 +248,13 @@ void identify_instruction_and_operand(conf_object_t *obj, conf_object_t *cpu, lo
     // Add instruction to the station and DON'T finish it
     // you have 2 choices here, either you process the string or use the opcodes and identify the instruction
     // the operands are most likely easier to detect as a string
-    bool available_station_load = false;
-    bool available_station_int = false;
+    bool available_station = false;
     if (strncmp(entry->disassembled_text, "int", 3) == 0)
     {
         conn->exit = true;
     }
-    if (strncmp(entry->disassembled_text, "mov", 3) == 0)
-    {
-        for (int i = 0; i < conn->total_reservation_stations; ++i)
-        { // Add instruction to station
-            if (!conn->stations[i]->in_use && conn->stations[i]->type == TYPE_LOAD)
-            {
-                conn->stations[i]->curr_inst = entry;
-                conn->stations[i]->in_use = true;
-                conn->stations[i]->current_timeout = LOAD_TIMEOUT; // we set the TIMEOUT to restart the instruction that just entered our station
-                available_station_load = true;
-                conn->skip_instruction = true; // is already in a station, do not execute yet
-                break;
-            }
-        }
-    }
-    if (strncmp(entry->disassembled_text, "add", 3) == 0 ||
+    if (strncmp(entry->disassembled_text, "mov", 3) == 0 ||
+        strncmp(entry->disassembled_text, "add", 3) == 0 ||
         strncmp(entry->disassembled_text, "sub", 3) == 0 ||
         strncmp(entry->disassembled_text, "mul", 3) == 0 ||
         strncmp(entry->disassembled_text, "imul", 4) == 0 ||
@@ -295,19 +264,19 @@ void identify_instruction_and_operand(conf_object_t *obj, conf_object_t *cpu, lo
     {
         for (int i = 0; i < conn->total_reservation_stations; ++i)
         {
-            if (!conn->stations[i]->in_use && conn->stations[i]->type == TYPE_INT)
+            if (!conn->stations[i]->in_use)
             {
                 conn->stations[i]->curr_inst = entry;
                 conn->stations[i]->in_use = true;
-                conn->stations[i]->current_timeout = INT_TIMEOUT;
-                available_station_int = true;
+                conn->stations[i]->current_timeout = TIMEOUT;
                 conn->skip_instruction = true; // is already in a station, do not execute yet
+                available_station = true;
                 break;
             }
         }
     }
     // No station can take this instruction that was issued, we need to stall until they free up
-    if (!available_station_int && !available_station_load && !conn->finish)
+    if (!available_station && !conn->finish)
     {
         SIM_LOG_INFO(1, obj, 0, "I need to stall");
         conn->stall = true;
@@ -329,31 +298,10 @@ void station_timers(conf_object_t *obj, logical_address_t address)
     instruction_entry *entry = get_instruction_details(obj, address);
     for (int i = 0; i < conn->total_reservation_stations; i++)
     {
-        bool flag_error = false;
-        for (int j = 0; j < conn->total_reservation_stations; j++)
-        {
-            if (i < j)
-            {
-                if (conn->stations[i]->in_use && conn->stations[j]->in_use &&
-                    (conn->stations[i]->curr_inst->dest_reg == conn->stations[j]->curr_inst->src_reg ||
-                     conn->stations[i]->curr_inst->dest_reg == conn->stations[j]->curr_inst->dest_reg))
-                {
-                    flag_error = true;
-                    break;
-                }
-            }
-        }
-        if (conn->stations[i]->in_use && conn->stations[i]->current_timeout > 0 && !flag_error)
+        if (conn->stations[i]->in_use && conn->stations[i]->current_timeout > 0)
         {
             --conn->stations[i]->current_timeout;
-            if (conn->stations[i]->type == TYPE_LOAD)
-            {
-                SIM_LOG_INFO(1, obj, 0, "Station LOAD decremented timeout to %x\n", conn->stations[i]->current_timeout);
-            }
-            else if (conn->stations[i]->type == TYPE_INT)
-            {
-                SIM_LOG_INFO(1, obj, 0, "Station INT decremented timeout to %x\n", conn->stations[i]->current_timeout);
-            }
+            SIM_LOG_INFO(1, obj, 0, "Current timeout: %d", conn->stations[i]->current_timeout);
         }
     }
 }
@@ -406,7 +354,7 @@ void print_all_ordered_instructions(conf_object_t *obj)
  * skip: if skip is set, then the issued instruction is not finished immediately (probably because it's in a station)
  * */
 cpu_emulation_t
-tomasulo_algorithm(conf_object_t *obj, conf_object_t *cpu, void *user_data)
+pipeline_algorithm(conf_object_t *obj, conf_object_t *cpu, void *user_data)
 {
     connection_t *conn = conn_of_obj(obj);
     logical_address_t address = (logical_address_t)((int *)user_data);
@@ -438,7 +386,7 @@ tomasulo_algorithm(conf_object_t *obj, conf_object_t *cpu, void *user_data)
         // print_all_ordered_instructions(obj);
         station_timers(obj, address);
         ++conn->cycles;
-        SIM_LOG_INFO(1, obj, 0, "Current CPU Cycle: %i", conn->cycles);
+        SIM_LOG_INFO(1, obj, 0, "-------------------- Current CPU Cycle: %d --------------------", conn->cycles + 1);
         return CPU_Emulation_Default_Semantics;
     }
     // Already finished, time to restore the rip to the former pointer
@@ -459,7 +407,7 @@ tomasulo_algorithm(conf_object_t *obj, conf_object_t *cpu, void *user_data)
     station_timers(obj, address);
     // This is the most important function where YOU control the CPU model to comply with Tomasulo's algorithm
     ++conn->cycles;
-    SIM_LOG_INFO(1, obj, 0, "Current CPU Cycle: %i", conn->cycles);
+    SIM_LOG_INFO(1, obj, 0, "-------------------- Current CPU Cycle: %d --------------------", conn->cycles + 1);
     identify_instruction_and_operand(obj, cpu, address);
     // Stall the CPU
     if (conn->stall)
@@ -493,69 +441,6 @@ tomasulo_algorithm(conf_object_t *obj, conf_object_t *cpu, void *user_data)
     return CPU_Emulation_Default_Semantics;
 }
 
-void slice(char *disasm, char *result, int start, int length)
-{
-    strncpy(result, disasm + start, length);
-}
-
-int get_register(char *reg_string)
-{
-    if (strncmp(reg_string, "eax", 3) == 0)
-    {
-        return TYPE_EAX;
-    }
-    else if (strncmp(reg_string, "ebx", 3) == 0)
-    {
-        return TYPE_EBX;
-    }
-    else if (strncmp(reg_string, "ecx", 3) == 0)
-    {
-        return TYPE_ECX;
-    }
-    else if (strncmp(reg_string, "edx", 3) == 0)
-    {
-        return TYPE_EDX;
-    }
-    else if (strncmp(reg_string, "esi", 3) == 0)
-    {
-        return TYPE_ESI;
-    }
-    else if (strncmp(reg_string, "edi", 3) == 0)
-    {
-        return TYPE_EDI;
-    }
-    else if (strncmp(reg_string, "ebp", 3) == 0)
-    {
-        return TYPE_EBP;
-    }
-    else
-    {
-        return TYPE_IMM;
-    }
-}
-
-int get_dest_register(char *disasm)
-{
-    char dest_reg[10] = "";
-
-    slice(disasm, dest_reg, 4, 3);
-
-    int reg = get_register(dest_reg);
-
-    return reg;
-}
-
-int get_src_register(char *disasm)
-{
-    char src_reg[10] = "";
-
-    slice(disasm, src_reg, 8, strlen(disasm) - 8);
-
-    int reg = get_register(src_reg);
-
-    return reg;
-}
-
 /*
  * This function is called automatically, adds the instruction to the issued instruction list
  * */
@@ -573,24 +458,9 @@ void add_instruction_data(conf_object_t *obj, logical_address_t pa, char *disasm
 
     conn->issued_instructions[conn->issued_instruction_size].address = pa;
     conn->issued_instructions[conn->issued_instruction_size].disassembled_text = disasm_dup;
-
-    if (strncmp(disasm_dup, "int", 3) != 0)
-    {
-        if (strncmp(disasm_dup, "div", 3) == 0)
-        {
-            conn->issued_instructions[conn->issued_instruction_size].dest_reg = get_dest_register(disasm_dup);
-        }
-        else
-        {
-            conn->issued_instructions[conn->issued_instruction_size].dest_reg = get_dest_register(disasm_dup);
-            conn->issued_instructions[conn->issued_instruction_size].src_reg = get_src_register(disasm_dup);
-            SIM_LOG_INFO(1, obj, 0, "Issued instruction src: %d", conn->issued_instructions[conn->issued_instruction_size].src_reg);
-        }
-
-        SIM_LOG_INFO(1, obj, 0, "Issued instruction: %s", disasm_dup);
-        SIM_LOG_INFO(1, obj, 0, "Issued instruction dest: %d", conn->issued_instructions[conn->issued_instruction_size].dest_reg);
-    }
     conn->issued_instruction_size++;
+
+    SIM_LOG_INFO(1, obj, 0, "Issued instruction: %s", disasm_dup);
 }
 
 /*
@@ -631,7 +501,7 @@ gather_instruction_data(conf_object_t *obj, conf_object_t *cpu,
     tuple_int_string_t disasm = conn->pi_iface->disassemble(cpu, (physical_address_t)la, op_code, 0);
     add_instruction_data(obj, la, disasm.string);
     // print_all_instruction_data(obj);
-    conn->ir_iface->register_emulation_cb(cpu, tomasulo_algorithm, handle, (void *)la, dealloc);
+    conn->ir_iface->register_emulation_cb(cpu, pipeline_algorithm, handle, (void *)la, dealloc);
     return disasm.integer;
 }
 
@@ -654,24 +524,8 @@ void init_add_station(conf_object_t *obj, unit_functional_station *station)
  * */
 void init_all_stations(conf_object_t *obj)
 {
-    /* UNIDAD INT_1 */
+    /* UNIDAD */
     unit_functional_station *new_station = MM_ZALLOC(1, unit_functional_station);
-    new_station->type = TYPE_INT;
-    init_add_station(obj, new_station);
-
-    /* UNIDAD INT_2 */
-    new_station = MM_ZALLOC(1, unit_functional_station);
-    new_station->type = TYPE_INT;
-    init_add_station(obj, new_station);
-
-    /* UNIDAD LOAD_1 */
-    new_station = MM_ZALLOC(1, unit_functional_station);
-    new_station->type = TYPE_LOAD;
-    init_add_station(obj, new_station);
-
-    /* UNIDAD LOAD_2 */
-    new_station = MM_ZALLOC(1, unit_functional_station);
-    new_station->type = TYPE_LOAD;
     init_add_station(obj, new_station);
 
     /*Here you can add stations of different types and ALWAYS call the init_add_station function to record it in the stations array so that
@@ -688,7 +542,7 @@ void init_all_stations(conf_object_t *obj)
  * variables within the connection_t (tomasulo engine)
  * */
 static connection_t *
-new_connection(tomasulo_t *tool, conf_object_t *provider, attr_value_t args)
+new_connection(pipeline_t *tool, conf_object_t *provider, attr_value_t args)
 {
     strbuf_t sb = SB_INIT;
 
@@ -748,7 +602,7 @@ get_provider(void *param, conf_object_t *obj, attr_value_t *idx)
 static conf_object_t *
 it_alloc(void *arg)
 {
-    tomasulo_t *tool = MM_ZALLOC(1, tomasulo_t);
+    pipeline_t *tool = MM_ZALLOC(1, pipeline_t);
     VINIT(tool->connections);
     return &tool->obj;
 }
@@ -756,7 +610,7 @@ it_alloc(void *arg)
 static int
 it_delete_connection(conf_object_t *obj)
 {
-    tomasulo_t *tool = tool_of_obj(obj);
+    pipeline_t *tool = tool_of_obj(obj);
     ASSERT_FMT(VEMPTY(tool->connections),
                "%s deleted with active connections", SIM_object_name(obj));
     MM_FREE(tool);
@@ -767,7 +621,7 @@ it_delete_connection(conf_object_t *obj)
 static conf_object_t *
 it_connect(conf_object_t *obj, conf_object_t *provider, attr_value_t args)
 {
-    tomasulo_t *tool = tool_of_obj(obj);
+    pipeline_t *tool = tool_of_obj(obj);
     connection_t *conn = new_connection(tool, provider, args);
     if (!conn)
         return NULL;
@@ -781,7 +635,7 @@ it_connect(conf_object_t *obj, conf_object_t *provider, attr_value_t args)
 static void
 it_disconnect(conf_object_t *obj, conf_object_t *conn_obj)
 {
-    tomasulo_t *tool = tool_of_obj(obj);
+    pipeline_t *tool = tool_of_obj(obj);
     VREMOVE_FIRST_MATCH(tool->connections, conn_of_obj(conn_obj));
     SIM_delete_object(conn_obj);
 }
@@ -789,7 +643,7 @@ it_disconnect(conf_object_t *obj, conf_object_t *conn_obj)
 static attr_value_t
 get_connections(void *param, conf_object_t *obj, attr_value_t *idx)
 {
-    tomasulo_t *tool = tool_of_obj(obj);
+    pipeline_t *tool = tool_of_obj(obj);
 
     attr_value_t ret = SIM_alloc_attr_list(VLEN(tool->connections));
     VFORI(tool->connections, i)
@@ -813,7 +667,7 @@ init_tool_class(void)
                        " processor.",
         .kind = Sim_Class_Kind_Session};
 
-    conf_class_t *cl = SIM_register_class("tomasulo", &funcs);
+    conf_class_t *cl = SIM_register_class("pipeline", &funcs);
 
     static const instrumentation_tool_interface_t it_iface = {
         .connect = it_connect,
@@ -839,7 +693,7 @@ init_connection_class(void)
         .description = "Instrumentation connection.",
         .delete_instance = ic_delete_connection,
         .kind = Sim_Class_Kind_Session};
-    connection_class = SIM_register_class("tomasulo_connection_t",
+    connection_class = SIM_register_class("pipeline_connection_t",
                                           &funcs);
 
     static const instrumentation_connection_interface_t ic_iface = {
