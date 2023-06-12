@@ -8,7 +8,7 @@ section .text
 global _start
 
 _start:
-    mov eax, 3 ; eax = 3
+    mov eax,  ; eax = 3
     mov ebx, 6 ; ebx = 6
     mov ecx, 30 ; ecx = 30
     add eax, ebx ; eax = 3 + 6 = 9

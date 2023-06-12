@@ -22,7 +22,7 @@ load-module tomasulo_connection_t
 
 #---- create the objects -----
 #create the dimm
-create-simple-memory-module memory_megs = 0x10000
+create-simple-memory-module memory_megs = 0x100000
 
 #create the motherboard
 create-motherboard-x86-simple
@@ -59,4 +59,5 @@ processor0.core[0][0]->ss[0] = 0
 processor0.core[0][0]->ds[7] = 0xfff + 0xfff + 2
 
 #example of loading a binary image...
-load-file filename = example.bin offset = 0x0
+#load-file filename = rsa_unrolling.bin offset = 0x0
+load-file filename = example_2.bin offset = 0x0
