@@ -21,14 +21,30 @@
 #include <simics/device-api.h>
 #include <simics/model-iface/processor-info.h>
 #include <simics/simulator-api.h>
+
 #define MAX_INST 1000
 #define MAX_STATIONS 4
 #define TYPE_LOAD 0
 #define TYPE_INT 1
 #define LOAD_TIMEOUT 1
-#define INT_TIMEOUT 2
+#define INT_TIMEOUT 3
+
+#define REGISTER_COUNT 6
+#define TYPE_EAX 0
+#define TYPE_EBX 1
+#define TYPE_ECX 2
+#define TYPE_EDX 3
+#define TYPE_ESI 4
+#define TYPE_EDI 5
+#define TYPE_IMM -1
 
 conf_class_t *connection_class;
+
+typedef struct
+{
+    int type;
+    bool in_use;
+} register_status;
 
 /*This structure is used to create entries inside list of issued instructions*/
 typedef struct
@@ -37,6 +53,9 @@ typedef struct
     char *disassembled_text;
     int state;
     int order;
+
+    int src_reg;
+    int dest_reg;
 } instruction_entry;
 
 /*This structure is the base for the functional units/stations
@@ -447,6 +466,59 @@ tomasulo_algorithm(conf_object_t *obj, conf_object_t *cpu, void *user_data)
     return CPU_Emulation_Default_Semantics;
 }
 
+void slice(char *disasm, char *result, int start, int length)
+{
+    strncpy(result, disasm + start, length);
+}
+
+int get_register(char *reg_string)
+{
+    if (strncmp(reg_string, "eax", 3) == 0)
+    {
+        return TYPE_EAX;
+    }
+    else if (strncmp(reg_string, "ebx", 3) == 0)
+    {
+        return TYPE_EBX;
+    }
+    else if (strncmp(reg_string, "ecx", 3) == 0)
+    {
+        return TYPE_ECX;
+    }
+    else if (strncmp(reg_string, "edx", 3) == 0)
+    {
+        return TYPE_EDX;
+    }
+    else if (strncmp(reg_string, "esi", 3) == 0)
+    {
+        return TYPE_ESI;
+    }
+    else if (strncmp(reg_string, "edi", 3) == 0)
+    {
+        return TYPE_EDI;
+    }
+    else
+    {
+        return TYPE_IMM;
+    }
+}
+
+int get_dest_register(char *disasm)
+{
+    char dest_reg[10] = "";
+    slice(disasm, dest_reg, 4, 3);
+
+    return get_register(dest_reg);
+}
+
+int get_src_register(char *disasm)
+{
+    char src_reg[10] = "";
+    slice(disasm, src_reg, 8, strlen(disasm) - 8);
+
+    return get_register(src_reg);
+}
+
 /*
  * This function is called automatically, adds the instruction to the issued instruction list
  * */
@@ -459,9 +531,19 @@ void add_instruction_data(conf_object_t *obj, logical_address_t pa, char *disasm
         if (conn->issued_instructions[i].address == pa)
             return;
     }
+
+    const char *disasm_dup = strdup(disasm);
+
     conn->issued_instructions[conn->issued_instruction_size].address = pa;
-    conn->issued_instructions[conn->issued_instruction_size++].disassembled_text = strdup(disasm);
-    SIM_LOG_INFO(1, obj, 0, "Issued Instruction: %s", strdup(disasm));
+    conn->issued_instructions[conn->issued_instruction_size++].disassembled_text = disasm_dup;
+
+    conn->issued_instructions[conn->issued_instruction_size].dest_reg = get_dest_register(disasm_dup);
+    conn->issued_instructions[conn->issued_instruction_size].src_reg = get_src_register(disasm_dup);
+
+    SIM_LOG_INFO(1, obj, 0, "Issued Instruction: %s", disasm_dup);
+    SIM_LOG_INFO(1, obj, 0, "Issued Instruction dest: %d", conn->issued_instructions[conn->issued_instruction_size].dest_reg);
+    SIM_LOG_INFO(1, obj, 0, "Issued Instruction src: %d", conn->issued_instructions[conn->issued_instruction_size].src_reg);
+    // SIM_LOG_INFO(1, obj, 0, "Issued Instruction src: %s", src_reg);
 }
 
 /*
