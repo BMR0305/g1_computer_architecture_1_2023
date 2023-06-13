@@ -1,0 +1,1 @@
+vsim -gui -l /dev/null -L altera_mf_ver -L altera_mf -voptargs=+acc work.G1_Processor_tb

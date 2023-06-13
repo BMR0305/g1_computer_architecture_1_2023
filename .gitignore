@@ -4,3 +4,7 @@
 /**/**/output_files
 /**/**/simulation
 /**/**/greybox_tmp
+/**/**/*.ver
+/custom_simulation/**/*
+!/custom_simulation/custom_simulation.mpf
+/**/**/*.qws

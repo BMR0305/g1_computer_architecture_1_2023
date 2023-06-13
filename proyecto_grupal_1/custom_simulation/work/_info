@@ -1,0 +1,1619 @@
+m255
+K4
+z2
+Z0 !s99 nomlopt
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+!s11f vlog 2021.2 2021.04, Apr 14 2021
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z1 d/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/custom_simulation
+T_opt
+!s110 1684342443
+VONI?I37HN8DH9zX^Mn@iW2
+Z2 04 15 4 work G1_Processor_tb fast 0
+=1-00f48db99357-646506ab-8aeab-d79
+Z3 !s124 OEM10U42 
+Z4 o-quiet -auto_acc_if_foreign -work work -L altera_mf_ver -L altera_mf +acc
+Z5 tCvgOpt 0
+n@_opt
+Z6 OL;O;2021.2;73
+T_opt1
+!s110 1684234474
+V>4`GhlLGf=hbiT3lIHZHi1
+R2
+=1-00f48db99357-646360ea-14016-66f4
+R3
+o-quiet -auto_acc_if_foreign -work work -L altera_mf_ver -L altera_mf
+R5
+n@_opt1
+R6
+R1
+T_opt2
+!s110 1684342190
+V?S2cg6g6QhnaLnj4Y<l2N0
+04 29 4 work ALU_MEM_WB_Connection_Test_tb fast 0
+=1-00f48db99357-646505ad-c1bb5-c1d
+!s124 OEM10U17 
+R4
+R5
+n@_opt2
+R6
+R1
+vadder
+Z7 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+Z8 !s110 1684229958
+!i10b 1
+!s100 I4o`]VBfjRUmAZ0W7I]4>0
+I9X1n`Z<7PSY[4zbfo8Sf>2
+S1
+R1
+w1684090338
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/IF/adder.sv
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/IF/adder.sv
+!i122 252
+L0 1 7
+Z9 VDg1SIo80bB@j0V0VzS_@n1
+Z10 OL;L;2021.2;73
+r1
+!s85 0
+31
+Z11 !s108 1684229957.000000
+!s107 /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/IF/adder.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/IF/adder.sv|
+!i113 0
+Z12 o-work work -sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R5
+valu
+R7
+Z13 !s110 1684229954
+!i10b 1
+!s100 ;@mi;m>FB[6mgn9B2:7I^3
+I0JHdH]RWb=C0kjYVm@2S=0
+S1
+R1
+w1684090784
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Execute/alu.sv
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Execute/alu.sv
+!i122 234
+L0 1 104
+R9
+R10
+r1
+!s85 0
+31
+Z14 !s108 1684229954.000000
+!s107 /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Execute/alu.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Execute/alu.sv|
+!i113 0
+R12
+R5
+vALU_MEM_Connection_Test
+R7
+Z15 !s110 1684229952
+!i10b 1
+!s100 @XHG@:XL>kY[5a^W0Q[D_1
+IfNKzHTDE]>kYOe8I0ge<53
+S1
+R1
+Z16 w1684044308
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/ALU_MEM_Connection_Test.sv
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/ALU_MEM_Connection_Test.sv
+!i122 218
+L0 1 58
+R9
+R10
+r1
+!s85 0
+31
+Z17 !s108 1684229952.000000
+!s107 /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/ALU_MEM_Connection_Test.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/ALU_MEM_Connection_Test.sv|
+!i113 0
+R12
+R5
+n@a@l@u_@m@e@m_@connection_@test
+vALU_MEM_Connection_Test_tb
+R7
+R15
+!i10b 1
+!s100 ;mcWJc>7U;4RYf;V_WX6D0
+I^ZmfcmUF:M;hcz<YJIaYm0
+S1
+R1
+w1684047973
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/ALU_MEM_Connection_Test_tb.sv
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/ALU_MEM_Connection_Test_tb.sv
+!i122 219
+Z18 L0 3 78
+R9
+R10
+r1
+!s85 0
+31
+R17
+!s107 /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/ALU_MEM_Connection_Test_tb.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/ALU_MEM_Connection_Test_tb.sv|
+!i113 0
+R12
+R5
+n@a@l@u_@m@e@m_@connection_@test_tb
+vALU_MEM_WB_Connection_Test
+R7
+Z19 !s110 1684229953
+!i10b 1
+!s100 I;:CS::PSnUS@l`Y>fi1F1
+I`2YZ3SI74AomC2oQWU9km2
+S1
+R1
+w1684049195
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/ALU_MEM_WB_Connection_Test.sv
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/ALU_MEM_WB_Connection_Test.sv
+!i122 230
+L0 1 92
+R9
+R10
+r1
+!s85 0
+31
+Z20 !s108 1684229953.000000
+!s107 /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/ALU_MEM_WB_Connection_Test.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/ALU_MEM_WB_Connection_Test.sv|
+!i113 0
+R12
+R5
+n@a@l@u_@m@e@m_@w@b_@connection_@test
+vALU_MEM_WB_Connection_Test_tb
+R7
+R19
+!i10b 1
+!s100 8o0AE]fgVWgd@XUCRcDAL2
+IPQc^VQKK3E?lMS@ggeRn60
+S1
+R1
+w1684048507
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/ALU_MEM_WB_Connection_Test_tb.sv
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/ALU_MEM_WB_Connection_Test_tb.sv
+!i122 231
+L0 3 99
+R9
+R10
+r1
+!s85 0
+31
+R20
+!s107 /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/ALU_MEM_WB_Connection_Test_tb.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/ALU_MEM_WB_Connection_Test_tb.sv|
+!i113 0
+R12
+R5
+n@a@l@u_@m@e@m_@w@b_@connection_@test_tb
+valu_tb
+R7
+R13
+!i10b 1
+!s100 iU@PAfYn0Ubd4UlW?B_iY1
+I5IQO70k3?=6M?O7=9Wlz72
+S1
+R1
+w1684049670
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Execute/alu_tb.sv
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Execute/alu_tb.sv
+!i122 235
+L0 1 128
+R9
+R10
+r1
+!s85 0
+31
+R14
+!s107 /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Execute/alu_tb.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Execute/alu_tb.sv|
+!i113 0
+R12
+R5
+vALU_to_MEM
+R7
+R15
+!i10b 1
+!s100 VM;CI2Be:8Wc7fU4><[3J3
+ISKeW1VeVVzYYPC33R77h]0
+S1
+R1
+R16
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/ALU_to_MEM.sv
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/ALU_to_MEM.sv
+!i122 220
+L0 1 38
+R9
+R10
+r1
+!s85 0
+31
+R17
+!s107 /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/ALU_to_MEM.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/ALU_to_MEM.sv|
+!i113 0
+R12
+R5
+n@a@l@u_to_@m@e@m
+vALU_to_MEM_tb
+R7
+R15
+!i10b 1
+!s100 2gCB7Fm@]@^_3lBkS0YI`2
+IjgZ7:2`S?Qk?L@;A@U03P1
+S1
+R1
+R16
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/ALU_to_MEM_tb.sv
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/ALU_to_MEM_tb.sv
+!i122 221
+L0 3 72
+R9
+R10
+r1
+!s85 0
+31
+R17
+!s107 /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/ALU_to_MEM_tb.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/ALU_to_MEM_tb.sv|
+!i113 0
+R12
+R5
+n@a@l@u_to_@m@e@m_tb
+vAUDIO_IF
+Z21 !s110 1684229961
+!i10b 1
+!s100 H=L4oc4INZNlfljU=foRU3
+I<L7WzdZ7d;LYAT499Nc5h3
+R1
+Z22 w1684028188
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/HDMI_Controller/AUDIO_IF.v
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/HDMI_Controller/AUDIO_IF.v
+!i122 270
+L0 56 165
+R9
+R10
+r1
+!s85 0
+31
+Z23 !s108 1684229961.000000
+!s107 /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/HDMI_Controller/AUDIO_IF.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/HDMI_Controller/AUDIO_IF.v|
+!i113 0
+Z24 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R5
+n@a@u@d@i@o_@i@f
+vconditionChecker
+R7
+Z25 !s110 1684229960
+!i10b 1
+!s100 DTDE]acC2IBJROZFfJD7^3
+IzE5g=N1fNQFUIC@<^_e;o3
+S1
+R1
+Z26 w1684083790
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ControlUnit/conditionChecker.sv
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ControlUnit/conditionChecker.sv
+!i122 265
+Z27 L0 1 14
+R9
+R10
+r1
+!s85 0
+31
+Z28 !s108 1684229960.000000
+!s107 /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ControlUnit/conditionChecker.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ControlUnit/conditionChecker.sv|
+!i113 0
+R12
+R5
+ncondition@checker
+vcontroller
+R7
+R25
+!i10b 1
+!s100 lRYWWU4H^:TNjCK:E5^Y=2
+I3>U4ANa>MeQj^h4=;UjiF3
+S1
+R1
+w1684125930
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ControlUnit/controller.sv
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ControlUnit/controller.sv
+!i122 266
+L0 3 199
+R9
+R10
+r1
+!s85 0
+31
+R28
+!s107 ../defines.v|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ControlUnit/controller.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ControlUnit/controller.sv|
+!i113 0
+R12
+R5
+vD_FF
+R7
+R15
+!i10b 1
+!s100 E1>fJZY6;_ic7laC9Yj^l3
+Id21ekZ@7L0@;k@C6d19Qb3
+S1
+R1
+R16
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/D_FF.sv
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/D_FF.sv
+!i122 222
+L0 1 11
+R9
+R10
+r1
+!s85 0
+31
+R17
+!s107 /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/D_FF.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/D_FF.sv|
+!i113 0
+R12
+R5
+n@d_@f@f
+vD_FF_tb
+R7
+R15
+!i10b 1
+!s100 FYUEPfc67WiRbaiG2`HaP1
+IRmfZh<3lDLIC8YBWzba[D0
+S1
+R1
+R16
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/D_FF_tb.sv
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/D_FF_tb.sv
+!i122 223
+L0 3 39
+R9
+R10
+r1
+!s85 0
+31
+R17
+!s107 /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/D_FF_tb.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/D_FF_tb.sv|
+!i113 0
+R12
+R5
+n@d_@f@f_tb
+vdata_ram
+R15
+!i10b 1
+!s100 zLnfzTjF41RhHfE4zegXP0
+IHj[FN8lR4l=O;FLFkEB[@2
+R1
+w1683862978
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Memory/data_ram.v
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Memory/data_ram.v
+!i122 215
+L0 40 103
+R9
+R10
+r1
+!s85 0
+31
+R17
+!s107 /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Memory/data_ram.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Memory/data_ram.v|
+!i113 0
+R24
+R5
+vdata_ram_tb
+R7
+Z29 !s110 1684229951
+!i10b 1
+!s100 M9zWBNa]c7HzJSmJ:<hoj2
+IXI>9lNFdRB]`82[__c6zL0
+S1
+R1
+w1683863732
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Memory/test/data_ram_tb.sv
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Memory/test/data_ram_tb.sv
+!i122 210
+L0 3 69
+R9
+R10
+r1
+!s85 0
+31
+Z30 !s108 1684229951.000000
+!s107 /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Memory/test/data_ram_tb.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Memory/test/data_ram_tb.sv|
+!i113 0
+R12
+R5
+vDecode_Execute
+R7
+R13
+!i10b 1
+!s100 9l9M;_6af3J<FV;?Da`Yh3
+IV5cUlnAdCil2PTHcWzK`D1
+S1
+R1
+w1684090434
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Execute/Decode_Execute.sv
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Execute/Decode_Execute.sv
+!i122 236
+L0 1 36
+R9
+R10
+r1
+!s85 0
+31
+R14
+!s107 /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Execute/Decode_Execute.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Execute/Decode_Execute.sv|
+!i113 0
+R12
+R5
+n@decode_@execute
+vEXECUTE
+R7
+Z31 !s110 1684229955
+!i10b 1
+!s100 Fi:]2;AHe9ibhhSJ>^Z691
+I?_iIN;ecEFN19U`0P40z93
+S1
+R1
+w1684087243
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Execute/EXECUTE.sv
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Execute/EXECUTE.sv
+!i122 237
+L0 1 54
+R9
+R10
+r1
+!s85 0
+31
+R14
+!s107 /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Execute/EXECUTE.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Execute/EXECUTE.sv|
+!i113 0
+R12
+R5
+n@e@x@e@c@u@t@e
+vG1_Processor
+R7
+Z32 !s110 1684342020
+!i10b 1
+!s100 kcNB2;ERK_gd3cza^>@M21
+I<2MKVGk`YO?Z3_;[WK2<W3
+S1
+R1
+Z33 w1684341957
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/G1_Processor.sv
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/G1_Processor.sv
+!i122 291
+L0 3 244
+R9
+R10
+r1
+!s85 0
+31
+Z34 !s108 1684342020.000000
+!s107 /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/defines.v|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/G1_Processor.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/G1_Processor.sv|
+!i113 0
+R12
+R5
+n@g1_@processor
+vG1_Processor_tb
+R7
+R32
+!i10b 1
+!s100 Gd=17E7n<li`[=iMW@V6=1
+IKeK]?;kb]zE47W22`K8JD0
+S1
+R1
+Z35 w1684235830
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/G1_Processor_tb.sv
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/G1_Processor_tb.sv
+!i122 292
+L0 3 25
+R9
+R10
+r1
+!s85 0
+31
+R34
+!s107 /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/G1_Processor_tb.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/G1_Processor_tb.sv|
+!i113 0
+R12
+R5
+n@g1_@processor_tb
+vhazard_detection
+R7
+Z36 !s110 1684229956
+!i10b 1
+!s100 O4F1Cj=C=XL_7hlLS<nA60
+IajJzR]mJh^eP=R:R[n9k33
+S1
+R1
+w1684127049
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ID/hazard_detection.sv
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ID/hazard_detection.sv
+!i122 242
+L0 3 37
+R9
+R10
+r1
+!s85 0
+31
+Z37 !s108 1684229956.000000
+!s107 ../defines.v|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ID/hazard_detection.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ID/hazard_detection.sv|
+!i113 0
+R12
+R5
+vhazard_detection_tb
+R7
+R36
+!i10b 1
+!s100 M[djSCiG1zDX4kNJf9coR2
+In:glLE^^lOTQA`AP>;g<]1
+S1
+R1
+Z38 w1683672550
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ID/hazard_detection_tb.sv
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ID/hazard_detection_tb.sv
+!i122 243
+L0 2 111
+R9
+R10
+r1
+!s85 0
+31
+R37
+!s107 ../defines.v|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ID/hazard_detection_tb.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ID/hazard_detection_tb.sv|
+!i113 0
+R12
+R5
+vHDMIController
+R7
+R21
+!i10b 1
+!s100 RzX1Ojj?RC@=BPSe`_MfN1
+Ik2bjJ4AXkLY:R^gFKf<@:1
+S1
+R1
+R22
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/HDMI_Controller/HDMIController.sv
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/HDMI_Controller/HDMIController.sv
+!i122 271
+L0 33 135
+R9
+R10
+r1
+!s85 0
+31
+R23
+!s107 /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/HDMI_Controller/HDMIController.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/HDMI_Controller/HDMIController.sv|
+!i113 0
+R12
+R5
+n@h@d@m@i@controller
+vI2C_Controller
+R21
+!i10b 1
+!s100 ];TCCG:1@cK_3?fK`QSjH1
+IQIZ25K3H]g=TQ@j3L9h<]2
+R1
+R22
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/HDMI_Controller/I2C_Controller.v
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/HDMI_Controller/I2C_Controller.v
+!i122 272
+L0 43 33
+R9
+R10
+r1
+!s85 0
+31
+R23
+!s107 /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/HDMI_Controller/I2C_Controller.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/HDMI_Controller/I2C_Controller.v|
+!i113 0
+R24
+R5
+n@i2@c_@controller
+vI2C_HDMI_Config
+R21
+!i10b 1
+!s100 BGclM=_DAcYbk681?QDgR0
+IiKC;>CMNUVg?oRT0@kzXN0
+R1
+R22
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/HDMI_Controller/I2C_HDMI_Config.v
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/HDMI_Controller/I2C_HDMI_Config.v
+!i122 273
+L0 1 158
+R9
+R10
+r1
+!s85 0
+31
+R23
+!s107 /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/HDMI_Controller/I2C_HDMI_Config.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/HDMI_Controller/I2C_HDMI_Config.v|
+!i113 0
+R24
+R5
+n@i2@c_@h@d@m@i_@config
+vI2C_WRITE_WDATA
+R21
+!i10b 1
+!s100 `RmG6G>dk[X:`<8EZ3Pl;2
+II<7kjC=<^E_HiaVK0=SEl1
+R1
+R22
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/HDMI_Controller/I2C_WRITE_WDATA.v
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/HDMI_Controller/I2C_WRITE_WDATA.v
+!i122 274
+L0 1 106
+R9
+R10
+r1
+!s85 0
+31
+R23
+!s107 /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/HDMI_Controller/I2C_WRITE_WDATA.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/HDMI_Controller/I2C_WRITE_WDATA.v|
+!i113 0
+R24
+R5
+n@i2@c_@w@r@i@t@e_@w@d@a@t@a
+vID
+R7
+R36
+!i10b 1
+!s100 YfE<P3f5C51@?2ZKHL6;13
+I=gFYB7B;4PMc:d:^4NB1V3
+S1
+R1
+w1684123041
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ID/ID.sv
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ID/ID.sv
+!i122 244
+L0 3 93
+R9
+R10
+r1
+!s85 0
+31
+R37
+!s107 ../defines.v|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ID/ID.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ID/ID.sv|
+!i113 0
+R12
+R5
+n@i@d
+vID_Conection_Test
+R7
+R36
+!i10b 1
+!s100 z35Y[B;;J4PzFzzWe[WNA3
+IDLMd<4SE:4fNV3@60C_eO1
+S1
+R1
+R38
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ID/ID_Conection_Test.sv
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ID/ID_Conection_Test.sv
+!i122 245
+L0 3 89
+R9
+R10
+r1
+!s85 0
+31
+R37
+!s107 ../defines.v|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ID/ID_Conection_Test.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ID/ID_Conection_Test.sv|
+!i113 0
+R12
+R5
+n@i@d_@conection_@test
+vID_Conection_Test_tb
+R7
+R36
+!i10b 1
+!s100 oC3`da6`g=I@33O48Q=:F0
+Ie:]d?f1?^B^a;L=W@6[PM1
+S1
+R1
+R38
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ID/ID_Conection_Test_tb.sv
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ID/ID_Conection_Test_tb.sv
+!i122 246
+L0 3 133
+R9
+R10
+r1
+!s85 0
+31
+R37
+!s107 ../defines.v|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ID/ID_Conection_Test_tb.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ID/ID_Conection_Test_tb.sv|
+!i113 0
+R12
+R5
+n@i@d_@conection_@test_tb
+vID_tb
+R7
+Z39 !s110 1684229957
+!i10b 1
+!s100 gDRC>?o<iHX>CeIB4=NC]3
+I5moM0GDeA:WCl6<nGOQBP2
+S1
+R1
+R38
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ID/ID_tb.sv
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ID/ID_tb.sv
+!i122 247
+L0 3 116
+R9
+R10
+r1
+!s85 0
+31
+R11
+!s107 ../defines.v|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ID/ID_tb.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ID/ID_tb.sv|
+!i113 0
+R12
+R5
+n@i@d_tb
+vIF_ID_Conection_Test
+R7
+Z40 !s110 1684229959
+!i10b 1
+!s100 9O7?7KIHei]Q:?CX[d]=X1
+IQ?ifU@EDgE1_5LSRY8HIL2
+S1
+R1
+Z41 w1683678613
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/IF_ID_Conection_Test.sv
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/IF_ID_Conection_Test.sv
+!i122 261
+L0 3 108
+R9
+R10
+r1
+!s85 0
+31
+Z42 !s108 1684229959.000000
+!s107 ../defines.v|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/IF_ID_Conection_Test.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/IF_ID_Conection_Test.sv|
+!i113 0
+R12
+R5
+n@i@f_@i@d_@conection_@test
+vIF_ID_Conection_Test_tb
+R7
+R40
+!i10b 1
+!s100 N5h9:>j]kfc8]N[WBMPHJ2
+ISS<h5fidNd4ScDbaA>Lm30
+S1
+R1
+R41
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/IF_ID_Conection_Test_tb.sv
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/IF_ID_Conection_Test_tb.sv
+!i122 262
+L0 3 94
+R9
+R10
+r1
+!s85 0
+31
+R42
+!s107 ../defines.v|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/IF_ID_Conection_Test_tb.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/IF_ID_Conection_Test_tb.sv|
+!i113 0
+R12
+R5
+n@i@f_@i@d_@conection_@test_tb
+vIF_to_ID
+R7
+R40
+!i10b 1
+!s100 FTDc9=VZVmh:_P8@:gffX3
+Ij6I_ZG^ZUVD=@bQJ<c?lN0
+S1
+R1
+R41
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/IF_to_ID.sv
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/IF_to_ID.sv
+!i122 263
+L0 3 21
+R9
+R10
+r1
+!s85 0
+31
+R42
+!s107 ../defines.v|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/IF_to_ID.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/IF_to_ID.sv|
+!i113 0
+R12
+R5
+n@i@f_to_@i@d
+vIF_to_ID_tb
+R7
+R25
+!i10b 1
+!s100 J>U4TUYR2j`PPfIZ7C;=N3
+IRaizodYY2oK8GKXHfXKW:1
+S1
+R1
+R41
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/IF_to_ID_tb.sv
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/IF_to_ID_tb.sv
+!i122 264
+L0 2 72
+R9
+R10
+r1
+!s85 0
+31
+R42
+!s107 ../defines.v|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/IF_to_ID_tb.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/IF_to_ID_tb.sv|
+!i113 0
+R12
+R5
+n@i@f_to_@i@d_tb
+vIFStage
+R7
+R32
+!i10b 1
+!s100 ^Peh2Xe;PinhQV5Xd3`J<2
+I?eKIAN;;dGXhN7k29Ao@K3
+S1
+R1
+R35
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/IF/IFStage.sv
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/IF/IFStage.sv
+!i122 294
+L0 2 42
+R9
+R10
+r1
+!s85 0
+31
+R34
+!s107 /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/IF/IFStage.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/IF/IFStage.sv|
+!i113 0
+R12
+R5
+n@i@f@stage
+vimage_rom
+R15
+!i10b 1
+!s100 8BUV373:Q>nJADZd]AK`h0
+IAEMl`ZeJ9G6]d4jJ[5cK42
+R1
+w1683862994
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Memory/image_rom.v
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Memory/image_rom.v
+!i122 216
+L0 40 97
+R9
+R10
+r1
+!s85 0
+31
+R17
+!s107 /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Memory/image_rom.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Memory/image_rom.v|
+!i113 0
+R24
+R5
+vimage_rom_tb
+R7
+R29
+!i10b 1
+!s100 W4je3n7T<BDTU>ka:D_G^3
+IiPn>VJSD8IkjAEj1gPIGL0
+S1
+R1
+w1683862915
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Memory/test/image_rom_tb.sv
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Memory/test/image_rom_tb.sv
+!i122 211
+L0 3 49
+R9
+R10
+r1
+!s85 0
+31
+R30
+!s107 /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Memory/test/image_rom_tb.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Memory/test/image_rom_tb.sv|
+!i113 0
+R12
+R5
+vinstructionMem
+R7
+R8
+!i10b 1
+!s100 TECh9GkDgAf0G[[LPFgmV0
+I0I;_hh2QD8zIMk`IDhiFT0
+S1
+R1
+w1684224830
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/IF/instructionMem.sv
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/IF/instructionMem.sv
+!i122 254
+L0 1 15
+R9
+R10
+r1
+!s85 0
+31
+Z43 !s108 1684229958.000000
+!s107 /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/IF/instructionMem.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/IF/instructionMem.sv|
+!i113 0
+R12
+R5
+ninstruction@mem
+vMEM_to_WB
+R7
+R19
+!i10b 1
+!s100 VOZC3X@^SR9djBJd:2]bl0
+IT3cM1VQ4bf8C@@RTMg]_M3
+S1
+R1
+w1684045444
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/MEM_to_WB.sv
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/MEM_to_WB.sv
+!i122 226
+L0 1 47
+R9
+R10
+r1
+!s85 0
+31
+R20
+!s107 /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/MEM_to_WB.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/MEM_to_WB.sv|
+!i113 0
+R12
+R5
+n@m@e@m_to_@w@b
+vMEM_to_WB_tb
+R7
+R19
+!i10b 1
+!s100 d=i5[fKi5A7EZ@zNFJc8i1
+IGXFdD14^HGC>mBH39jAb?2
+S1
+R1
+w1684045739
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/MEM_to_WB_tb.sv
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/MEM_to_WB_tb.sv
+!i122 227
+L0 1 75
+R9
+R10
+r1
+!s85 0
+31
+R20
+!s107 /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/MEM_to_WB_tb.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/MEM_to_WB_tb.sv|
+!i113 0
+R12
+R5
+n@m@e@m_to_@w@b_tb
+vMEM_WB_Connection_Test
+R7
+R19
+!i10b 1
+!s100 PiLg_T5jj_nEc_bM>2anj3
+I2PZ]_VBE`<^YCbd=c64LN1
+S1
+R1
+w1684049143
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/MEM_WB_Connection_Test.sv
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/MEM_WB_Connection_Test.sv
+!i122 228
+L0 1 69
+R9
+R10
+r1
+!s85 0
+31
+R20
+!s107 /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/MEM_WB_Connection_Test.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/MEM_WB_Connection_Test.sv|
+!i113 0
+R12
+R5
+n@m@e@m_@w@b_@connection_@test
+vMEM_WB_Connection_Test_tb
+R7
+R19
+!i10b 1
+!s100 :JXQ_^PE3C_NPmjEY;flI0
+I97IaN4ciNTJoCkHIWXEhC1
+S1
+R1
+w1684047200
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/MEM_WB_Connection_Test_tb.sv
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/MEM_WB_Connection_Test_tb.sv
+!i122 229
+R18
+R9
+R10
+r1
+!s85 0
+31
+R20
+!s107 /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/MEM_WB_Connection_Test_tb.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/PipeRegisters/MEM_WB_Connection_Test_tb.sv|
+!i113 0
+R12
+R5
+n@m@e@m_@w@b_@connection_@test_tb
+vMemory_HDMI_Conection
+R7
+R32
+!i10b 1
+!s100 gDb0ilWFh2nRNk3]AeeSH2
+IFC3D?iEd<7M?V`J^0WlK92
+S1
+R1
+R33
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Memory_HDMI_Conection.sv
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Memory_HDMI_Conection.sv
+!i122 293
+L0 1 113
+R9
+R10
+r1
+!s85 0
+31
+R34
+!s107 /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Memory_HDMI_Conection.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Memory_HDMI_Conection.sv|
+!i113 0
+R12
+R5
+n@memory_@h@d@m@i_@conection
+vmemory_stage
+R7
+!s110 1684342003
+!i10b 1
+!s100 94^6Cg]2f]5;o7AHGY2^`2
+Iez6D]lBHI8ULR5ZoXgHC;1
+S1
+R1
+R33
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Memory/memory_stage.sv
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Memory/memory_stage.sv
+!i122 286
+L0 1 120
+R9
+R10
+r1
+!s85 0
+31
+!s108 1684341982.000000
+!s107 /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Memory/memory_stage.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Memory/memory_stage.sv|
+!i113 0
+R12
+R5
+vmemory_stage_tb
+R7
+R29
+!i10b 1
+!s100 138>aY5bB7Gj3:CMP@JY51
+I>e<K>N>`H=0n1^QAPY:7I1
+S1
+R1
+w1683864058
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Memory/test/memory_stage_tb.sv
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Memory/test/memory_stage_tb.sv
+!i122 214
+L0 3 70
+R9
+R10
+r1
+!s85 0
+31
+R30
+!s107 /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Memory/test/memory_stage_tb.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Memory/test/memory_stage_tb.sv|
+!i113 0
+R12
+R5
+vmux3
+R7
+R31
+!i10b 1
+!s100 e9b4:21XP4;clNJ^I3]c53
+I8Ogc`j05QdFGO652MQ?kF2
+S1
+R1
+w1684105737
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Execute/mux3.sv
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Execute/mux3.sv
+!i122 238
+R27
+R9
+R10
+r1
+!s85 0
+31
+Z44 !s108 1684229955.000000
+!s107 /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Execute/mux3.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Execute/mux3.sv|
+!i113 0
+R12
+R5
+vmy_mux
+R7
+R8
+!i10b 1
+!s100 ENnBKVaDGzDEgfoQ^AIeT0
+I_lfNbIm[mZL4dAJh97kfb0
+S1
+R1
+Z45 w1683346049
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/IF/my_mux.sv
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/IF/my_mux.sv
+!i122 255
+L0 3 8
+R9
+R10
+r1
+!s85 0
+31
+R43
+!s107 /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/IF/my_mux.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/IF/my_mux.sv|
+!i113 0
+R12
+R5
+vmy_mux_3
+R7
+R8
+!i10b 1
+!s100 ZhBOTn<KYMPQ1]3SGJhSQ2
+IALC<USlcK=zLh6mL<5Bh62
+S1
+R1
+w1684107411
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/IF/my_mux_3.sv
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/IF/my_mux_3.sv
+!i122 256
+L0 1 17
+R9
+R10
+r1
+!s85 0
+31
+R43
+!s107 /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/IF/my_mux_3.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/IF/my_mux_3.sv|
+!i113 0
+R12
+R5
+vregFile
+R7
+R39
+!i10b 1
+!s100 UeC3BPI;3WD>`Eo93>ECM0
+I8Ghme<z0@ze6L[We5?:RH0
+S1
+R1
+R26
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ID/regFile.sv
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ID/regFile.sv
+!i122 248
+L0 3 22
+R9
+R10
+r1
+!s85 0
+31
+R11
+!s107 ../defines.v|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ID/regFile.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ID/regFile.sv|
+!i113 0
+R12
+R5
+nreg@file
+vregFile_tb
+R7
+R39
+!i10b 1
+!s100 <4bn4GNd:L:f2RCb:g2=f0
+I`[Rk2:cF@o1m@1Wk]=om?3
+S1
+R1
+R38
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ID/regFile_tb.sv
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ID/regFile_tb.sv
+!i122 249
+L0 3 83
+R9
+R10
+r1
+!s85 0
+31
+R11
+!s107 ../defines.v|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ID/regFile_tb.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ID/regFile_tb.sv|
+!i113 0
+R12
+R5
+nreg@file_tb
+vregister
+R7
+R8
+!i10b 1
+!s100 j?cdS5GbMk4cUQ8LAiYTL2
+I]AVAY3e==h8iCi0EhaS7n2
+S1
+R1
+w1684102912
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/IF/register.sv
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/IF/register.sv
+!i122 257
+L0 1 12
+R9
+R10
+r1
+!s85 0
+31
+R43
+!s107 /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/IF/register.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/IF/register.sv|
+!i113 0
+R12
+R5
+vsignExtendBranch
+R7
+R39
+!i10b 1
+!s100 >jDcLaggm]ERTOf6?A6m71
+IRlPN2a6C:dh8mX0zEC8AG3
+S1
+R1
+R38
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ID/signExtendBranch.sv
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ID/signExtendBranch.sv
+!i122 250
+Z46 L0 3 6
+R9
+R10
+r1
+!s85 0
+31
+R11
+!s107 ../defines.v|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ID/signExtendBranch.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ID/signExtendBranch.sv|
+!i113 0
+R12
+R5
+nsign@extend@branch
+vsignExtendImm
+R7
+R39
+!i10b 1
+!s100 2geO`z9JeI_H<4Ua`]X:e3
+IT7]4;8^A=DBZzE7ZL`iAe3
+S1
+R1
+R38
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ID/signExtendImm.sv
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ID/signExtendImm.sv
+!i122 251
+R46
+R9
+R10
+r1
+!s85 0
+31
+R11
+!s107 ../defines.v|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ID/signExtendImm.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ID/signExtendImm.sv|
+!i113 0
+R12
+R5
+nsign@extend@imm
+vsin_rom
+R15
+!i10b 1
+!s100 GJ[Y7NPHzTjA^A>8nf0LK2
+ISbERPkTWm]1[]PN>XZ_[00
+R1
+w1683863019
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Memory/sin_rom.v
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Memory/sin_rom.v
+!i122 217
+L0 40 66
+R9
+R10
+r1
+!s85 0
+31
+R17
+!s107 /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Memory/sin_rom.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Memory/sin_rom.v|
+!i113 0
+R24
+R5
+vsin_rom_tb
+R7
+R29
+!i10b 1
+!s100 Z^BA_Dff`CcDoTJOiBU`K3
+Io];S^[`6HmOhoGFBUYYdS1
+S1
+R1
+w1683863580
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Memory/test/sin_rom_tb.sv
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Memory/test/sin_rom_tb.sv
+!i122 212
+L0 3 29
+R9
+R10
+r1
+!s85 0
+31
+R30
+!s107 /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Memory/test/sin_rom_tb.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Memory/test/sin_rom_tb.sv|
+!i113 0
+R12
+R5
+vtest
+R7
+R25
+!i10b 1
+!s100 n>PT`4JQkM06bgc?^9SB<1
+IcW4jUGz`j3ENOU3ACFV=40
+S1
+R1
+R45
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ControlUnit/test.sv
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ControlUnit/test.sv
+!i122 267
+L0 2 22
+R9
+R10
+r1
+!s85 0
+31
+R28
+!s107 /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ControlUnit/defines.sv|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ControlUnit/test.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ControlUnit/test.sv|
+!i113 0
+R12
+R5
+vtest_add
+R7
+R40
+!i10b 1
+!s100 nb>^USRCU52A``^3NjSGN2
+I;WjAikcWC>gPF^0]JRzCH3
+S1
+R1
+R45
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/IF/test_add.sv
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/IF/test_add.sv
+!i122 259
+L0 1 20
+R9
+R10
+r1
+!s85 0
+31
+R42
+!s107 /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/IF/test_add.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/IF/test_add.sv|
+!i113 0
+R12
+R5
+vtestController
+R7
+R25
+!i10b 1
+!s100 CLGk>3JOZ5:Zb`K[89cTP0
+I7beG]K_NVe6KzZ]4JFY:C1
+S1
+R1
+R38
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ControlUnit/testController.sv
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ControlUnit/testController.sv
+!i122 268
+L0 3 76
+R9
+R10
+r1
+!s85 0
+31
+R28
+!s107 ../defines.v|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ControlUnit/testController.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ControlUnit/testController.sv|
+!i113 0
+R12
+R5
+ntest@controller
+vtestIF
+R7
+R40
+!i10b 1
+!s100 P?TV[EXGg3cMQA4=@Pje13
+I5?kPlE29<lNe:lUhRfO<L2
+S1
+R1
+R45
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/IF/test.sv
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/IF/test.sv
+!i122 258
+L0 1 42
+R9
+R10
+r1
+!s85 0
+31
+R43
+!s107 /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/IF/test.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/IF/test.sv|
+!i113 0
+R12
+R5
+ntest@i@f
+vtestIf
+R7
+R40
+!i10b 1
+!s100 N6Ad0DoYG@49`f^zk3j<@0
+IRMR5mI;ll_9GPV2NUal?H1
+S1
+R1
+R41
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/IF/testIf.sv
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/IF/testIf.sv
+!i122 260
+L0 1 45
+R9
+R10
+r1
+!s85 0
+31
+R42
+!s107 /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/IF/testIf.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/IF/testIf.sv|
+!i113 0
+R12
+R5
+ntest@if
+vtop
+R7
+R21
+!i10b 1
+!s100 [EJgz_ZWdDzMAKQ]4L5dh1
+IbJGRR]@I]1?Y`kg3ld<R=0
+S1
+R1
+R45
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ControlUnit/top.sv
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ControlUnit/top.sv
+!i122 269
+L0 1 10
+R9
+R10
+r1
+!s85 0
+31
+R28
+!s107 /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ControlUnit/top.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/ControlUnit/top.sv|
+!i113 0
+R12
+R5
+vunidad_adelantamiento
+R7
+R31
+!i10b 1
+!s100 H_k>RM[B@4S84SC^9WSe:3
+IVz`i_4T4e7_V>;>Ec11O32
+S1
+R1
+w1684105144
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Execute/unidad_adelantamiento.sv
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Execute/unidad_adelantamiento.sv
+!i122 239
+L0 1 39
+R9
+R10
+r1
+!s85 0
+31
+R44
+!s107 /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Execute/unidad_adelantamiento.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/Execute/unidad_adelantamiento.sv|
+!i113 0
+R12
+R5
+vwriteback_stage
+R7
+R19
+!i10b 1
+!s100 `So7EEdDoiYCLAUQLgaH12
+IlooPXKNfJz^>:WSZ78c1C3
+S1
+R1
+w1684044720
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/WB/writeback_stage.sv
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/WB/writeback_stage.sv
+!i122 224
+L0 1 19
+R9
+R10
+r1
+!s85 0
+31
+R17
+!s107 /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/WB/writeback_stage.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/WB/writeback_stage.sv|
+!i113 0
+R12
+R5
+vwriteback_tb
+R7
+R19
+!i10b 1
+!s100 <>YNMzZdYg73`I;I@dl1n1
+IJ?Te3`fC1G4?BjJc1IfkA3
+S1
+R1
+w1684044926
+8/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/WB/writeback_tb.sv
+F/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/WB/writeback_tb.sv
+!i122 225
+L0 1 52
+R9
+R10
+r1
+!s85 0
+31
+R20
+!s107 /run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/WB/writeback_tb.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|/run/media/rijegaro/Compartido/Github/g1_computer_architecture_1_2023/WB/writeback_tb.sv|
+!i113 0
+R12
+R5

@@ -1,0 +1,19 @@
+G1Movi r1, #0x01
+G1Movi r2, #0x02
+
+G1Movi r4, #0x04
+G1Movi r5, #0x05
+
+G1Movi r7, #0x07
+G1Movi r8, #0x08
+
+G1Movi r10, #0x0A
+
+G1Add r0, r1, r2
+G1Sub r3, r4, r5
+G1Mul r6, r7, r8
+G1Div r9, r10, r0
+; holaaaaaa
+G1Mod r0, r5, r2
+G1CMP r0, r0
+G1CMP r0, r1
