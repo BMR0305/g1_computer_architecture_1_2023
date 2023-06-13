@@ -12,7 +12,7 @@ decl {
 		default auto_login           = TRUE
 		default num_cores            = 1
 		default num_threads          = 1
-		default freq_mhz = 3000
+		default freq_mhz = 100
 
 	result system : string
 	result eth_link : string or nil
@@ -26,7 +26,7 @@ $system->system_info = "QSP ISIM Tutorial"
 start-agent-manager manager
 manager.connect-to-agent matic
 
-matic.upload -executable from = ./RSA/main  to = /home/simics/
+matic.upload -executable from = ./RSA/rsa_image  to = /home/simics/
 matic.upload -executable from = ./RSA/encrypted.txt  to = /home/simics/
 
 log-type -disable unimpl
@@ -102,7 +102,7 @@ script-branch {
   #@launch_viewer(config_file = simenv.config_file)
 
   bp.console_string.wait-then-write $system.serconsole.con "simics@cl-qsp ~ $ " "ls -al\n"
-  bp.console_string.wait-then-write $system.serconsole.con "simics@cl-qsp ~ $ " "./main\n"
+  bp.console_string.wait-then-write $system.serconsole.con "simics@cl-qsp ~ $ " "./rsa_image\n"
   bp.console_string.wait-then-write $system.serconsole.con "simics@cl-qsp ~ $ " "ls -al\n"
   bp.console_string.wait-then-write $system.serconsole.con "simics@cl-qsp ~ $ " "simics-agent --overwrite --upload ./decrypted.txt\n"
   #stop

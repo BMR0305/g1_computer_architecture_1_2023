@@ -6,7 +6,7 @@ make
 # sudo ./bin/vmp-kernel-uninstall
 # sudo ./bin/vmp-kernel-install
 
-./simics ./targets/qsp-x86/tomasulo_rsa_unrolling.simics
+# ./simics ./targets/qsp-x86/tomasulo_rsa_unrolling.simics
 
 # ./simics ./targets/qsp-x86/test.simics
-# ./simics ./targets/qsp-x86/rsa_metrics.simics
+./simics ./targets/qsp-x86/rsa_metrics.simics

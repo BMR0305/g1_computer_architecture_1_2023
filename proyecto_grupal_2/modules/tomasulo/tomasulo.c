@@ -28,8 +28,8 @@
 #define MAX_STATIONS 4
 #define TYPE_LOAD 0
 #define TYPE_INT 1
-#define LOAD_TIMEOUT 2
-#define INT_TIMEOUT 4
+#define LOAD_TIMEOUT 1
+#define INT_TIMEOUT 2
 
 #define REGISTER_COUNT 6
 #define TYPE_EAX 0
